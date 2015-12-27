@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Markdown基本语法笔记 | Loongeek的私博</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简单介绍了Markdown基本语法，并给出了示例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown基本语法笔记">
+<meta property="og:url" content="http://www.loongeek.com/2015/07/25/markdown/index.html">
+<meta property="og:site_name" content="Loongeek的私博">
+<meta property="og:description" content="简单介绍了Markdown基本语法，并给出了示例">
+<meta property="og:image" content="http://www.loongeek.com/images/RESOURCE_WHEAT.png">
+<meta property="og:image" content="http://www.loongeek.com/images/RESOURCE_WHEAT.png">
+<meta property="og:updated_time" content="2015-12-24T04:12:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown基本语法笔记">
+<meta name="twitter:description" content="简单介绍了Markdown基本语法，并给出了示例">
+  
+    <link rel="alternative" href="atom.xml" title="Loongeek的私博" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<!-- 百度统计 -->
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c6f31c2a181feddaaff58d4befce579b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End 百度统计 -->
+
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Loongeek的私博</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Art,Tech and ...</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.loongeek.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-markdown" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/25/markdown/" class="article-date">
+  <time datetime="2015-07-25T03:11:17.000Z" itemprop="datePublished">2015-07-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Markdown基本语法笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简单介绍了Markdown基本语法，并给出了示例<br><a id="more"></a></p>
+<h1 id="段落与标题">段落与标题</h1><ul>
+<li>一般不强制分行，要强制分行在行尾加两个空格再换行</li>
+</ul>
+<p>此行未强<br>制分行</p>
+<p>此行强<br>制分行</p>
+<ul>
+<li>在下面加===表示最高标题， ---表示第二阶标题</li>
+</ul>
+<h1 id="测试大标题">测试大标题</h1><h2 id="测试二标题">测试二标题</h2><ul>
+<li>在行首加#表示标题，最多加6个</li>
+</ul>
+<h1 id="标题1">标题1</h1><h2 id="标题2">标题2</h2><h3 id="标题3">标题3</h3><h4 id="标题4">标题4</h4><h5 id="标题5">标题5</h5><h6 id="标题6">标题6</h6><h1 id="引用">引用</h1><ul>
+<li>用&gt;来表示引用，支持多行；支持多个&gt;&gt;来表示嵌套引用</li>
+</ul>
+<p>Bona曾经对我说过，</p>
+<blockquote>
+<p>那一天，我在家<br>fijo对我说</p>
+<blockquote>
+<p>很久很久以前，gladiator告诉我</p>
+<blockquote>
+<p>我有个秘密</p>
+</blockquote>
+</blockquote>
+<p>我很震惊，很好奇</p>
+</blockquote>
+<p>他说完了</p>
+<h1 id="列表">列表</h1><ul>
+<li><p>无序列表， +-*均可，用缩进进行嵌套</p>
+<ul>
+<li>Q1</li>
+<li>Q2<ul>
+<li>A1</li>
+<li>A2</li>
+</ul>
+</li>
+<li>Q3</li>
+</ul>
+</li>
+<li><p>有序列表，数字后跟.再跟空格，另外行首是数字+.的，为避免被误认为是列表，在.前加\</p>
+<ol>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+<li>D</li>
+</ol>
+</li>
+<li><p>列表中可以包含多个段落，但是段落必须缩进对齐</p>
+<ul>
+<li><p>para1</p>
+<p>  para2</p>
+</li>
+<li><p>para3</p>
+<p>para 4</p>
+</li>
+</ul>
+</li>
+<li><p>列表中的引用和代码块都必须做额外的缩进</p>
+<ul>
+<li>I said<blockquote>
+<p>I like it</p>
+</blockquote>
+</li>
+<li>a++;</li>
+</ul>
+</li>
+</ul>
+<h1 id="代码块">代码块</h1><ul>
+<li><p>多行代码直接用缩进来区分，也可以用```来标识</p>
+<pre><code><span class="title">puts</span> <span class="string">'hello world'</span>
+</code></pre>  <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">a</span>=<span class="literal">a</span>+<span class="number">1</span><span class="comment">;</span></span><br><span class="line">print(<span class="literal">a</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>单行代码可以用``来标识，如果其中有`，可以用`` ``来表示。</p>
+<p>  请输入<code>print(a)</code>, 或者<code>puts `hello` </code></p>
+</li>
+<li><p>*** ---\ <em>_</em> 可以创建分割线（三个及以上，-不能连起来）</p>
+<p>  华丽的分割线1</p>
+<hr>
+<p>  华丽的分割线2</p>
+<hr>
+<p>  华丽的分割线3</p>
+<hr>
+</li>
+</ul>
+<h1 id="链接">链接</h1><ul>
+<li><p>直接式，[]后跟()<br>  这是到<a href="http://www.loongeek.com">主页</a>的链接</p>
+</li>
+<li><p>参考式，[]后跟[id]，在任意位置写<br>  [id]\: XXXX “title”</p>
+<p>  或者后跟空[]，然后在参考直接写引用的文字</p>
+<p>  这是到<a href="http://www.loongeek.com">主页</a>的链接2</p>
+</li>
+</ul>
+<ul>
+<li>自动链接，网址和邮箱会自动给出链接<br>  <a href="http://www.loongeek.com">http://www.loongeek.com</a><br>  <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#109;&#121;&#109;&#97;&#105;&#108;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#109;&#121;&#109;&#97;&#105;&#108;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a></li>
+</ul>
+<h1 id="文字">文字</h1><ul>
+<li>* *或者_ _是弱强调（斜体）， ** **或者__ __是强强调，*** ***或者___ ___是粗斜体<br>  I like <em>art</em> and <em>tech</em><br>  I like <strong>art</strong> and <strong>tech</strong> very much.<br>  I like <strong><em>art</em></strong> and <strong><em>tech</em></strong> very,very much.</li>
+</ul>
+<ul>
+<li>*或者_两边都有空格，就被当做普通符号</li>
+</ul>
+<h1 id="图片">图片</h1><ul>
+<li>直接式图片，![]后跟()<br>  <img src="/images/RESOURCE_WHEAT.png" alt="test"></li>
+<li>参考式图片，![]后跟[id]<br>  <img src="/images/RESOURCE_WHEAT.png" alt="test"></li>
+</ul>
+<ul>
+<li>设置图片大小，在[id]后面指定heith=, width=(暂不支持)</li>
+</ul>
+<h1 id="表格">表格</h1><p>使用如下格式,用:控制对齐<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string"> title1 </span>|<span class="string"> title2 </span>|<span class="string"> title3 </span>|</span><br><span class="line">|<span class="string">---:	 </span>|<span class="string"> :---:  </span>|<span class="string"> ----   </span>|</span><br><span class="line">|<span class="string"> xxx    </span>|<span class="string"> yyy </span>|<span class="string"> zzzz </span>|</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">title1</th>
+<th style="text-align:center">title2</th>
+<th>title3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">xxx</td>
+<td style="text-align:center">yyy</td>
+<td>zzzz</td>
+</tr>
+</tbody>
+</table>
+<h1 id="兼容HTML">兼容HTML</h1><ul>
+<li><code>&lt;div&gt; &lt;table&gt; &lt;pre&gt; &lt;p&gt;</code>前后要加上空行，开始结束不加缩进</li>
+<li>行内标签可以随意使用</li>
+<li>markdown会自动转换&lt;、&amp;符号</li>
+<li>可以使用<code>&lt;big&gt;, &lt;small&gt;, &lt;sup&gt;, &lt;sub&gt;, &lt;del&gt;,&lt;u&gt;,&lt;mark&gt;</code>等html标签.示例如下:<br><br><big>公式</big><small>（<u>二项式</u>展开）</small>:(x<sub>1</sub>+x<sub>2</sub>)<sup>2</sup>=x<sub>1</sub><sup>2</sup>+<del>x<sub>1</sub>x<sub>2</sub></del>2x<sub>1</sub>x<sub>2</sub>+x<sub>2</sub><sup>2</sup></li>
+<li>可以使用<code>&lt;div&gt; &lt;p&gt; &lt;span&gt;</code>等标签，并指定class，然后在&lt; theme &gt;/source/css/_partial/article.styl设定class的css样式</li>
+</ul>
+<!--less-->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2015/07/25/markdown/" data-id="ciinwp6bb0007brjd8h17th9b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li></ul>
+
+      
+	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
+	  
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/13/Lua-study/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lua学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/23/first-article/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">My first article</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-markdown" data-title="Markdown基本语法笔记" data-url="http://www.loongeek.com/2015/07/25/markdown/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'loongeek'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB技术/">WEB技术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/WEB技术/" style="font-size: 10px;">WEB技术</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/软件/" style="font-size: 20px;">软件</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/24/ssh-config/">ssh配置</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/24/macbook-operation-memo/">Macbook操作备忘</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/24/idea-useguide/">IDEA用户手册摘要</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/22/Plantuml/">Plantuml使用笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/13/Lua-study/">Lua学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">About</h3>
+    <div class="widget">
+	mail: XXX
+	Weibo:xxx
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+<div class="outer">
+    <div id="footer-info" class="inner">
+	<p>&copy; 2015 Loongeek</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
