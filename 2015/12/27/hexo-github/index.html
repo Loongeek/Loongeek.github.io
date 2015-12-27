@@ -3,18 +3,42 @@
 <head>
   <meta charset="utf-8">
   
-  <title>about | Loongeek的私博</title>
+  <title>Hexo发布到Github | Loongeek的私博</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人 博客 编程技术 艺术 绘画 摄影 读书 嵌入式开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://www.loongeek.com/about/index.html">
+  <meta name="description" content="在Github上创建一个带readme的新repository
+修改hexo主目录的_config.yml，添加
+deployer:
+    type: git
+    repository: &amp;lt;github的repository路径&amp;gt;
+    branch: master
+
+如果报错说找不到deployer,就执行以下代码安装：
+npm install hexo-deployer-g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo发布到Github">
+<meta property="og:url" content="http://www.loongeek.com/2015/12/27/hexo-github/index.html">
 <meta property="og:site_name" content="Loongeek的私博">
-<meta property="og:description" content="个人 博客 编程技术 艺术 绘画 摄影 读书 嵌入式开发">
-<meta property="og:updated_time" content="2015-07-23T08:45:53.000Z">
+<meta property="og:description" content="在Github上创建一个带readme的新repository
+修改hexo主目录的_config.yml，添加
+deployer:
+    type: git
+    repository: &amp;lt;github的repository路径&amp;gt;
+    branch: master
+
+如果报错说找不到deployer,就执行以下代码安装：
+npm install hexo-deployer-g">
+<meta property="og:updated_time" content="2015-12-27T02:43:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="个人 博客 编程技术 艺术 绘画 摄影 读书 嵌入式开发">
+<meta name="twitter:title" content="Hexo发布到Github">
+<meta name="twitter:description" content="在Github上创建一个带readme的新repository
+修改hexo主目录的_config.yml，添加
+deployer:
+    type: git
+    repository: &amp;lt;github的repository路径&amp;gt;
+    branch: master
+
+如果报错说找不到deployer,就执行以下代码安装：
+npm install hexo-deployer-g">
   
     <link rel="alternative" href="atom.xml" title="Loongeek的私博" type="application/atom+xml">
   
@@ -78,12 +102,16 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-hexo-github" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/about/index.html" class="article-date">
-  <time datetime="2015-07-23T08:45:53.000Z" itemprop="datePublished">2015-07-23</time>
+    <a href="/2015/12/27/hexo-github/" class="article-date">
+  <time datetime="2015-12-27T02:38:43.000Z" itemprop="datePublished">2015-12-27</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -92,7 +120,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      Hexo发布到Github
     </h1>
   
 
@@ -100,13 +128,30 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ol>
+<li>在Github上创建一个带readme的新repository</li>
+<li><p>修改hexo主目录的_config.yml，添加</p>
+<pre><code>deployer:
+    <span class="class"><span class="keyword">type</span>: <span class="title">git</span></span>
+    repository: &lt;github的repository路径&gt;
+    branch: master
+</code></pre></li>
+<li><p>如果报错说找不到deployer,就执行以下代码安装：</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span>
+</code></pre></li>
+<li><p>安装完成后执行</p>
+<pre><code><span class="title">hexo</span> deploy
+</code></pre></li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/about/index.html" data-id="ciinxm4ar0001qkjdjlxyi8xj" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/27/hexo-github/" data-id="ciinxm4b6000kqkjduyfz4ze6" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-web-小技巧/">hexo web 小技巧</a></li></ul>
+
       
 	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
 	  
@@ -114,13 +159,23 @@ var _hmt = _hmt || [];
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/24/ssh-config/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ssh配置</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="page-undefined" data-title="about" data-url="http://www.loongeek.com/about/index.html"></div>
+    <div class="ds-thread" data-thread-key="post-hexo-github" data-title="Hexo发布到Github" data-url="http://www.loongeek.com/2015/12/27/hexo-github/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">

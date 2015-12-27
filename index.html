@@ -79,6 +79,65 @@ var _hmt = _hmt || [];
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo-github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/27/hexo-github/" class="article-date">
+  <time datetime="2015-12-27T02:38:43.000Z" itemprop="datePublished">2015-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/27/hexo-github/">Hexo发布到Github</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>在Github上创建一个带readme的新repository</li>
+<li><p>修改hexo主目录的_config.yml，添加</p>
+<pre><code>deployer:
+    <span class="class"><span class="keyword">type</span>: <span class="title">git</span></span>
+    repository: &lt;github的repository路径&gt;
+    branch: master
+</code></pre></li>
+<li><p>如果报错说找不到deployer,就执行以下代码安装：</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span>
+</code></pre></li>
+<li><p>安装完成后执行</p>
+<pre><code><span class="title">hexo</span> deploy
+</code></pre></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2015/12/27/hexo-github/" data-id="ciinxm4b6000kqkjduyfz4ze6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-web-小技巧/">hexo web 小技巧</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-ssh-config" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/24/ssh-config/" class="article-date">
@@ -124,10 +183,10 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/ssh-config/" data-id="ciinwp6az0002brjdbjc8xjjg" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/24/ssh-config/" data-id="ciinxm4at0002qkjdeg9cft9n" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh-web-小技巧/">ssh web 小技巧</a></li></ul>
 
       
     </footer>
@@ -173,10 +232,10 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/macbook-operation-memo/" data-id="ciinwp6bf000bbrjd8mih3m1s" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/24/macbook-operation-memo/" data-id="ciinxm4b0000bqkjd311vh42b" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/">other</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
 
       
     </footer>
@@ -222,9 +281,11 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/idea-useguide/" data-id="ciinwp6bi000gbrjd543eko14" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/24/idea-useguide/" data-id="ciinxm4b4000gqkjdxcqz58ry" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE-小技巧/">IDE 小技巧</a></li></ul>
+
       
     </footer>
   </div>
@@ -269,10 +330,10 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/22/Plantuml/" data-id="ciinwp6bo000lbrjdst88h4z8" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/22/Plantuml/" data-id="ciinxm4bd000rqkjd7u6bplvz" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE-uml-插件/">IDE uml 插件</a></li></ul>
 
       
     </footer>
@@ -320,10 +381,10 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/08/13/Lua-study/" data-id="ciinwp6br000obrjdpuexehgx" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/08/13/Lua-study/" data-id="ciinxm4bg000vqkjdq5w19mef" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB技术/">WEB技术</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本语言-Lua/">脚本语言 Lua</a></li></ul>
 
       
     </footer>
@@ -369,10 +430,10 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/07/25/markdown/" data-id="ciinwp6bb0007brjd8h17th9b" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/07/25/markdown/" data-id="ciinxm4ay0007qkjdumahqcsh" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web-hexo-Markdown/">web hexo Markdown</a></li></ul>
 
       
     </footer>
@@ -414,7 +475,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/07/23/first-article/" data-id="ciinwp6bl000ibrjdm4md4i2i" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/07/23/first-article/" data-id="ciinxm4b9000oqkjdouo7eiau" class="article-share-link">Share</a>
       
       
       
@@ -435,7 +496,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -444,7 +505,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB技术/">WEB技术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE-uml-插件/">IDE uml 插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE-小技巧/">IDE 小技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-web-小技巧/">hexo web 小技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh-web-小技巧/">ssh web 小技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web-hexo-Markdown/">web hexo Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本语言-Lua/">脚本语言 Lua</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -453,7 +514,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/WEB技术/" style="font-size: 10px;">WEB技术</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/软件/" style="font-size: 20px;">软件</a>
+      <a href="/tags/IDE-uml-插件/" style="font-size: 10px;">IDE uml 插件</a> <a href="/tags/IDE-小技巧/" style="font-size: 10px;">IDE 小技巧</a> <a href="/tags/hexo-web-小技巧/" style="font-size: 10px;">hexo web 小技巧</a> <a href="/tags/ssh-web-小技巧/" style="font-size: 10px;">ssh web 小技巧</a> <a href="/tags/web-hexo-Markdown/" style="font-size: 10px;">web hexo Markdown</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/脚本语言-Lua/" style="font-size: 10px;">脚本语言 Lua</a>
     </div>
   </div>
 
@@ -462,7 +523,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -472,6 +533,10 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/12/27/hexo-github/">Hexo发布到Github</a>
+          </li>
         
           <li>
             <a href="/2015/12/24/ssh-config/">ssh配置</a>
@@ -487,10 +552,6 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
         
           <li>
             <a href="/2015/12/22/Plantuml/">Plantuml使用笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2015/08/13/Lua-study/">Lua学习</a>
           </li>
         
       </ul>
