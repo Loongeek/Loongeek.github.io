@@ -1374,6 +1374,12 @@ i.icon:before {
 #icon-calendar-o:before {
   content: "\f133";
 }
+.toc li {
+  list-style-type: circle;
+}
+.toc-child li {
+  list-style-type: circle;
+}
 @media screen and (min-width: 768px) {
   #sidebar {
     display: inline;
