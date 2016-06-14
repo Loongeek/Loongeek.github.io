@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://www.loongeek.com/2016/06/14/Hexo使用笔记/index.html">
 <meta property="og:site_name" content="Loongeek的私博">
 <meta property="og:description" content="总结自己用到的Hexo的实用功能。Hexo的完整文档见官方网站。Hero使用Markdown语法说明见Markdown">
-<meta property="og:updated_time" content="2016-06-14T07:28:22.000Z">
+<meta property="og:updated_time" content="2016-06-14T07:30:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo使用笔记">
 <meta name="twitter:description" content="总结自己用到的Hexo的实用功能。Hexo的完整文档见官方网站。Hero使用Markdown语法说明见Markdown">
@@ -109,10 +109,9 @@ var _hmt = _hmt || [];
 
         <p>总结自己用到的Hexo的实用功能。Hexo的完整文档见<a href="https://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="external">官方网站</a>。Hero使用Markdown语法说明见<a href="/2015/07/25/markdown/#more">Markdown</a><br><a id="more"></a></p>
 <h1 id="基本操作">基本操作</h1><ul>
-<li><p>引用块<br><blockquote><p><br>  content<br></p>
-<footer><strong>[author[</strong><cite>source]] [link]     [source_link_title]</cite></footer></blockquote>    </p>
+<li><p>引用块<br>{\% blockquote [author[, source]] [link]     [source_link_title] \%    }<br>  content<br>{\% endblockquote \%}    </p>
 </li>
-<li><p>代码块<br><figure class="highlight"><figcaption><span>[title] [] [url] [link text]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;br&#62;code snippet&#60;br&#62;</span><br></pre></td></tr></table></figure></p>
+<li><p>代码块<br>{\% codeblock [title] [lang:language] [url] [link text] \%}<br>code snippet<br>{\% endcodeblock \%}</p>
 <p>  或者</p>
 <p>  ``` [language] [title] [url] [link text] code snippet ```</p>
 </li>
@@ -129,7 +128,7 @@ var _hmt = _hmt || [];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/06/14/Hexo使用笔记/" data-id="cipf4nb8o001xy7jgb2oq8qiz" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/14/Hexo使用笔记/" data-id="cipf4pmub001xykjged986490" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
