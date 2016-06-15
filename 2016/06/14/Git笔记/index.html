@@ -13,6 +13,7 @@
 <meta property="og:description" content="Git的简要说明。参考Git官方网站文档">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/book/01-introduction/images/deltas.png">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/book/01-introduction/images/snapshots.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/book/01-introduction/images/areas.png">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/book/02-git-basics/images/lifecycle.png">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/book/03-git-branching/images/commit-and-tree.png">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/book/03-git-branching/images/commits-and-parents.png">
@@ -29,7 +30,7 @@
 <meta property="og:image" content="https://git-scm.com/book/en/v2/book/07-git-tools/images/undomerge-reset.png">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/book/07-git-tools/images/undomerge-revert.png">
 <meta property="og:image" content="https://git-scm.com/book/en/v2/book/07-git-tools/images/undomerge-revert3.png">
-<meta property="og:updated_time" content="2016-06-15T00:58:11.000Z">
+<meta property="og:updated_time" content="2016-06-15T01:25:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git笔记">
 <meta name="twitter:description" content="Git的简要说明。参考Git官方网站文档">
@@ -130,78 +131,73 @@ var _hmt = _hmt || [];
 <h1 id="Git简介">Git简介</h1><h2 id="版本控制系统(Version_Control_System,_VCS)">版本控制系统(Version Control System, VCS)</h2><ul>
 <li>本地版本控制：无法远程共享</li>
 <li>集中式版本控制：CVS, Subversion. 服务器必须一直正常工作，客户端也必须连接到服务器，否则难以进行版本控制。服务器如果坏掉，有可能丢失所有版本记录</li>
-<li>分布式版本控制：每个客户端拷贝版本库而不是版本快照，支持多客户端/多服务器的互相共享和备份<h2 id="Git特点">Git特点</h2></li>
-<li><p>Git的每个Version是文件快照，是到每个文件的链接集合，而不是文件补丁的集合<br>  <img src="https://git-scm.com/book/en/v2/book/01-introduction/images/deltas.png" alt="其它系统"></p>
-<p>  <img src="https://git-scm.com/book/en/v2/book/01-introduction/images/snapshots.png" alt="Git">    </p>
-</li>
+<li>分布式版本控制：每个客户端拷贝版本库而不是版本快照，支持多客户端/多服务器的互相共享和备份</li>
+</ul>
+<h2 id="Git特点">Git特点</h2><ul>
+<li>Git的每个Version是文件快照，是到每个文件的链接集合，而不是文件补丁的集合<br><img src="https://git-scm.com/book/en/v2/book/01-introduction/images/deltas.png" alt="其它系统"><br><img src="https://git-scm.com/book/en/v2/book/01-introduction/images/snapshots.png" alt="Git">    </li>
 <li>Git大部分操作可以在本地进行</li>
 <li>Git集成了文件完整性检查，采用<code>SHA-1</code>校验和的方式来保证，Git中的文件以哈希值而不是文件名区分</li>
 <li>Git通常只会增加数据，很难<code>undo</code>或者删除数据</li>
-<li>Git有三个状态：<pre><code><span class="bullet">- </span><span class="code">`committed`</span>已提交，说明数据已经安全地保存在本地数据库中(保存到Git仓库中)
-<span class="bullet">- </span><span class="code">`modified`</span>已修改，说明数据已经修改，但还未存在本地数据库中(数据存在于工作区中)
-<span class="bullet">- </span><span class="code">`staged`</span>已暂存，标记已修改文件的当前版本，以便下次提交(数据存在于暂存区中)
-![<span class="link_label">三个状态之间的转换图</span>](<span class="link_url">https://git-scm.com/book/en/v2/book/01-introduction/images/areas.png</span>)
-</code></pre></li>
-<li>Git的一般工作流程：<pre><code>-<span class="ruby"> 在工作目录中修改文件(文件状态变成<span class="string">`modified`</span>)
-</span>-<span class="ruby"> 将文件暂存，在暂存区中添加快照(文件状态变成<span class="string">`staged`</span>)
-</span>-<span class="ruby"> 提交文件到<span class="constant">Git</span>仓库(文件状态变成<span class="string">`committed`</span>)</span>
-</code></pre></li>
+<li>Git有三个状态：<ul>
+<li><code>committed</code>已提交，说明数据已经安全地保存在本地数据库中(保存到Git仓库中)</li>
+<li><code>modified</code>已修改，说明数据已经修改，但还未存在本地数据库中(数据存在于工作区中)</li>
+<li><code>staged</code>已暂存，标记已修改文件的当前版本，以便下次提交(数据存在于暂存区中)<br><img src="https://git-scm.com/book/en/v2/book/01-introduction/images/areas.png" alt="三个状态之间的转换图"></li>
+</ul>
+</li>
+<li>Git的一般工作流程：<ul>
+<li>在工作目录中修改文件(文件状态变成<code>modified</code>)</li>
+<li>将文件暂存，在暂存区中添加快照(文件状态变成<code>staged</code>)</li>
+<li>提交文件到Git仓库(文件状态变成<code>committed</code>)</li>
+</ul>
+</li>
 </ul>
 <h2 id="Git配置">Git配置</h2><ul>
 <li>配置工具<code>git config</code></li>
-<li>配置变量：<pre><code><span class="escape">`/</span>etc/gitconfig<span class="escape">` </span>系统级配置, <span class="escape">`g</span>it config --system<span class="escape">`
-</span><span class="escape">`~</span>/.gitconfig<span class="escape">`或</span><span class="escape">`~</span>/.config/git/config<span class="escape">` </span>当前用户配置， <span class="escape">`g</span>it config --global<span class="escape">`
-</span><span class="escape">`.</span>git/config<span class="escape">` </span>当前仓库配置，<span class="escape">`g</span>it config<span class="escape">`
-</span>范围小的配置覆盖范围大的配置
-</code></pre></li>
-<li>安装完Git后首先配置用户名和邮件地址<br>  <code>git config --global user.name &quot;Loongeek&quot;</code><br>  <code>git config --global user.email loongeek@mail.com</code><pre><code>再配置默认文本编辑器
-</code></pre>  <code>git config --global core.editor vim</code><pre><code>可以检查配置
-</code></pre>  <code>git config --list</code>或者<code>git config &lt;KEY&gt;</code></li>
+<li>配置变量：<br>  <code>/etc/gitconfig</code> 系统级配置, <code>git config --system</code><br>  <code>~/.gitconfig</code>或<code>~/.config/git/config</code> 当前用户配置， <code>git config --global</code><br>  <code>.git/config</code> 当前仓库配置，<code>git config</code><br>   <strong>注意：范围小的配置覆盖范围大的配置</strong></li>
+<li>安装完Git后首先配置用户名和邮件地址<br>  <code>git config --global user.name &quot;Loongeek&quot;</code><br>  <code>git config --global user.email loongeek@mail.com</code><br>再配置默认文本编辑器<br>  <code>git config --global core.editor vim</code><br>可以检查配置<br>  <code>git config --list</code>或者<code>git config &lt;KEY&gt;</code></li>
 </ul>
 <h1 id="Git基本操作">Git基本操作</h1><h2 id="获取Git仓库">获取Git仓库</h2><ul>
-<li>本地：<pre><code><span class="escape">`g</span>it init<span class="escape">` </span>建立仓库
-<span class="escape">`g</span>it add XXX<span class="escape">` </span>添加文件
-<span class="escape">`g</span>it add LICENSE<span class="escape">`
-</span><span class="escape">`g</span>it commit -m 'init'<span class="escape">` </span>提交，标签为'init'
-</code></pre></li>
-<li>远程：<pre><code>`git <span class="keyword">clone</span> https:<span class="comment">//github.com/<span class="doctag"><span class="keyword">XXX</span></span>X [LOCAL DIR]` 从远程克隆仓库到本地目录      </span>
-</code></pre><h2 id="控制文件状态">控制文件状态</h2>  <img src="https://git-scm.com/book/en/v2/book/02-git-basics/images/lifecycle.png" alt="文件状态的变化"></li>
+<li>本地：<br>  <code>git init</code> 建立仓库<br>  <code>git add XXX</code> 添加文件<br>  <code>git add LICENSE</code><br>  <code>git commit -m &#39;init&#39;</code> 提交，标签为’init’</li>
+<li>远程：<br>  <code>git clone https://github.com/XXXX [LOCAL DIR]</code> 从远程克隆仓库到本地目录      </li>
+</ul>
+<h2 id="控制文件状态">控制文件状态</h2><p><img src="https://git-scm.com/book/en/v2/book/02-git-basics/images/lifecycle.png" alt="文件状态的变化"></p>
+<ul>
 <li>检查文件状态：<code>git status</code>或<code>git status -s</code>(紧凑输出)</li>
 <li>跟踪新文件：<code>git add XXX</code></li>
 <li>暂存已修改文件：<code>git add XXX</code></li>
 <li>无需版本控制的文件，在<code>.gitignore</code>中指定。<a href="https://github.com/github/gitignore" target="_blank" rel="external">针对不同项目的<code>.gitignore</code></a></li>
-<li>查看具体修改：<code>git diff</code>查看未暂存文件的修改<pre><code><span class="escape">`g</span>it diff --staged<span class="escape">`查</span>看已暂存文件的修改
-</code></pre></li>
+<li>查看具体修改：<code>git diff</code>查看未暂存文件的修改<br>  <code>git diff --staged</code>查看已暂存文件的修改</li>
 <li>提交更新 <code>git commit</code>或者<code>git commit -m &lt;COMMENTARY&gt;</code><br>  <strong>注意：提交的是暂存区的内容，未暂存的内容不会提交</strong></li>
 <li>可以跳过暂存过程 <code>git commit -a</code>相当于<code>add</code>后直接<code>commit</code><ul>
 <li>移动文件 <code>git mv &lt;FROM&gt; &lt;TO&gt;</code></li>
-<li>删除文件 <code>git rm &lt;FILE&gt;</code>将文件从暂存区和工作目录中删除，<strong>下次提交</strong>后就将文件从版本管理中删除<pre><code><span class="escape">`g</span>it rm -f &lt;FILE&gt;<span class="escape">`强</span>行删除，针对文件已修改且放入暂存区的情况
-<span class="escape">`g</span>it rm --cached &lt;FILE&gt;<span class="escape">`从</span>暂存区中删除文件，但是不从工作目录中删除文件
-</code></pre><h2 id="查看历史：">查看历史：</h2><code>git log</code> 列出所有日志<br><code>git log -p -&lt;COUNT&gt;</code> 显示每次提交的差异，显示最近<code>COUNT</code>次提交<br><code>git log --stat</code> 显示每次提交的统计信息<br><code>git log --pretty=&lt;oneline|short|full|fuller&gt;</code> 格式化输出<br>还可以使用输出过滤器等等<h2 id="撤消">撤消</h2></li>
-<li>撤消上次提交：<code>git commit --amend</code><ul>
-<li>取消暂存：<code>git reset HEAD &lt;FILE&gt;</code></li>
-<li>取消修改：<code>git checkout -- &lt;FILE&gt;</code><h2 id="远程仓库">远程仓库</h2></li>
-</ul>
-</li>
-<li>查看远程仓库：<code>git remote</code><ul>
-<li>添加远程仓库：<code>git remote add &lt;SHORTNAME&gt; &lt;URL&gt;</code></li>
-<li>删除远程仓库：<code>git remote rm &lt;NAME&gt;</code></li>
-<li>抓取本地没有的数据：<code>git fetch &lt;REMOTE-NAME&gt;</code>,不会自动合并</li>
-<li>拉取远程数据：<code>git pull &lt;REMOTE-NAME&gt;</code>，会自动合并</li>
-<li>推送到远程：<code>git push origin master</code></li>
-<li>查看远程仓库内容：<code>git remote show</code></li>
-<li>重命名远程仓库：<code>git remote rename &lt;OLD&gt; &lt;NEW&gt;</code><h2 id="标签">标签</h2></li>
-</ul>
-</li>
-<li>显示：<code>git tag</code> <code>git tag -l &#39;&lt;PATTERN&gt;&#39;</code></li>
-<li>附注标签，加入了更多信息 <code>git tag -a &lt;TAG&gt; -m &lt;MESSAGE&gt;</code><br>  显示<code>git show &lt;TAG&gt;</code></li>
-<li>轻量标签，<code>git tag &lt;TAG&gt;</code></li>
-<li>补打标签，    <code>git tag -a &lt;TAG&gt; &lt;HASHCODE&gt;</code></li>
-<li>标签必须显式的push到远程 <code>git push origin &lt;TAG&gt;</code><br>  <code>git push origin --tags</code>一次推送所有标签    </li>
+<li>删除文件 <code>git rm &lt;FILE&gt;</code>将文件从暂存区和工作目录中删除，<strong>下次提交</strong>后就将文件从版本管理中删除<br><code>git rm -f &lt;FILE&gt;</code>强行删除，针对文件已修改且放入暂存区的情况<br><code>git rm --cached &lt;FILE&gt;</code>从暂存区中删除文件，但是不从工作目录中删除文件</li>
 </ul>
 </li>
 </ul>
-<h1 id="Git分支">Git分支</h1><h2 id="Git提交对象">Git提交对象</h2><p>首次提交生成文件快照的blob(binary large object，二进制大对象)，树对象和提交对象<br><img src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commit-and-tree.png" alt="首次提交示意图"><br>后续提交的父对象是上次提交<br><img src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commits-and-parents.png" alt="多次提交示意图"><br>分支就是在某次提交对象上创建指针<br><img src="https://git-scm.com/book/en/v2/book/03-git-branching/images/two-branches.png" alt="分支示意图"><br>通常采用多分支并行前进的流水线型分支s<br><img src="https://git-scm.com/book/en/v2/book/03-git-branching/images/lr-branches-2.png" alt="流水线式分支示意图"></p>
+<h2 id="查看历史：">查看历史：</h2><pre><code><span class="escape">`g</span>it log<span class="escape">` </span>列出所有日志
+<span class="escape">`g</span>it log -p -&lt;COUNT&gt;<span class="escape">` </span>显示每次提交的差异，显示最近<span class="escape">`C</span>OUNT<span class="escape">`次</span>提交
+<span class="escape">`g</span>it log --stat<span class="escape">` </span>显示每次提交的统计信息
+<span class="escape">`g</span>it log --pretty=&lt;oneline|short|full|fuller&gt;<span class="escape">` </span>格式化输出
+还可以使用输出过滤器等等
+</code></pre><h2 id="撤消">撤消</h2><pre><code>-<span class="ruby"> 撤消上次提交：<span class="string">`git commit --amend`</span>
+</span>  -<span class="ruby"> 取消暂存：<span class="string">`git reset HEAD &lt;FILE&gt;`</span>
+</span>  -<span class="ruby"> 取消修改：<span class="string">`git checkout -- &lt;FILE&gt;`</span></span>
+</code></pre><h2 id="远程仓库">远程仓库</h2><pre><code>-<span class="ruby"> 查看远程仓库：<span class="string">`git remote`</span>
+</span>  -<span class="ruby"> 添加远程仓库：<span class="string">`git remote add &lt;SHORTNAME&gt; &lt;URL&gt;`</span>
+</span>  -<span class="ruby"> 删除远程仓库：<span class="string">`git remote rm &lt;NAME&gt;`</span>
+</span>  -<span class="ruby"> 抓取本地没有的数据：<span class="string">`git fetch &lt;REMOTE-NAME&gt;`</span>,不会自动合并
+</span>  -<span class="ruby"> 拉取远程数据：<span class="string">`git pull &lt;REMOTE-NAME&gt;`</span>，会自动合并
+</span>  -<span class="ruby"> 推送到远程：<span class="string">`git push origin master`</span>
+</span>  -<span class="ruby"> 查看远程仓库内容：<span class="string">`git remote show`</span>
+</span>  -<span class="ruby"> 重命名远程仓库：<span class="string">`git remote rename &lt;OLD&gt; &lt;NEW&gt;`</span></span>
+</code></pre><h2 id="标签">标签</h2><pre><code>- 显示：<span class="escape">`g</span>it tag<span class="escape">` </span><span class="escape">`g</span>it tag -l '&lt;PATTERN&gt;'<span class="escape">`
+</span>- 附注标签，加入了更多信息 <span class="escape">`g</span>it tag -<span class="literal">a</span> &lt;TAG&gt; -m &lt;MESSAGE&gt;<span class="escape">`
+</span>    显示<span class="escape">`g</span>it show &lt;TAG&gt;<span class="escape">`
+</span>- 轻量标签，<span class="escape">`g</span>it tag &lt;TAG&gt;<span class="escape">`
+</span>- 补打标签，    <span class="escape">`g</span>it tag -<span class="literal">a</span> &lt;TAG&gt; &lt;HASHCODE&gt;<span class="escape">`
+</span>- 标签必须显式的push到远程 <span class="escape">`g</span>it push origin &lt;TAG&gt;<span class="escape">`
+</span>    <span class="escape">`g</span>it push origin --tags<span class="escape">`一</span>次推送所有标签    
+</code></pre><h1 id="Git分支">Git分支</h1><h2 id="Git提交对象">Git提交对象</h2><p>首次提交生成文件快照的blob(binary large object，二进制大对象)，树对象和提交对象<br><img src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commit-and-tree.png" alt="首次提交示意图"><br>后续提交的父对象是上次提交<br><img src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commits-and-parents.png" alt="多次提交示意图"><br>分支就是在某次提交对象上创建指针<br><img src="https://git-scm.com/book/en/v2/book/03-git-branching/images/two-branches.png" alt="分支示意图"><br>通常采用多分支并行前进的流水线型分支s<br><img src="https://git-scm.com/book/en/v2/book/03-git-branching/images/lr-branches-2.png" alt="流水线式分支示意图"></p>
 <h2 id="分支操作">分支操作</h2><ul>
 <li>创建分支：<code>git branch &lt;NAME&gt;</code>，仅创建分支，不切换</li>
 <li>查看分支：<code>git log --decorate</code><pre><code><span class="comment">`git</span> <span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">decorate</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">graph</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">all`</span> <span class="comment">图形化显示</span>
@@ -216,7 +212,9 @@ var _hmt = _hmt || [];
 <li>查看分支 <code>git branch</code><pre><code><span class="escape">`g</span>it branch -v<span class="escape">`
 </span><span class="escape">`g</span>it branch --merged<span class="escape">`
 </span><span class="escape">`g</span>it branch --no-merged`
-</code></pre><h2 id="远程分支">远程分支</h2></li>
+</code></pre></li>
+</ul>
+<h2 id="远程分支">远程分支</h2><ul>
 <li>获取远程分支 <code>git fetch origin</code>+<code>git merge origin/&lt;BRANCH&gt;</code> 或者 <code>git pull origin/&lt;BRANCH&gt;</code></li>
 <li>推送到远程 <code>git push origin &lt;BRANCH&gt;</code></li>
 <li>删除远程分支 <code>git push origin --delete &lt;BRANCH&gt;</code></li>
@@ -237,7 +235,9 @@ var _hmt = _hmt || [];
 <li>Fork：在自己的空间建立一个独立副本。如果想参与某个项目但是没有推送权限可以用fork,并可以通过创建pull request推送</li>
 <li>流程：clone-&gt;checkout new branch-&gt;commit-&gt;push origin new branch-&gt;pull request-&gt;discuss-&gt;merge or close</li>
 <li>合并讨论中可以使用GitHub风格的Markdown</li>
-<li>合并讨论中可以@其它人<h1 id="Git工具">Git工具</h1><h2 id="储藏(stash)">储藏(stash)</h2></li>
+<li>合并讨论中可以@其它人</li>
+</ul>
+<h1 id="Git工具">Git工具</h1><h2 id="储藏(stash)">储藏(stash)</h2><ul>
 <li>储藏：<code>git stash</code>，将当前工作区的修改wyadgc栈上</li>
 <li>显示所有储藏：<code>git stash list</code></li>
 <li>取回储藏：<code>git stash apply</code>或<code>git stash apply &lt;NAME&gt;</code></li>
@@ -245,13 +245,21 @@ var _hmt = _hmt || [];
 <li>取回储藏时创建新分支(避免合并冲突)：<code>git stash branch &lt;NAME&gt;</code></li>
 <li>从栈上删除储藏：<code>git stash drop</code>或<code>git stash drop &lt;NAME&gt;</code></li>
 <li>只储藏未暂存的文件：<code>git stash --keep-index</code></li>
-<li>储藏时包括未跟踪文件：<code>git stash -u</code><h2 id="清理">清理</h2></li>
+<li>储藏时包括未跟踪文件：<code>git stash -u</code></li>
+</ul>
+<h2 id="清理">清理</h2><ul>
 <li>清理未跟踪且未被忽略的文件：    <code>git clean -d</code><br>  被清理的文件有可能无法恢复，更安全的方法：<code>git stash --all</code>缓存到栈中</li>
-<li>强制清理：<code>git clean -f -d</code><br>只显示要清理的文件，但不真正清理：<code>git clean -d -n</code><br>同时清理被忽略的文件：<code>git clean -d -x</code><br>交互式清理：<code>git clean -d -i</code><h2 id="重置(reset)">重置(reset)</h2><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/reset-start.png" alt="重置以前的状态"></li>
+<li>强制清理：<code>git clean -f -d</code><br>只显示要清理的文件，但不真正清理：<code>git clean -d -n</code><br>同时清理被忽略的文件：<code>git clean -d -x</code><br>交互式清理：<code>git clean -d -i</code></li>
+</ul>
+<h2 id="重置(reset)">重置(reset)</h2><p><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/reset-start.png" alt="重置以前的状态"></p>
+<ul>
 <li>软重置：<code>git reset --soft HEAD~</code><br><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/reset-soft.png" alt="软重置"></li>
 <li>普通重置：<code>git reset --mixed HEAD~</code>或<code>git reset HEAD~</code><br><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/reset-mixed.png" alt="普通重置"></li>
 <li>硬重置：<code>git reset --hard HEAD~</code><br><strong>注意：硬重置后，已提交的内容可以用reflog找回来，但是工作目录中的未提交内容就完全无法恢复了</strong><br><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/reset-hard.png" alt="硬重置"></li>
-<li><code>reset --hard</code>会移动HEAD及HEAD下的分支，<code>checkout</code>只会移动HEAD<br><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/reset-checkout.png" alt="reset和checkout对比"><h2 id="撤消合并">撤消合并</h2><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/undomerge-start.png" alt="待撤消的合并"></li>
+<li><code>reset --hard</code>会移动HEAD及HEAD下的分支，<code>checkout</code>只会移动HEAD<br><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/reset-checkout.png" alt="reset和checkout对比"></li>
+</ul>
+<h2 id="撤消合并">撤消合并</h2><p><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/undomerge-start.png" alt="待撤消的合并"></p>
+<ul>
 <li>修复引用法<br><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/undomerge-reset.png" alt=""><br>类似变基，会重写提交历史。如果有人已经获取了合并后的内容，会产生混乱</li>
 <li>还原提交法<br><code>git revert -m 1 HEAD</code> 数字表示还原到哪个父对象<br><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/undomerge-revert.png" alt=""><br><code>git revert ^M</code>+<code>git merge topic</code> 要合并时需要先还原<em>还原操作</em><br><img src="https://git-scm.com/book/en/v2/book/07-git-tools/images/undomerge-revert3.png" alt=""></li>
 </ul>
@@ -260,7 +268,7 @@ var _hmt = _hmt || [];
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/06/14/Git笔记/" data-id="cipg65s4t0021gjjgymytlqxt" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/14/Git笔记/" data-id="cipg75ww30021lsjgz0f7bwfs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
