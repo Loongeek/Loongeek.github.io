@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>IOS学习笔记——斯坦福公开课笔记 | Loongeek的私博</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="IOS学习笔记，基于斯坦福公开课基于swift的IOS 9 App开发。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS学习笔记——斯坦福公开课笔记">
+<meta property="og:url" content="http://www.loongeek.com/2016/06/15/IOS学习笔记——斯坦福公开课笔记/index.html">
+<meta property="og:site_name" content="Loongeek的私博">
+<meta property="og:description" content="IOS学习笔记，基于斯坦福公开课基于swift的IOS 9 App开发。">
+<meta property="og:updated_time" content="2016-06-21T03:53:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IOS学习笔记——斯坦福公开课笔记">
+<meta name="twitter:description" content="IOS学习笔记，基于斯坦福公开课基于swift的IOS 9 App开发。">
+  
+    <link rel="alternative" href="atom.xml" title="Loongeek的私博" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<!-- 百度统计 -->
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c6f31c2a181feddaaff58d4befce579b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End 百度统计 -->
+
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Loongeek的私博</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Art,Tech and ...</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.loongeek.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post_catalog-IOS学习笔记——斯坦福公开课笔记" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/15/IOS学习笔记——斯坦福公开课笔记/" class="article-date">
+  <time datetime="2016-06-14T16:00:00.000Z" itemprop="datePublished">2016-06-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      IOS学习笔记——斯坦福公开课笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+    <ol class="toc" ><li class="toc-item toc-level-1"><a class="toc-link" href="#第1讲_概述"><span class="toc-text">第1讲 概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第2讲_MVC"><span class="toc-text">第2讲 MVC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第3讲_Swift编程以及Foundation框架"><span class="toc-text">第3讲 Swift编程以及Foundation框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第4讲_视图"><span class="toc-text">第4讲 视图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第5讲_界面编辑器_手势_多重MVC"><span class="toc-text">第5讲 界面编辑器 手势 多重MVC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第6讲_多重MVC_转场_ViewController生命周期"><span class="toc-text">第6讲 多重MVC 转场 ViewController生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第7讲_闭包_扩展_协议_代理_ScrollView"><span class="toc-text">第7讲 闭包 扩展 协议 代理 ScrollView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第8讲_多线程"><span class="toc-text">第8讲 多线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第9讲_TableView"><span class="toc-text">第9讲 TableView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第10讲_Core_Data"><span class="toc-text">第10讲 Core Data</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第11讲_Core_Data_Demo"><span class="toc-text">第11讲 Core Data Demo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第12讲_AutoLayout"><span class="toc-text">第12讲 AutoLayout</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第13讲_定时器和动画"><span class="toc-text">第13讲 定时器和动画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第14讲_动画和运动检测"><span class="toc-text">第14讲 动画和运动检测</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第15讲_App生命周期_告警_CloudKit"><span class="toc-text">第15讲 App生命周期 告警 CloudKit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第16讲_CloudKit和提醒"><span class="toc-text">第16讲 CloudKit和提醒</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第17讲"><span class="toc-text">第17讲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第18讲"><span class="toc-text">第18讲</span></a></li></ol>
+
+        <p>IOS学习笔记，基于斯坦福公开课<strong>基于swift的IOS 9 App开发</strong>。<br><a id="more"></a></p>
+<h1 id="第1讲_概述">第1讲 概述</h1><ul>
+<li>IOS层次结构(从高层到底层)<ul>
+<li>Cocoa Touch:用户交互层</li>
+<li>Media: 流和媒体处理</li>
+<li>Core Services: 核心业务处理</li>
+<li>Core OS:核心操作系统</li>
+</ul>
+</li>
+<li>Core OS: 裁剪版的MacOS, 类Unix操作系统<br>  OS X内核，Mach??, BSD, 文件系统，电源管理，钥匙链访问，证书，Sockets, 安全，Bonjour??</li>
+<li>Core Services:<br>  集合，地理位置，地址簿，网络服务，网络，线程，文件访问，配置，SQLite, URL工具</li>
+<li>Media:<br>  视频，动画，音频，图片格式处理，OpenGLES, OpenAL, PDF,混音，Quartz(2D显示引擎)，录音</li>
+<li>Cocoa Touch:<br>  多点触控，Alert, 运动检测和处理(Core Motion), <code>WebView</code>,<code>View</code>结构，<code>Map Kit</code>, 本地化，Image Picker, 控件，摄像头</li>
+<li>开发工具：Xcode, 开发语言：swift,<br>  常用框架：Foundation(in Core Service), UIKit(in Cocoa Touch), Core Data(??),Core Motion(Cocoa Touch),……<br>  设计模式：MVC</li>
+<li>可以将不关心的文件移入<code>Supporting Files</code>，保持工程目录简洁</li>
+<li>双击<code>View</code>的标题可以自动放大，双击空白处可以自动缩小</li>
+<li><code>Scene</code>场景：指的是一个完整的可显示的手机屏幕或者Ipad屏幕</li>
+<li><code>AutoLayout</code>的警告：黄色表示显示的框架与约束不符，可以通过<code>Update frames</code>来修正;红色表示有冲突</li>
+<li><code>outlet</code>属性是控制器类的<strong>实例变量</strong>，代码窗口中属性旁边的小圆圈可以指示连接到<code>Storyboard</code>的哪个控件</li>
+<li>Swift把所有对象都放在堆上</li>
+<li><code>println(&quot;\(expr)&quot;)</code>用来打印表达式的值</li>
+<li>Swift中，所有的属性都必须初始化，否则需要通过<code>init()</code>来初始化</li>
+<li><code>Optional</code>类型：<br>  <code>Type?</code>就是<code>Optional&lt;Type&gt;</code>相当于 <code>Type?Type:nil</code><br>  对于Optional类型，<code>variable!</code>就是解包到实际的Type,如果执行时variable是nil，程序会崩溃</li>
+<li>完全支持Unicode，可以使用Emoji字符做为控件图标(实际上是标签)</li>
+<li>右键点控件会显示全部Connection</li>
+<li>属性分为两种：一种是存储属性(Stored Properties)，一种是计算属性(Computed Properties)。计算属性需要实现<code>get{}</code>,<code>set{}</code></li>
+<li><code>switch...case</code>默认带break,不需要添加；可以用<code>fallthrough</code>，也可以用<code>,</code>来表示多个case执行同一分支的情况</li>
+<li>闭包(Closure)<pre><code>{ prototype <span class="keyword">in</span>
+ xxxx}
+</code></pre><ul>
+<li>闭包的类型在能够明确推断的情况下，可以省略</li>
+<li>$0,$1…可以用来表示参数</li>
+<li>原型也可以省略</li>
+<li>闭包是最后一个参数的情况下，可以移到括号外：<pre><code>foo<span class="comment">(<span class="doctag"><span class="keyword">xxx</span></span>, closure)</span> 可以写成
+foo<span class="comment">(<span class="doctag"><span class="keyword">xxx</span></span>)</span>{}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h1 id="第2讲_MVC">第2讲 MVC</h1><ul>
+<li>MVC结构<br>  (欠个图)<ul>
+<li>Model和Controller交流，View和Controller交流，但是View绝不和Model直接交流</li>
+<li>Controller直接控制View, View可以通过多种方式向Controller发出通知：<ul>
+<li><code>Target-Action</code>:在Controller中设置Target, 当View接收到指定消息后，通知Target,然后Controller执行Target对应的Action</li>
+<li><code>Delegate</code>:代理。Controller是View若干操作的代理，当View执行操作时，将操作权移交给Controller执行，通常是<code>will``did``should</code>等钩子函数。相对于<code>Target-Action</code>，可以切入控制的时间点多，影响的View也变多</li>
+<li>Controller直接操作Model, Model可以通过<code>Notification</code>通知广播的方式提醒Controller,也可以让Controller以观察者(KVO,key-value observer)??的方式获取Model通知</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多重MVC:控制器和控制器相互交流，模型和模型有时可以通过通知或者共享的方式交流，但是视图只能和自己的控制器交流</li>
+<li>Swift用<code>[Type]</code>表示数组<code>Array&lt;Type&gt;</code><br>  用<code>[key:value]</code>表示字典<br>  用<code>{xxx}</code>表示集合（与数组不同，不包含重复成员）？？<br>  用<code>(xxx,xxx)</code>表示元组</li>
+<li><figure class="highlight"><figcaption><span>A&#123; </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#9;case a(Type)&#10;&#9;case b(Type)&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>  使用方法：<code>A.a</code><br>  枚举无法被继承，除此以外与类和结构没有区别<br>  枚举的成员类型可以是任何元组</p>
+</li>
+<li>Swift中，<code>_</code>的意思不关心这个参数</li>
+<li>Swift的访问控制：<ul>
+<li><code>private</code>这个类</li>
+<li><code>public</code>完全公开</li>
+<li><code>internal</code>默认访问权限，仅限本包(Bundle)</li>
+</ul>
+</li>
+<li>enum和struct不能被继承，class可以；<br>  enum和struct是按值传递，class是按引用传递<br>  enum没有初始化，struct和class有</li>
+<li>??实现了<code>Printable</code>协议，<code>description:String</code>??</li>
+<li>在辅助编辑器中，可以选<code>Generated Interface</code>查看当前类的接口</li>
+<li>代码自动缩进<code>⌃I</code></li>
+<li>字典和数组取成员操作<code>[]</code>返回的都是<code>Optional</code>类型</li>
+<li>结构有一个包含所有参数的默认构造器，类有一个无参的默认构造器</li>
+<li><code>⌃⇧+click</code>可以在storyboard中选择当前位置的任一内容，当多个View重叠时很有用</li>
+</ul>
+<h1 id="第3讲_Swift编程以及Foundation框架">第3讲 Swift编程以及Foundation框架</h1><ul>
+<li><code>Optional</code>本质上是枚举</li>
+<li>对于<code>Optional</code>变量，可以用<code>A = XXX ?? &quot;yay&quot;</code>来给一个普通类型赋值，当xxx是nil时赋后面的值</li>
+<li>元组<code>(xxx,xxx)</code>,命名元组<code>(xxx:Type,xxx:Type)</code></li>
+<li><code>Range</code>范围是一种结构，可以用<code>...</code>或者<code>..&lt;</code>指定闭区间和半闭区间？？</li>
+<li><code>mutating</code>关键字用于表示函数能够改变结构或者枚举参数的内容（一般很少用到？？）</li>
+<li><code>typealias</code>指定某种类型的化名，特别适用于闭包的类型<h1 id="第4讲_视图">第4讲 视图</h1><h1 id="第5讲_界面编辑器_手势_多重MVC">第5讲 界面编辑器 手势 多重MVC</h1><h1 id="第6讲_多重MVC_转场_ViewController生命周期">第6讲 多重MVC 转场 ViewController生命周期</h1><h1 id="第7讲_闭包_扩展_协议_代理_ScrollView">第7讲 闭包 扩展 协议 代理 ScrollView</h1><h1 id="第8讲_多线程">第8讲 多线程</h1></li>
+<li>必须设置segue的标识。可以将多个segue的标识设成一样，然后通过sender来区别</li>
+<li>使用<code>private struct</code>中的<code>static</code>值来保存标识符字串到常量中，以便引用和修改</li>
+<li><p><code>Optional</code>链，第二个<code>?</code>使得<code>imageName</code>变成了<code>Optional</code>类型</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> imageName = (sender <span class="keyword">as</span>? <span class="type">UIButton</span>)?.currentTitle</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以在<code>UIView</code>的<code>didSet</code>中设置代理</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">didSet</span>&#123;</span><br><span class="line">	<span class="type">XXX</span>.delegate = <span class="keyword">self</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以按住⌥再移动鼠标来模拟pinch效果</p>
+</li>
+<li>如果想使用Zoom, 不要忘了设置scrollView的最小和最大Zoom值</li>
+<li>多线程，IOS的多线程就是创建或者获取各种<code>queue</code>，然后在不同的<code>queue</code>中放置<code>closure</code>，IOS自动执行</li>
+<li>GCD</li>
+<li><code>main queue</code>用来执行UI相关的所有操作，其它<code>queue</code>用来执行非UI相关的操作</li>
+<li>创建并发<code>queue</code>的方法<br>有4种优先级<ul>
+<li>USER-INTERACTING</li>
+<li>USER-INITIATED</li>
+<li>UTILITY</li>
+<li>BACKGROUD</li>
+</ul>
+</li>
+<li>创建串行<code>queue</code>的方法</li>
+<li>放置<code>closure</code>的方法</li>
+<li><p>检查是否处于显示状态</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> view.window != <span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>activity indicator view</code>要放置在正确的<code>superview</code>中</p>
+</li>
+<li><code>splitViewController</code> <code>collapseSecondaryViewController</code></li>
+<li>重用<code>splitViewController</code>的方法，使用<code>target-action</code>,同时修改<code>NavigatorViewController</code>，使用<code>performSegueWithIdentifier</code>，需要注意这个<code>segue</code>是从<code>viewController</code>而不是控件发出的</li>
+<li><code>UITextField</code>在iPhone上是次要的输入控件，因为键盘很小</li>
+<li><code>UITextField</code>必须实现代理才有用</li>
+<li>显示键盘:<code>becomeFirstResponder</code><br>  取消键盘：<code>resignFirstResponder</code></li>
+<li><code>resignFirstResponder</code>最好放在<code>textFieldShouldReturn</code>中</li>
+<li>使用<code>textFieldDidEndEditing</code>处理输入等</li>
+<li><code>UITextField</code>也是控件，也支持<code>target-action</code></li>
+<li>可以通过<code>UITextInputTraits</code>的<code>protocol</code>来控制键盘风格，注意无法直接操作键盘，只能与导致键盘弹出的控件进行对话</li>
+<li>可以使用<code>UIKeyboard{Will,Did}{Show,Hide}Notification</code>来检查键盘的<code>notification</code>并插入处理代码</li>
+<li><code>UITextField</code>还有其它属性，还支持文字的左到右/右到左显示</li>
+<li>键盘上面可以显示辅助视图，通过设置<code>inputAccessoryView</code>来实现</li>
+</ul>
+<h1 id="第9讲_TableView">第9讲 TableView</h1><ul>
+<li><code>TableView</code>有两种风格：<code>Plain</code>和<code>Grouped</code>，前者通常用于动态列表，后者通常用于静态列表</li>
+<li><code>TableView</code>的构件：<code>Table Header</code>,<code>Table Footer</code>, <code>Section</code>。其中<code>Section</code>由<code>Header</code>，<code>Table Cell</code>和<code>Footer</code>组成。每一行的具体内容<code>Table Cell</code>是<code>UITableViewCell</code>??</li>
+<li><code>Cell</code>风格有五种：<ul>
+<li><code>Subtitle</code>:带一个小标题，小标题在上，内容在下</li>
+<li><code>Basic</code>:只有内容</li>
+<li><code>Right Detail</code>:小标题在左，内容在右</li>
+<li><code>Left Detail</code>:与<code>Right Detail</code>类似，但是标题右对齐，内容左对齐</li>
+<li>自定义内容</li>
+</ul>
+</li>
+<li>使用<code>UITableViewController</code>来控制，<code>UITableViewController.view</code>是一个<code>UITableView</code><br>  控制器实现了View的代理和数据源<code>protocol</code></li>
+<li><code>Ctrl+Shift+Click</code>可以从层叠的UI中选择</li>
+<li><code>Proto Cell</code>:<code>Style</code> <code>Accessory</code>。如果选择<code>Custom</code>风格，必须将其指定到<code>UITableViewCell</code>的子类上</li>
+<li><code>dataSource</code>代理控制数据，<code>delegate</code>代理控制显示</li>
+<li><code>dataSource</code>控制动态数据，有三个重要的方法<ul>
+<li><code>numberOfSectionsInTableView</code> 表里有多少<code>Section</code>。如果不实现，默认<code>Section</code>是1</li>
+<li><code>tableView(sender: UITableView, numberOfRowsInSection: Int) -&gt;Int</code> 每个<code>Section</code>有多少行</li>
+<li><code>tableView(tv, cellForRowAtIndexPath indexPath)-&gt;UITableViewCell</code> 指定<code>Section</code>的指定<code>Row</code>的<code>View</code>如何绘制</li>
+<li><code>tableView(titleFor)</code> 绘制指定<code>Row</code>的标题<br>其它方法未提及，自行查看</li>
+</ul>
+</li>
+<li><code>indexPathForCell</code></li>
+<li><code>tableView(didSelectRowAtIndexPath)</code></li>
+<li><code>tableView(accessoryButtonTappedForRowWithIndexPath)</code></li>
+<li><code>reloadData()</code> 重新根据数据计算table<br>  <code>reloadRowsAtIndexPaths</code> 重新计算table的部分内容</li>
+<li>行高：<ul>
+<li>固定式 <code>rowHeight</code></li>
+<li>自动布局 <code>UITableViewAutomaticDimension</code></li>
+<li>用代理计算 <code>tableView({estimated}heightForRowAtIndexPath)</code></li>
+</ul>
+</li>
+<li><code>UITableView</code>是<code>UIScrollVIew</code>的子类</li>
+<li>如果需要使用<code>framework</code>，需要建立一个<code>Workspace</code>把相应的<code>framework</code>和<code>project</code>包含进去</li>
+</ul>
+<h1 id="第10讲_Core_Data">第10讲 Core Data</h1><ul>
+<li>可以以图形化的方式建立数据库，新建一个<code>Data Model</code>文件</li>
+<li>数据库的内容以<code>NSNumber</code> <code>NSData</code> <code>NSString</code> <code>NSDate</code>的形式保存，但是swift可以直接转型使用</li>
+<li>获取数据库存储文件的方法有两种：一种是在建立项目时选择<code>Use Core Data</code>，然后通过<code>AppDelegate</code>的<code>UIManagedDocument</code>获取文件；一种是使用文件管理自己创建一个数据库存储文件，然后用该文件的URL创建<code>UIManagedDocument</code></li>
+<li>用<code>insertNewObjectForEntityForName</code>将数据插入数据库。如果没有设置默认值，那么值都是<code>nil</code>。<code>Insertnewobjectforentityforname</code></li>
+<li>可以用<code>valueForKey</code> <code>setValue</code>访问数据<br>  用<code>valueForKeyPath</code> <code>setValue(forKeyPath)</code>访问关系数据<br>  但是它们没有类型检查，而且需要很多字串做为键。<br>  更好的方法是使用类变量的setter/getter</li>
+<li><code>UIManagedDocument</code>会自动保存，但是用其它方法获取的数据库不会自动保存，比如通过<code>AppDelegate</code>获取的文档，需要显式调用<code>save()</code>。</li>
+<li><code>save()</code>会抛出异常, 使用<code>do{try{}}catch let error{}</code>来处理。如果确定不会抛出异常，可以使用<code>try! xxx</code>来处理，这种情况下一旦出现异常就会崩溃。或者使用<code>try? xxx</code>，一旦查询出异常，返回<code>nil</code></li>
+<li>自定义异常通常是实现了<code>ErrorType</code>协议的枚举类型</li>
+<li>删除的规则可以通过图形化的方式指定，删除过的对象不要再继续用<code>strong</code>变量去引用</li>
+<li>可以用<code>prepareForDeletion()</code>在删除前做操作</li>
+<li>使用<code>NSFetchRequest</code>来设置查询。<code>NSPredicate</code>指定查询条件，<code>NSSortDescriptor</code>指定查询结果的排序</li>
+<li>查询返回一个<code>NSManagedObjects</code>的数组，<strong>如果没有查询到结果，数组是空数组，而不是返回<code>nil</code></strong>。</li>
+<li>faulting??</li>
+<li>所有对<code>NSManagedObjects</code>或者<code>NSManagedObject</code>的操作都要放到<code>performBlock</code>中，以保证线程安全性</li>
+<li>使用<code>NSFetchedResultsController</code>把数据和<code>UITableView</code>直接联系起来<h1 id="第11讲_Core_Data_Demo">第11讲 Core Data Demo</h1><h1 id="第12讲_AutoLayout">第12讲 AutoLayout</h1></li>
+<li>获取自身的<code>Size Class</code>:<br>  <code>self.traitCollection.horizontalSizeClass</code><br>  返回值是<code>.Regular</code>或者<code>.Compact</code></li>
+<li><code>SplitView</code>的<code>MasterView</code>的宽度是<code>Compact</code>，但是要注意在<code>Portrait</code>模式下拉出来的<code>MasterView</code>不是<code>Compact</code>(那么是？？？)<h1 id="第13讲_定时器和动画">第13讲 定时器和动画</h1></li>
+<li><code>NSTimer</code>不是实时的</li>
+<li>用<code>weak</code>引用<code>NSTimer</code>，这样每次<code>invalidate()</code>后它就会从堆中移除</li>
+<li><code>NSTimer</code>的<code>tolerate</code>是不会传递给下一次循环的？？</li>
+<li><code>scheduledTimerwithTimerInterval</code>中的<code>Selector</code>必须是<code>Object-C</code>兼容的，即<code>@objc</code>。但是swift的<code>private</code>函数无法识别，必须至少改成<code>internal</code>，或者在前面加上<code>@objc</code></li>
+<li><code>Animation</code>包括<code>UIView</code>属性动画，<code>UIViewController</code>转场动画，<code>Core Animation</code>动画(通常用Layer实现)，<code>OpeGL</code> 3D, <code>SpriteKit</code> 2.5D, <code>Dynamic Animation</code> 基于物理引擎的<code>View</code>动画，支持力场和碰撞等</li>
+<li>使用<code>animateWithDuration</code>进行<code>UIView</code>的动画。<code>animateWithDuration</code>的执行是立即的，会立即改变参数，仅仅是把结果渐渐地<strong>显现</strong>出来</li>
+<li>常用参数：<code>beginWithCurrentState</code> 采用当前动画执行到的值做为起始值<br>  <code>AllowUserInteraction</code> 动画过程中支持用户操作<br>  <code>CaseXXX</code> 调整动画均匀度<br>  <code>TransitionXXX</code> 转场动画</li>
+<li><code>transitionWithView</code> 使用闭包做为转场动画<br>  <code>transitionFromView</code> 从一个<code>View</code>转到另一个<code>View</code>，如果使用了<code>ShowHideTrasitionViews</code>属性，会隐藏<code>View</code>，否则会将<code>View</code>从整个继承结构中删除</li>
+<li><code>lazy var</code>只有当被调用时才初始化，而且在未初始化时是不允许被调用的。</li>
+<li><code>UIView</code>通过<code>layoutSubViews</code>来对子视图进行布局</li>
+<li><code>View</code>的动画最好放在参数的<code>set</code>中进行，而不是<code>didSet</code></li>
+<li><code>CGAffineTransformRotate</code></li>
+<li>所有的动画都是独立进行的，除非它们操作同一个属性</li>
+<li>用<code>completion</code>来制作动画链</li>
+<li><code>Dynamic Animation</code>：首先创建<code>UIDynamicAnimator</code>然后添加<code>UIDynamicBehaviors</code>最后添加<code>UIDynamicItems</code>（通常是各种<code>UIView</code>）</li>
+<li>创建<code>UIDynamicAnimator</code>指定顶级View<code>referenceView</code></li>
+<li>创建并添加力场，再给不同的力场添加<code>UIDynamicItems</code>。</li>
+<li><code>updateItemUsingCurrentState</code></li>
+<li>力场：<ul>
+<li><code>UIGravityBehavior</code> 重力</li>
+<li><code>UIAttachmentBehavior</code> 链接</li>
+<li><code>UICollisionBehavior</code> <code>.Item</code> <code>.Boundaries</code> <code>.Everything</code><br>  <code>translatesReferenceBoundsIntoBoundary</code><br>  检测碰撞用<code>UICollisionBehaviorDelegate</code>, <code>NSCopying</code>??</li>
+<li><code>UISnapBehavior</code></li>
+<li><code>UIPushBehavior</code> 瞬时力场</li>
+<li><code>UIDynamicItemBehavior</code> 元力场，可以自定义</li>
+<li>使用代理<code>UIDynamicAnimatorDelegate</code>检查力场是否达到稳定状态。<br>  <code>dynamicAnimatorDidPause</code>和<code>dynamicAnimatorWillResume</code></li>
+</ul>
+</li>
+<li>力场闭包中引用力场本身会导致内存循环，需要设法解决：<pre><code><span class="keyword">pushBehavior.action </span>= {[unowned <span class="keyword">pushBehavior] </span>in
+    <span class="keyword">pushBehavior.XXXX
+</span>}
+</code></pre></li>
+</ul>
+<h1 id="第14讲_动画和运动检测">第14讲 动画和运动检测</h1><ul>
+<li><code>let XXX = {}()</code>可以用一个闭包给值赋值</li>
+<li>创建一个新类，用<code>addChildBehavior</code>来产生复合力场效果</li>
+<li>有两种方法操作<code>Core Motion</code>，轮询或者设置计时器+闭包</li>
+<li>检查：<code>XXXAvailabe</code><br>  开始：<code>startXXXUpdates</code><br>  检查是否工作中：<code>XXXActive</code><br>  结束：<code>stopXXXUpdates</code><br>  获取数据：<code>XXXData</code></li>
+<li>加速传感器：x屏幕水平，y屏幕垂直，z指向背面。以g为单位，静止时是1个g</li>
+<li>陀螺仪：以弧度为单位，有<code>bias</code></li>
+<li>指南针：</li>
+<li><code>CMDeviceMothion</code>支持加速度<code>gravity</code>,考虑陀螺仪的加速度<code>userAcceleration</code>,不考虑<code>bias</code>的旋转速度<code>rotationRate</code>，3d方向<code>attitude</code>(<code>.roll</code> <code>.pitch</code> <code>.yaw</code>),指南针<code>magneticField</code></li>
+<li>用<code>UIDevice.currentDevice().orientation</code>获取设备的方向,一共六种</li>
+<li><code>swap(&amp;dx,&amp;dy)</code>??</li>
+<li>锁定自动旋转后，旋转设备会改变方向；不锁定时，旋转设备会改变布局，不会改变方向??\</li>
+</ul>
+<h1 id="第15讲_App生命周期_告警_CloudKit">第15讲 App生命周期 告警 CloudKit</h1><ul>
+<li><code>Notification</code>可以用于全局的通知，比代理的通知范围更广</li>
+<li><code>alert</code>可以用于异步通知</li>
+<li><code>alert</code>和<code>actionView</code>十分类似。<code>alert</code>在iPad和iPhone上基本一致；<code>actionView</code>在iPad上需要指定一个<code>BarButton</code>并在右上角显示，在iPhone上是在下方向上弹出</li>
+<li><code>alert</code>对话框可以添加一个文本框<code>addTextFieldWithConfigurationXXX</code></li>
+<li><code>Cloud Kit</code>是云数据库，要使用需要在项目的<code>Capabilities</code>中勾选</li>
+<li><code>Cloud Kit</code>的表结构可以动态创建？？</li>
+<li><code>Cloud Kit</code>支持<code>shared Container</code>，可以让多个App共享同一个服务器。<code>default Container</code>只限一个App使用，包含一个公共数据库和一个私有数据库，公共数据库可以让所有用户看到，私有数据库只有该用户登录<code>iCloud</code>后自己能看到</li>
+<li><code>CKReference</code>相当于<code>Core Data</code>的关系</li>
+<li><code>CKAsset</code>用来存储大文件，<code>CLLocation</code>用来存储地理位置</li>
+<li><code>SaveRecord</code>返回的有些Error支持Retry并提供一个Retry Interval, 可以dispatch到mainQueue并通过NSTimer去重试</li>
+<li><code>Query</code>的时候指定<code>Field name</code>为<code>self</code>就是在所有域进行搜索</li>
+<li>除了<code>Created by``Created Time</code>，其它域在自动添加时都自动打开<code>Query</code>选项。注意未打开<code>Query</code>选项的域无法进行查找，为了提升效率，不必进行查找的域都应该关闭<code>Query</code>选项</li>
+<li>获取用户ID,<code>fetchUserRecordID</code></li>
+<li><code>CKReference</code>的<code>.DeleteSelf</code>意味着删除时不删除关系另一边的记录，<code>.None</code>则会级联删除</li>
+</ul>
+<h1 id="第16讲_CloudKit和提醒">第16讲 CloudKit和提醒</h1><ul>
+<li>可以指定公共变量为非Optional,然后指定一个私有变量为Optional。让公共变量通过私有变量计算得到。这样做可以保持对外API要求必须为有效值，而对内可以保持为Optional<pre><code><span class="variable"><span class="keyword">var</span> xxx</span>:Type{
+    <span class="keyword">get</span>{<span class="keyword">if</span> _xxx==nil{}
+        <span class="keyword">return</span> _xxx}
+    <span class="keyword">set</span>{_xxx=newValue}
+    }
+<span class="keyword">private</span> <span class="variable"><span class="keyword">var</span> _xxx</span>:Type?
+</code></pre></li>
+<li>CloudKit,<code>NSPredicate</code>用”TRUEPREDICATE”来表示查询所有</li>
+<li>一行获取TableView所在行<br>  <code>if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell)</code></li>
+<li><code>canEditRowAtIndexPath</code></li>
+<li><code>commitEditingStyle</code>可以支持删除操作：<code>if editingStyle == .Delete</code></li>
+<li><code>CKSubscription</code>,<code>saveSubscription</code> <code>CKErrorCode.ServerRejectedRequest</code>说明数据库中已经有了这个Subscription</li>
+<li>在<code>AppDelegate</code>中注册<code>Notification</code><br>  在<code>didReceiveRemoteNotification</code>中处理，创建Notification，将收到的提醒分发给自己的所有View<br>  在需要接受提醒的ViewController中注册观察者<code>NSNotificationCenter.defaultCenter().addObserverForName</code></li>
+<li>通过<code>queryNotificationReason</code>查看为什么提醒<h1 id="第17讲">第17讲</h1><h1 id="第18讲">第18讲</h1></li>
+</ul>
+<!--less-->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/06/15/IOS学习笔记——斯坦福公开课笔记/" data-id="cipp1p2mv00250jjhral4ytof" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li></ul>
+
+      
+	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
+	  
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/21/Swift语言学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Swift语言学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/14/Git笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">16</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java8/">java8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stream/">stream</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swing-刷新/">swing 刷新</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 13.33px;">IDE</a> <a href="/tags/IOS/" style="font-size: 10px;">IOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/WEB/" style="font-size: 16.67px;">WEB</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java8/" style="font-size: 10px;">java8</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/swing-刷新/" style="font-size: 10px;">swing 刷新</a> <a href="/tags/小技巧/" style="font-size: 20px;">小技巧</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/21/Swift语言学习/">Swift语言学习</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/15/IOS学习笔记——斯坦福公开课笔记/">IOS学习笔记——斯坦福公开课笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/14/Git笔记/">Git笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/14/Hexo使用笔记/">Hexo使用笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/14/IOS学习笔记——AutoLayout/">Git笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">About</h3>
+    <div class="widget">
+	mail: XXX
+	Weibo:xxx
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+<div class="outer">
+    <div id="footer-info" class="inner">
+	<p>&copy; 2016 Loongeek</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

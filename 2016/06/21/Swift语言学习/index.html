@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java7特性 | Loongeek的私博</title>
+  <title>Swift语言学习 | Loongeek的私博</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍了java7的新特性">
+  <meta name="description" content="IOS总结Swift学习中的重点，参考苹果官网Swift Programming Language(2.2)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java7特性">
-<meta property="og:url" content="http://www.loongeek.com/2016/01/10/java7-new-feature/index.html">
+<meta property="og:title" content="Swift语言学习">
+<meta property="og:url" content="http://www.loongeek.com/2016/06/21/Swift语言学习/index.html">
 <meta property="og:site_name" content="Loongeek的私博">
-<meta property="og:description" content="介绍了java7的新特性">
-<meta property="og:updated_time" content="2016-01-11T14:22:07.000Z">
+<meta property="og:description" content="IOS总结Swift学习中的重点，参考苹果官网Swift Programming Language(2.2)">
+<meta property="og:updated_time" content="2016-06-21T06:03:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java7特性">
-<meta name="twitter:description" content="介绍了java7的新特性">
+<meta name="twitter:title" content="Swift语言学习">
+<meta name="twitter:description" content="IOS总结Swift学习中的重点，参考苹果官网Swift Programming Language(2.2)">
   
     <link rel="alternative" href="atom.xml" title="Loongeek的私博" type="application/atom+xml">
   
@@ -78,10 +78,10 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java7-new-feature" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post_catalog-Swift语言学习" class="article article-type-post_catalog" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/01/10/java7-new-feature/" class="article-date">
-  <time datetime="2016-01-10T13:44:20.000Z" itemprop="datePublished">2016-01-10</time>
+    <a href="/2016/06/21/Swift语言学习/" class="article-date">
+  <time datetime="2016-06-20T16:00:00.000Z" itemprop="datePublished">2016-06-21</time>
 </a>
     
   <div class="article-category">
@@ -96,7 +96,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      Java7特性
+      Swift语言学习
     </h1>
   
 
@@ -105,25 +105,61 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
 
-        <p>介绍了java7的新特性<br><a id="more"></a></p>
-<ul>
-<li>增加了二进制字面量</li>
-<li>数字字面量支持用下划线分割</li>
-<li>可以自动检测并匹配泛型</li>
-<li>try-with-resource</li>
-<li>catch可以处理多重exception</li>
-<li>可以在方法声明处精确的throw具体的exception</li>
+    <ol class="toc" ><li class="toc-item toc-level-1"><a class="toc-link" href="#基础语法"><span class="toc-text">基础语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础运算"><span class="toc-text">基础运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#集合类型"><span class="toc-text">集合类型</span></a></li></ol>
+
+        <p>IOS总结Swift学习中的重点，参考<a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#" target="_blank" rel="external">苹果官网Swift Programming Language(2.2)</a><br><a id="more"></a></p>
+<h1 id="基础语法">基础语法</h1><ul>
+<li>常量<code>let xxx=</code> 变量<code>var xxx=</code>。一般不必加类型说明，Swift会自己推断，只有在声明但没有初始化的情况下才需要加类型说明</li>
+<li>用<code>print()</code>打印，<code>print(xxx\(expression))</code>打印表达式。<br>  <code>print(xxx,terminator:&quot;&quot;)</code>打印语句，但不换行。</li>
+<li>注释风格与C++相同</li>
+<li>为了与C兼容，有<code>UInt8``UInt16</code>…<code>Int64</code>等类型。但一般情况下直接使用<code>UInt``Int</code>就可以。<br>  使用<code>.min``.max</code>获取该类型在该机器上的最小值，最大值</li>
+<li>支持64位浮点<code>Double</code>和32位浮点<code>Float</code>，一般用<code>Double</code>即可</li>
+<li>Swift是强类型语言，支持类型检查和强大的类型推断功能</li>
+<li>Swift不接受其它类型转换到<code>Bool</code></li>
+<li>元组<code>([name:]xxx,[name:]yyy)</code>，是多个成员的<strong>排列</strong>，成员类型不限。<ul>
+<li>let A= (xx,yy) 创建</li>
+<li>let (xx,yy)=A  解包</li>
+<li>let (xx,_)=A 解包并忽略第二个成员</li>
+<li>A.0或者A.name 取元组成员</li>
 </ul>
-<p>示例代码</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> class NewFeatureTest &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) <span class="keyword">throws</span> IOException, SQLException &#123; <span class="comment">//can throw concrete type of exceptions.</span></span><br><span class="line">        <span class="built_in">int</span> a=<span class="number">0</span>b1111_0000_1111_0000;        <span class="comment">//0b<span class="doctag"><span class="keyword">xxx</span></span><span class="doctag"><span class="keyword">xxx</span></span>, express binary literals</span></span><br><span class="line">        <span class="keyword">long</span> m=<span class="number">123</span>_4444_123L;               <span class="comment">//<span class="doctag"><span class="keyword">xxx</span></span>_<span class="doctag"><span class="keyword">xxx</span></span>_xx, number literals can be splitted by slash</span></span><br><span class="line">        System.out.<span class="built_in">println</span>(a);</span><br><span class="line">        System.out.<span class="built_in">println</span>(m);</span><br><span class="line"></span><br><span class="line">        List&lt;<span class="keyword">String</span>&gt; <span class="built_in">str</span> = <span class="keyword">new</span> ArrayList&lt;&gt;();   <span class="comment">//Auto-detect generic type</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> (<span class="keyword">BufferedReader</span> br = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(<span class="keyword">new</span> FileReader(<span class="string">"dssf.jpg"</span>))) &#123;  <span class="comment">//try-with-resource, resource will be assured to close before catch or finally</span></span><br><span class="line">            System.out.<span class="built_in">println</span>(br.readLine());</span><br><span class="line">        &#125;<span class="keyword">catch</span> (NullPointerException | FileNotFoundException e)&#123;  <span class="comment">//catch can get multiple exceptions</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><code>Optional</code>，写做<code>Type?</code>,要么是Type型，要么是nil。nil只能赋给<code>Optional</code>类型<ul>
+<li><code>xxx!</code>，强制解包。这种情况下如果xxx是nil，程序会崩溃</li>
+<li><code>if let xxx = yyy{}</code>，将yyy绑定到常量上，那么在后面的语句块中就可以直接使用xxx。</li>
+<li>支持<code>if let A=a, B=b where expression{}</code>的方式，当且仅当都不为nil而且表达式为真，才执行后面的语句</li>
+<li>隐式解包，只要第一次设值后一直都有值的<code>Optional</code>，可以在声明时使用隐式解包<code>Type!</code>,后面使用时既可以做<code>Optional</code>使用，也可以当做普通类型使用</li>
+</ul>
+</li>
+<li>错误处理：略</li>
+<li>断言：与C一致，<code>assert(expression, message)</code></li>
+</ul>
+<h1 id="基础运算">基础运算</h1><ul>
+<li>运算符：支持求模<code>%</code><br>  <code>===</code>和<code>!==</code>比较两个引用是否指向同一个对象<br>  元组从第一个元素依次进行比较运算<br>  <code>Nil Coalescing Operator</code> nil合并运算：<code>a??b</code>相当于<code>a!=nil ? a! :b</code><br>  <code>Range</code>类型: <code>a...b</code>闭区间， <code>a..&lt;b</code>半闭区间</li>
+</ul>
+<h1 id="字符串">字符串</h1><ul>
+<li>Swift的<code>String</code>和ObjC的<code>NSString</code>是桥接关系，可以直接使用所有ObjC中的API??</li>
+<li><code>isEmpty</code>检查字串是否为空</li>
+<li>字符串按值传递，修改字串不会改变原始字串的值。编译器会优化字串拷贝</li>
+<li><code>.characters</code>或者<code>Array(string)</code>以字符数组的形式返回字串<br>  <code>String([Character])</code>通过字符数组创建字串<br>  <code>.append()</code>可以连接一个字符</li>
+<li><code>.characters.count</code>和<code>.length</code>不一样，前者返回Unicode字符个数，后者返回串长</li>
+<li>字符串比较直接用<code>==``!=</code></li>
+<li><code>.hasPrefix``.hasSuffix</code>检查前缀和后缀是否包含特定字串</li>
+</ul>
+<h1 id="集合类型">集合类型</h1><ul>
+<li>数组(Array)有序集合，集(set)无序不重复集合，字典(Dictionary)无序映射集合。集合元素的类型都是确定的，与元组不同</li>
+<li>变量集合可以增删改元素，常量集合的大小和元素内容都不能修改。</li>
+<li><code>Array</code>和<code>NSArray</code>桥接</li>
+<li>创建数组: <code>[Type]()</code> <code>[xxx,xxx,xxx]</code> <code>[Type](count:xx,repeatedValue:xxx)</code><br>  常用操作：<code>.count</code> <code>.isEmpty</code> <code>.append</code> <code>.insert</code> <code>.removeAtIndex</code> <code>.removeLast</code> <code>[]</code>（清空）<code>last</code>返回最后一个值，若为空返回nil <code>+=``+</code>连接另一个数组<br>  迭代：<code>for in</code> 带下标的迭代<code>for (i,v) in xxx.enumerate()</code></li>
+<li><code>Set</code>和<code>NSSet</code>桥接。集都要实现<code>Hashable</code>协议<br>（Reading-1 Collection Types Sets, to be continued）</li>
+</ul>
 <!--less-->
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/01/10/java7-new-feature/" data-id="cipp1p2lw00140jjh9kedstn7" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/21/Swift语言学习/" data-id="cipp1p2mm001q0jjh7hffr1nf" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li></ul>
 
       
 	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
@@ -134,19 +170,10 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2016/01/10/swing-paint/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Swing的刷新方法一览
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/01/10/java8-new-feature/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/06/15/IOS学习笔记——斯坦福公开课笔记/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">java8特性解析</div>
+      <div class="article-nav-title">IOS学习笔记——斯坦福公开课笔记</div>
     </a>
   
 </nav>

@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java7特性 | Loongeek的私博</title>
+  <title>Archives: 2016 | Loongeek的私博</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍了java7的新特性">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java7特性">
-<meta property="og:url" content="http://www.loongeek.com/2016/01/10/java7-new-feature/index.html">
+  <meta name="description" content="个人 博客 编程技术 艺术 绘画 摄影 读书 嵌入式开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Loongeek的私博">
+<meta property="og:url" content="http://www.loongeek.com/archives/2016/page/2/index.html">
 <meta property="og:site_name" content="Loongeek的私博">
-<meta property="og:description" content="介绍了java7的新特性">
-<meta property="og:updated_time" content="2016-01-11T14:22:07.000Z">
+<meta property="og:description" content="个人 博客 编程技术 艺术 绘画 摄影 读书 嵌入式开发">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java7特性">
-<meta name="twitter:description" content="介绍了java7的新特性">
+<meta name="twitter:title" content="Loongeek的私博">
+<meta name="twitter:description" content="个人 博客 编程技术 艺术 绘画 摄影 读书 嵌入式开发">
   
     <link rel="alternative" href="atom.xml" title="Loongeek的私博" type="application/atom+xml">
   
@@ -78,81 +77,39 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java7-new-feature" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/10/java7-new-feature/" class="article-date">
-  <time datetime="2016-01-10T13:44:20.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Java7特性
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/01/10/java8-new-feature/" class="archive-article-date">
+  <time datetime="2016-01-10T13:42:18.000Z" itemprop="datePublished">Jan 10</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/01/10/java8-new-feature/">java8特性解析</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <p>介绍了java7的新特性<br><a id="more"></a></p>
-<ul>
-<li>增加了二进制字面量</li>
-<li>数字字面量支持用下划线分割</li>
-<li>可以自动检测并匹配泛型</li>
-<li>try-with-resource</li>
-<li>catch可以处理多重exception</li>
-<li>可以在方法声明处精确的throw具体的exception</li>
-</ul>
-<p>示例代码</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> class NewFeatureTest &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) <span class="keyword">throws</span> IOException, SQLException &#123; <span class="comment">//can throw concrete type of exceptions.</span></span><br><span class="line">        <span class="built_in">int</span> a=<span class="number">0</span>b1111_0000_1111_0000;        <span class="comment">//0b<span class="doctag"><span class="keyword">xxx</span></span><span class="doctag"><span class="keyword">xxx</span></span>, express binary literals</span></span><br><span class="line">        <span class="keyword">long</span> m=<span class="number">123</span>_4444_123L;               <span class="comment">//<span class="doctag"><span class="keyword">xxx</span></span>_<span class="doctag"><span class="keyword">xxx</span></span>_xx, number literals can be splitted by slash</span></span><br><span class="line">        System.out.<span class="built_in">println</span>(a);</span><br><span class="line">        System.out.<span class="built_in">println</span>(m);</span><br><span class="line"></span><br><span class="line">        List&lt;<span class="keyword">String</span>&gt; <span class="built_in">str</span> = <span class="keyword">new</span> ArrayList&lt;&gt;();   <span class="comment">//Auto-detect generic type</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> (<span class="keyword">BufferedReader</span> br = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(<span class="keyword">new</span> FileReader(<span class="string">"dssf.jpg"</span>))) &#123;  <span class="comment">//try-with-resource, resource will be assured to close before catch or finally</span></span><br><span class="line">            System.out.<span class="built_in">println</span>(br.readLine());</span><br><span class="line">        &#125;<span class="keyword">catch</span> (NullPointerException | FileNotFoundException e)&#123;  <span class="comment">//catch can get multiple exceptions</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<!--less-->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/01/10/java7-new-feature/" data-id="cipp1p2lw00140jjh9kedstn7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-      
-	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
-	  
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/01/10/swing-paint/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Swing的刷新方法一览
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/01/10/java8-new-feature/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">java8特性解析</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 </section>
         
           <aside id="sidebar">
