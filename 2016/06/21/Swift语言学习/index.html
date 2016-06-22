@@ -11,7 +11,8 @@
 <meta property="og:url" content="http://www.loongeek.com/2016/06/21/Swift语言学习/index.html">
 <meta property="og:site_name" content="Loongeek’s Blog">
 <meta property="og:description" content="IOS总结Swift学习中的重点，参考苹果官网Swift Programming Language(2.2)">
-<meta property="og:updated_time" content="2016-06-21T06:03:22.000Z">
+<meta property="og:image" content="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle03_2x.png">
+<meta property="og:updated_time" content="2016-06-22T15:53:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift语言学习">
 <meta name="twitter:description" content="IOS总结Swift学习中的重点，参考苹果官网Swift Programming Language(2.2)">
@@ -89,16 +90,17 @@
     <div class="article-entry" itemprop="articleBody">
       
 
-    <ol class="toc" ><li class="toc-item toc-level-1"><a class="toc-link" href="#基础语法"><span class="toc-text">基础语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础运算"><span class="toc-text">基础运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#集合类型"><span class="toc-text">集合类型</span></a></li></ol>
+    <ol class="toc" ><li class="toc-item toc-level-1"><a class="toc-link" href="#基础语法"><span class="toc-text">基础语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础运算"><span class="toc-text">基础运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#集合类型"><span class="toc-text">集合类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#控制流"><span class="toc-text">控制流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#闭包"><span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#枚举"><span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类和结构"><span class="toc-text">类和结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下标"><span class="toc-text">下标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#继承"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自动引用计数(ARC)"><span class="toc-text">自动引用计数(ARC)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Optional链"><span class="toc-text">Optional链</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#错误处理"><span class="toc-text">错误处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类型转换"><span class="toc-text">类型转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#扩展(extension)"><span class="toc-text">扩展(extension)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#协议(protocol)"><span class="toc-text">协议(protocol)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#泛型"><span class="toc-text">泛型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#访问控制"><span class="toc-text">访问控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#高级运算"><span class="toc-text">高级运算</span></a></li></ol>
 
         <p>IOS总结Swift学习中的重点，参考<a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#" target="_blank" rel="external">苹果官网Swift Programming Language(2.2)</a><br><a id="more"></a></p>
 <h1 id="基础语法">基础语法</h1><ul>
 <li>常量<code>let xxx=</code> 变量<code>var xxx=</code>。一般不必加类型说明，Swift会自己推断，只有在声明但没有初始化的情况下才需要加类型说明</li>
 <li>用<code>print()</code>打印，<code>print(xxx\(expression))</code>打印表达式。<br>  <code>print(xxx,terminator:&quot;&quot;)</code>打印语句，但不换行。</li>
 <li>注释风格与C++相同</li>
-<li>为了与C兼容，有<code>UInt8``UInt16</code>…<code>Int64</code>等类型。但一般情况下直接使用<code>UInt``Int</code>就可以。<br>  使用<code>.min``.max</code>获取该类型在该机器上的最小值，最大值</li>
+<li>为了与C兼容，有<code>UInt8``UInt16</code>…<code>Int64</code>等类型。但一般情况下直接使用<code>Int</code>就可以。<br>  使用<code>.min``.max</code>获取该类型在该机器上的最小值，最大值</li>
 <li>支持64位浮点<code>Double</code>和32位浮点<code>Float</code>，一般用<code>Double</code>即可</li>
 <li>Swift是强类型语言，支持类型检查和强大的类型推断功能</li>
+<li>整型和浮点型之间的转换必须显式进行</li>
 <li>Swift不接受其它类型转换到<code>Bool</code></li>
 <li>元组<code>([name:]xxx,[name:]yyy)</code>，是多个成员的<strong>排列</strong>，成员类型不限。<ul>
 <li>let A= (xx,yy) 创建</li>
@@ -123,24 +125,224 @@
 <h1 id="字符串">字符串</h1><ul>
 <li>Swift的<code>String</code>和ObjC的<code>NSString</code>是桥接关系，可以直接使用所有ObjC中的API??</li>
 <li><code>isEmpty</code>检查字串是否为空</li>
+<li>空字符串初始化：<code>var xxx=&quot;&quot;</code>或者<code>var xxx=String()</code></li>
 <li>字符串按值传递，修改字串不会改变原始字串的值。编译器会优化字串拷贝</li>
+<li>串操作：<code>startIndex</code> <code>endIndex</code> <code>characters.indices</code>（创建一个基于Unicode字符的Range）<br>  <code>insert</code> <code>insertContentsOf</code> <code>removeAtIndex</code></li>
 <li><code>.characters</code>或者<code>Array(string)</code>以字符数组的形式返回字串<br>  <code>String([Character])</code>通过字符数组创建字串<br>  <code>.append()</code>可以连接一个字符</li>
 <li><code>.characters.count</code>和<code>.length</code>不一样，前者返回Unicode字符个数，后者返回串长</li>
 <li>字符串比较直接用<code>==``!=</code></li>
 <li><code>.hasPrefix``.hasSuffix</code>检查前缀和后缀是否包含特定字串</li>
+<li><code>.utf8</code> <code>.utf16</code> <code>unicodeScalars</code>分别以不同的Unicode形式表示字符串</li>
 </ul>
 <h1 id="集合类型">集合类型</h1><ul>
 <li>数组(Array)有序集合，集(set)无序不重复集合，字典(Dictionary)无序映射集合。集合元素的类型都是确定的，与元组不同</li>
 <li>变量集合可以增删改元素，常量集合的大小和元素内容都不能修改。</li>
 <li><code>Array</code>和<code>NSArray</code>桥接</li>
-<li>创建数组: <code>[Type]()</code> <code>[xxx,xxx,xxx]</code> <code>[Type](count:xx,repeatedValue:xxx)</code><br>  常用操作：<code>.count</code> <code>.isEmpty</code> <code>.append</code> <code>.insert</code> <code>.removeAtIndex</code> <code>.removeLast</code> <code>[]</code>（清空）<code>last</code>返回最后一个值，若为空返回nil <code>+=``+</code>连接另一个数组<br>  迭代：<code>for in</code> 带下标的迭代<code>for (i,v) in xxx.enumerate()</code></li>
-<li><code>Set</code>和<code>NSSet</code>桥接。集都要实现<code>Hashable</code>协议<br>（Reading-1 Collection Types Sets, to be continued）</li>
+<li>创建数组: <code>[Type]()</code> <code>[xxx,xxx,xxx]</code> <code>[Type](count:xx,repeatedValue:xxx)</code><br>  常用操作：<code>.count</code> <code>.isEmpty</code> <code>.append</code> <code>.insert</code> <code>.removeAtIndex</code> <code>.removeLast</code> <code>[]</code>（清空）<code>last</code>返回最后一个值，若为空返回nil <code>+=``+</code>连接另一个数组 <code>contains</code> <code>==</code>比较元素是否相等<br>  迭代：<code>for in</code> 带下标的迭代<code>for (i,v) in xxx.enumerate()</code></li>
+<li><code>Set</code>和<code>NSSet</code>桥接。集都要实现<code>Hashable</code>协议</li>
+<li>创建集：<code>var xxx=Set&lt;Type&gt;()</code><br>  <code>var xxx:Set=[xxx,yyy,zzz]</code><br>  常用操作:<code>insert</code> <code>[]</code>清空 <code>count</code> <code>isEmpty</code> <code>insert</code> <code>remove</code>(如果值不存在返回nil) <code>contains</code><br>  迭代：<code>for in</code>无序迭代 <code>for in xxx.sort()</code> 有序迭代<br>  集合操作：<code>intersect</code> <code>union</code> <code>exclusiveOr</code> <code>subtract</code><br>  <code>==</code> <code>isSubsetOf</code> <code>isSuperSetOf</code> <code>isStrictSubsetOf</code> <code>isDisjointWith</code>(相离)</li>
+<li><code>Dictionary</code>和<code>NSDictionary</code>桥接</li>
+<li>创建：<code>[key:value]</code><br>  常用操作：与其它集合类似，<code>updateValue(_:forKey)</code> 删除键<code>A[a]=nil</code> <code>removeValueForKey</code><br>  迭代：<code>for (key,value) in xxx</code><pre><code>`<span class="javascript"><span class="keyword">for</span> key <span class="keyword">in</span> xxx.keys</span>` `<span class="javascript"><span class="keyword">for</span> value <span class="keyword">in</span> xxx.values</span>`
+</code></pre>  可以直接取出键数组和值数组，<code>a=[Type](xxx.keys)</code> <code>b=[Type](xxx.values)</code>,前面的类型不能省</li>
+</ul>
+<h1 id="控制流">控制流</h1><ul>
+<li><code>for in</code> <code>while</code> <code>repeat-while</code>（类似do-while）</li>
+<li><code>switch case</code>默认自带break<br>  可以用<code>,</code>或者<code>Interval(... ..&lt;)</code>指定多个条件执行同一分支.<br>  可以用元组做为条件，支持元组Interval<code>(-2...2, -2...2)</code><br>  <code>switch</code>支持捕捉操作：<code>case (let x, 2):</code>当元组第二个元素是2时，进行该分支<br>  <code>switch</code>支持<code>where</code>操作：<code>case let (x,y) where XXX:</code></li>
+<li>循环中用<code>continue</code> <code>break</code>进行控制，与C相同</li>
+<li><code>guard let xxxx else{ MUST return,break or continue}</code> 与<code>if let</code>类似，但是失败后会执行else分支，分支必须能够退出或者转移控制流</li>
+<li><code>#available（IOS 9, OSX 10.10）</code>判断是否支持对应平台，返回Bool</li>
+</ul>
+<h1 id="函数">函数</h1><ul>
+<li>函数支持返回元组</li>
+<li>函数可以返回<code>Optional</code> 参数写成<code>(xxx,xxx)?</code></li>
+<li>函数支持外部命名和内部命名，这样做可以在调用时更接近自然语言</li>
+<li>函数参数可以指定默认值</li>
+<li>可变参数：<code>foo(xxx,yyy:Type...)</code>，在内部被当做[Type]，最多只能有一个可变参数，参数类型确定</li>
+<li><code>inout</code>参数，可以修改。一般不要使用</li>
+<li>函数原型能够做为类型使用，可以声明变量，做为其它函数的参数类型，返回值类型等</li>
+<li>内嵌函数：在函数体内定义的函数，只能在函数体内使用</li>
+</ul>
+<h1 id="闭包">闭包</h1><ul>
+<li>全局函数：不捕捉值的命名闭包<br>  内嵌函数：捕捉父函数的值的命名闭包<br>  闭包：捕捉被包围环境的无名闭包</li>
+<li>闭包的自动优化：推断参数和返回值，单表达式隐含返回值，缩写参数名，尾闭包语法</li>
+<li>闭包语法：<pre><code>{<span class="function"><span class="params">(parameters)</span>-&gt;</span><span class="keyword">return</span> type <span class="keyword">in</span>
+    xxxxxx
+}
+</code></pre></li>
+<li>如果类实例的属性是闭包，而闭包又捕捉了实例或者实例成员，就会产生一个内存引用循环，需要强行打破？？</li>
+<li>函数和闭包都是引用类型</li>
+<li>闭包作为参数传给函数，如果在函数返回后还会使用，叫做<code>escape</code>;如果只在函数内使用，可以用<code>@noescape</code>标记，这样可以直接使用函数的值，不用加self，编译器也会优化的更好</li>
+<li>自动闭包无参数，有返回值。主要是书写比较方便</li>
+<li><code>@autoclosure</code>允许以返回值的类型使用闭包:<br>  <code>func foo(()-&gt;Int)</code>调用时写<code>foo({return 5})</code><br>  <code>func foo(@autoclosure ()-&gt;Int</code>调用时写<code>foo(5)</code></li>
+<li>自动闭包默认是<code>noescape</code>的，可以写<code>@autoclosure(escaping)</code>来指定是<code>escape</code></li>
+</ul>
+<h1 id="枚举">枚举</h1><ul>
+<li><code>enum xxx{case xxx,xxxx,xxx}</code>单行<br>  `enum xxx{<pre><code><span class="keyword">case</span> xxx
+<span class="keyword">case</span> xxx
+</code></pre>  }` 多行</li>
+<li>枚举支持<code>Associated Value</code>，C只能给枚举指定整数值，Swift扩展了这个概念，可以给枚举成员指定任何类型的值。在创建具体枚举成员时初始化，在case中调用时使用<code>case .XX(let a,let b)</code>或者<code>case let .XXX(a,b,c)</code>来使用</li>
+<li>枚举可以指定默认值，用<code>rawValue</code>来访问，可以通过默认值获取枚举值，比如<code>var a = EnumName(rawValue:xx))</code></li>
+<li>枚举支持嵌套，但是在关联值中出现自己的类型时，需要在枚举自己的最开头加上<code>indirect</code>：    <pre><code>indirect enum <span class="literal">A</span>{
+    case <span class="literal">a</span>(Int)
+    case b(<span class="literal">A</span>,<span class="literal">A</span>)
+    }
+</code></pre></li>
+</ul>
+<h1 id="类和结构">类和结构</h1><ul>
+<li>类和结构的相同之处：<ul>
+<li>定义属性</li>
+<li>定义方法</li>
+<li>定义下标操作</li>
+<li>构造器</li>
+<li>可以加<code>extension</code></li>
+<li>可以实现<code>protocol</code></li>
+</ul>
+</li>
+<li>类和结构的不同之处：<ul>
+<li>类可以继承</li>
+<li>类可运行时动态转型</li>
+<li>类支持析构器</li>
+<li>类实例支持引用计数</li>
+</ul>
+</li>
+<li>可以用<code>===</code> <code>!==</code>来判断引用的是不是同一个对象</li>
+<li>以下情况创建结构更好：<ul>
+<li>封装有关联的简单数据</li>
+<li>简单数据应当被拷贝而不是被引用</li>
+<li>结构的属性都是值类型</li>
+<li>不需要被继承<br>其它情况都应当创建类</li>
+</ul>
+</li>
+<li>数组，字符串和字典本质上都是结构，在赋值和拷贝时都是<strong>按值拷贝</strong>的</li>
+</ul>
+<h1 id="属性">属性</h1><ul>
+<li>存储属性：存储值，是实例的一部分，不能在枚举中使用<br>  计算属性：计算值，只能是<code>var</code></li>
+<li>计算属性通过get和可选的set来计算值<br>  只有getter的属性可以直接写get语句体：<code>var xxx:Type{return xxx}</code></li>
+<li><code>lazy var</code>只有在第一次使用的时候才会真正初始化。通常用于：<ul>
+<li>只有所属的对象实例初始化完毕，才能确定值的属性</li>
+<li>初始化需要复杂计算或者代价很大</li>
+</ul>
+</li>
+<li>可以给所有存储属性(除了lazy)指定观测者, 还可以在子类中覆盖父类属性来添加观测者。计算属性不需要观测者，直接在setter中处理</li>
+<li>两个观测者：<code>willSet</code> <code>didSet</code>。<code>willSet</code>中用<code>newValue</code>表示即将设的值，无法改变<br><code>didSet</code>中用<code>oldValue</code>表示以前的值，用属性名表示当前值。可在<code>didSet</code>中再次修改属性值，但是不会再次触发<code>didSet</code></li>
+<li>全局变量都是lazy, 局部变量都不是lazy</li>
+<li>类型属性：<ul>
+<li>必须给定一个默认值 </li>
+<li>都是lazy，编译器保证只初始化一次</li>
+<li><code>static var</code> <code>static let</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="方法">方法</h1><ul>
+<li>结构和枚举的实例方法中，可以使用<code>mutating func</code>来改变实例的属性，还可以在<code>mutatin func</code>中给实例赋一个新的实例<code>self = XXX</code></li>
+<li><code>static func</code>来定义类型方法，对于类也可以用<code>class func</code>来定义。实例不能调用类型方法</li>
+</ul>
+<h1 id="下标">下标</h1><ul>
+<li>类，结构和枚举都可以定义下标方法：<br><code>subscript(index:Type)-&gt;Type{
+get{}
+set(newValue){}
+}</code></li>
+<li>使用时与数组一样：<code>XXX[xxx]</code>，但是只能用于实例</li>
+</ul>
+<h1 id="继承">继承</h1><ul>
+<li>覆盖用<code>override</code>，可以覆盖方法，属性和下标</li>
+<li>调用超类的方法：<code>super.foo()</code><br>  调用超类的属性：<code>super.prop</code><br>  调用超类的下标: <code>super[index]</code></li>
+<li>覆盖属性，可以添加或者覆盖其getter,setter。不关心超类的属性是存储还是计算。</li>
+<li>覆盖属性时，可以将只读属性改成读写，但不可以将读写属性改成只读</li>
+<li>可以覆盖属性的观测者</li>
+<li>可以禁止覆盖：<code>final var</code> <code>final func</code> <code>final class func</code> <code>final subscript</code>。<code>final class</code>禁止继承</li>
+</ul>
+<h1 id="初始化">初始化</h1><ul>
+<li>常量可以在初始化中赋值</li>
+<li><code>designated</code>初始化是主要的初始化，<code>convenience init</code>初始化是次要的初始化，通常调用主初始化或者生成特定的实例</li>
+<li>规则：<ul>
+<li>主初始化器必须调用父类的主初始化器</li>
+<li>次初始化器必须调用本类的另一个初始化器</li>
+<li>次初始化器最终必须调用一个主初始化器</li>
+</ul>
+</li>
+<li>初始化安全检查(略)</li>
+<li><code>Failable initializer</code>返回<code>Optional</code>类型：<code>init?()</code></li>
+<li><code>Failable initialiser</code>可以用于枚举，当枚举创建不存在的成员时就返回nil</li>
+<li>存储变量可以用closure或者函数来计算默认值：<br><code>let xxx:Type = {return xxx}()</code></li>
+<li><code>required init</code>表明子类必须实现这个初始化，子类中也要写<code>required init</code>以便向下传递</li>
+</ul>
+<h1 id="自动引用计数(ARC)">自动引用计数(ARC)</h1><ul>
+<li>引用计数只针对<strong>类</strong></li>
+<li><code>strong reference cycle</code>强引用循环，这种情况下，即使所有变量都设成nil,对象也无法回收<br>  <img src="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle03_2x.png" alt="强引用循环"></li>
+<li>可以使用<code>weak</code>或者<code>unowned</code>打破强引用循环。<br>  <code>weak</code>用于引用有时可能为nil的情况，当引用的对象不存在时，引用为nil。weak引用通常是<code>Optional</code>的<br>  <code>unowned</code>用于引用初始化后就决不为nil的情况。当引用对象不存在时访问该引用会产生运行时错误。unowned不能是<code>Optional</code></li>
+<li>打破强引用循环的三种场景：<ul>
+<li>引用都是<code>Optional</code>用<code>weak</code></li>
+<li>引用一个是Optional，一个不是，用<code>unowned</code></li>
+<li>两个引用都不是Optional, 一个用<code>unowned</code>，另一个用<code>xxx!</code>隐式解包</li>
+</ul>
+</li>
+<li>做为实例属性的闭包引用实例变量时会产生强引用循环。可以通过捕捉列表打破循环：<br>  <code>{[unowned self, weak xxx=self.xxx](xxx,xxx) in 
+  xxx}</code><br>  其中unowned指向的引用从不为nil, weak指向的引用有时会为nil</li>
+</ul>
+<h1 id="Optional链">Optional链</h1><ul>
+<li>表达式后跟<code>?</code>，如果这个表达式是nil，整个语句就不再计算，整个语句返回nil。整个语句的返回类型变成Optional</li>
+</ul>
+<h1 id="错误处理">错误处理</h1><ul>
+<li>通常用枚举来表示错误，枚举要包含<code>ErrorType</code>协议</li>
+<li>抛出错误：<code>throw xxx</code><br>函数抛出错误：<code>func foo() throws -&gt; xxx</code><br>处理错误：<pre><code><span class="keyword">do</span>{ 
+    <span class="keyword">try</span> xxx
+        xxx
+}<span class="keyword">catch</span> xxx{
+}<span class="keyword">catch</span> xxx <span class="keyword">where</span> condition {
+}
+</code></pre></li>
+<li><code>try?</code>发生错误返回nil<br>  <code>try!</code>发生错误直接报运行时错误<br>  <code>defer{}</code> 在离开当前范围时执行必要的释放资源操作</li>
+</ul>
+<h1 id="类型转换">类型转换</h1><ul>
+<li><code>is</code> 检查是否是某个类型</li>
+<li><code>as?</code> <code>as!</code>向下转型</li>
+<li><code>AnyObject</code>可以表示任何类的实例</li>
+<li><code>Any</code>可以表示任何实例</li>
+</ul>
+<h1 id="扩展(extension)">扩展(extension)</h1><ul>
+<li>向已存在的类、结构、枚举或协议添加新功能<ul>
+<li>添加实例计算属性和类型计算属性</li>
+<li>定义实例方法和类方法</li>
+<li>添加新的构造器</li>
+<li>定义下标</li>
+<li>定义和使用内嵌类型</li>
+<li>向类型添加协议</li>
+</ul>
+</li>
+<li><code>extension Type: protocol1,protocol2{}</code><h1 id="协议(protocol)">协议(protocol)</h1></li>
+<li>相当于java的接口，协议可以当做类型用</li>
+<li><code>struct/class xxx: protocol1,protocol2</code></li>
+<li>可以声明类属性或者实例属性，指定读写权限：<br><code>var xxx:Type {get set}</code><br><code>static var xxx:Type {get}</code></li>
+<li>可以声明类方法或者实例方法</li>
+<li>代理也是协议</li>
+<li>协议支持多继承，也可以指定协议只能在class上使用：<br>  <code>protocol xxx:class, protocol1,protocol2</code></li>
+<li>协议类型支持组合类型：<code>protocol&lt;protocol1,protocol2&gt;</code></li>
+<li>可选协议：成员函数可以实现，也可以不实现</li>
+<li>协议也可以进行扩展。扩展可以提供默认实现，或者对扩展的协议进行条件约束(略)</li>
+</ul>
+<h1 id="泛型">泛型</h1><ul>
+<li><code>func foo&lt;T&gt;(paramA: T){}</code></li>
+<li>可以对泛型的类型进行约束：<br>  <code>func foo&lt;T: SomeClass, U:SomeProtocol&gt;(p:T, d:U){}</code></li>
+<li>定义protocol时可以指定<code>associated type Name</code>，在实现该接口的时候<code>typealias Name = Type</code>来绑定协议到具体类型上</li>
+<li>定义func的泛型时可以用<code>where</code>子句加约束，<br><code>func foo&lt;C1: Type, C2: Type where C1.ItemType == C2.ItemType, C1.ItemType: Equatable&gt;</code></li>
+</ul>
+<h1 id="访问控制">访问控制</h1><ul>
+<li><code>public</code> <code>internal</code>(默认) <code>private</code></li>
+<li>元组的访问控制由最严格的那个决定</li>
+<li>子类的访问权限不能高过父类</li>
+<li>常量，变量，属性和下标的访问权限不能高过其类型</li>
+</ul>
+<h1 id="高级运算">高级运算</h1><ul>
+<li>位运算(略)</li>
+<li>溢出运算：在运算溢出时自动忽略溢出的位<br>  <code>&amp;+</code> <code>&amp;-</code> <code>&amp;*</code></li>
+<li>类和结构可以重载运算符</li>
 </ul>
 <!--less-->
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/06/21/Swift语言学习/" data-id="cipp6u5bw001qxtjh1kkrmimb" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/21/Swift语言学习/" data-id="cipr286ls001qimjhtc0r9vwk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li></ul>
