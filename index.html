@@ -63,6 +63,362 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-IOS学习笔记——作业" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/29/IOS学习笔记——作业/" class="article-date">
+  <time datetime="2016-06-29T06:11:02.000Z" itemprop="datePublished">2016-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/29/IOS学习笔记——作业/">IOS学习笔记——作业</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <h1 id="作业1">作业1</h1><h2 id="要求">要求</h2><ol>
+<li>完成第1，2讲中的计算器 ✅</li>
+<li>添加小数点按键 ✅</li>
+<li>添加一打操作键 ✅</li>
+<li>使用颜色优化界面 ⚠️</li>
+<li>向brain添加description ⚠️</li>
+<li>向brain添加isPartialResult ✅</li>
+<li>在display中显示算式 ⚠️</li>
+<li>添加C按键清除所有 ✅<h2 id="额外要求">额外要求</h2></li>
+<li>实现回删功能</li>
+<li>displayValue改成Optional Double。当display.text无法解释成Double时为nil。设成nil时清除display</li>
+<li>使用<code>NSNumberFormatter</code>将display改成只显示小数点后6位，并且去掉整数后无用的.0。同步修改description</li>
+<li>添加生成0到1间随机数的按键。这个操作既不是constant也不是unary<h2 id="提示">提示</h2></li>
+</ol>
+<ul>
+<li><code>rangeOfString</code>返回字符串的Range</li>
+<li><code>UILabel</code>的text为nil或””时会缩小到0，如果不想缩小，将text设为” “</li>
+<li><code>Content Hugging Priority</code>越高，意味着“在保证内容的情况小越小越好”<h2 id="心得">心得</h2>❓</li>
+</ul>
+<h1 id="作业2">作业2</h1><h2 id="要求-1">要求</h2><ol>
+<li>完成讲座中的内容</li>
+<li>不要修改brain的非私有接口，继续使用Dictionary<string,operation>作为主要的内部数据结构</string,operation></li>
+<li>UI与模型始终同步</li>
+<li>支持brain接收变量。实现下述接口：<ul>
+<li>func setOperand(variableName: String)</li>
+<li>var variableValues: Dictionary<string, double=""><br>setOperand设置变量名，variableValues设置变量值</string,></li>
+</ul>
+</li>
+<li>result能够正确显示变量值。如果值未设，显示0.0。如果值改变，result要相应地改变</li>
+<li>description能正确工作，并且能在做输入时显示变量名</li>
+<li>program也要支持变量</li>
+<li>添加两个新按钮：-&gt;M和M,不要占用已有功能键。用来设置和获取brain中叫M的变量<ul>
+<li>-&gt;M设置M的值到当前display的值，并显示result到display</li>
+<li>-&gt;M不执行setOperand</li>
+<li>M执行setOperand(“M”),并把brain的result显示到display</li>
+<li>-&gt;M和M是控制器机制，不是模型的机制</li>
+</ul>
+</li>
+<li>C键能够从brain中移除M</li>
+<li>添加Undo,在输入中相当于回删，输入外回退对brain做的上一次操作，不要Undo对变量设值的操作，可以Undo设置变量的操作<h2 id="额外要求-1">额外要求</h2></li>
+<li>计算器能够报错（利用枚举的关联量函数，或者让操作返回含error的元组）。不要变更brain接口</li>
+<li><h2 id="提示-1">提示</h2></li>
+<li>可以在brain内部用操作来实现变量的setOperand</li>
+<li>把表达式的结果设给M有点麻烦（cos(M),然后设𝜋给M,但是𝜋是表达式，会冲掉cos(M)）。实现了Undo后，就能够做这个事</li>
+<li>brain实现公共API来独立地清除brain和brain的变量值</li>
+<li>在displayValue中使用Optional链<h2 id="心得-1">心得</h2>❓</li>
+</ol>
+<h1 id="作业3">作业3</h1><h2 id="要求-2">要求</h2><ol>
+<li>使用作业2的代码</li>
+<li>重命名VC为<code>CalculatorViewController</code></li>
+<li>在界面上添加新按钮G，转场到图形化显示界面。后续输入不影响图形，除非再次按G;如果isPartialResults为真，不要转场到图形化界面。界面显示program(M)的波形</li>
+<li>brain不能出现在MVC的非私有API中</li>
+<li>图形在pad和landscape的iPhone上，与计算器同时出现；在portrait的iPhone上，导航出现</li>
+<li>图形的公式也要显示出来</li>
+<li>要实现一个通用的x-y坐标的UIView</li>
+<li>图形不能持有数据，它只是画出x-y函数，不要传递数据点</li>
+<li>画离散点的时候需要注意，最好不要画出垂直线</li>
+<li>图形View必须是@IBDesignable, scale属性是@IBInspectable,在故事板中必须能够以scale显示坐标轴</li>
+<li>图形View必须支持下述手势：<ul>
+<li>捏</li>
+<li>平移</li>
+<li>双击（移动原点到双击点）<h2 id="额外要求-2">额外要求</h2></li>
+</ul>
+</li>
+<li>让图形按键能够反映出当前的内容能不能用图形化表示</li>
+<li>在两次加载app的时候，保留原点和比例</li>
+<li>旋转或者其它bounds变化，保持原点在图形界面中心</li>
+<li>使用Instruments分析平移和捏的性能</li>
+<li>改善平移性能</li>
+<li>重启时显示上次的图形。也可以将计算器设为上次的状态<h2 id="提示-2">提示</h2></li>
+<li>使用AxesDrawer上下文，drawAxesInRect（origin, pointsPerUnit）</li>
+<li>不需要动brain</li>
+<li>只需要实现一个新VC类和图形UIView类</li>
+<li>图形View的bounds在drawRect中设置，注意不要重复设置原点</li>
+<li>使用属性观察者来设置新的MVC</li>
+<li>图形View的坐标和UI的坐标不一致，需要注意</li>
+<li>AxesDrawer在像素上作画(而不是点)，但是必须设置它的contentScaleFactor</li>
+<li>使用didSet来让View重绘自己</li>
+<li>要设置UIViewContentMode</li>
+<li>手势由图形View处理，但是由控制器打开，所以手势不能设成私有<h2 id="心得-2">心得</h2>❓</li>
+</ol>
+<h1 id="作业4">作业4</h1><h2 id="要求-3">要求</h2><ol>
+<li>改进tableView,能够高亮显示文字中的hashtag,url和用户名字（兴趣项）</li>
+<li>用户点击信息，转场到新的TVC,有四个section列出所有的兴趣项：图，tag,用户和url。第一个section按每行一个显示图片</li>
+<li>图片用原始比例显示，占用整个table的宽度</li>
+<li>每一段有标题，但是如果没有内容就不显示标题</li>
+<li>点击兴趣视图中的tag或者用户名，转场到所有该用户或者tag的信息搜索视图。转到的视图和从主视图转到的视图必须一致</li>
+<li>点击链接要能打开safari</li>
+<li>点击图片打开新的图片浏览器。初次打开的图片按原始比例但是缩放到能显示尽量多的内容，不要留白</li>
+<li>记录最近的100个信息搜索，添加一个TBC，第一个用来搜索，第二个用来显示历史（大小写不敏感，最近的在先），点击历史转场到搜索结果，永久保存结果</li>
+<li>任何时候都不要打断主线程</li>
+<li>支持任意iPhone的portrait和landscape<h2 id="额外要求-3">额外要求</h2></li>
+<li>在提及用户前首先加上贴主的名字</li>
+<li>点击用户，不光搜索提及他的，也搜索他发的贴</li>
+<li>添加UI让用户能够在任何时候返回根控制器</li>
+<li>不要打开safari，而是转场到UIWebView。导航可以提供toolbarItems</li>
+<li>最近搜索表是可以编辑的（扫指删除）</li>
+<li>添加UI，显示UICollectionView,能够显示所有搜索结果的所有图片。点击图片显示所在的信息<h2 id="提示-3">提示</h2></li>
+<li>需要把框架加到Embedded Binaries-&gt;General</li>
+<li><code>CustomStringConvertible</code>❓</li>
+<li>使用<code>attributedText</code>来设置文字</li>
+<li>在TVDataSource中使用内部数据结构来封装不同类型数据的区别，外部调用时就不用考虑这些</li>
+<li>要索引NSAttributedString时，使用nsrange属性</li>
+<li>打开safari:<code>UIApplication.sharedApplication().openURL(url)</code></li>
+<li>在旋转时也要实现图片自适应缩放</li>
+<li>使用<code>NSUserDefaults</code>来保存搜索历史</li>
+<li><code>NSData(contentsOfURL:)</code>会阻塞进程，不要在主线程中调用</li>
+<li>通过网络获取信息后跳到主线程中执行时，要确定信息不会再变化（因为网络调用还在继续）❓</li>
+<li>返回根视图的UI不要在根视图上存在</li>
+<li>查看UIWebView的文档</li>
+<li>一定要删掉UICollectionViewController模板代码中的registerClass,否则它会覆盖在故事板中对Cell的设置</li>
+<li>使用NSCache缓存图像，要计算cache的cost参数。cache与CollectionVC关联，被所有单元共享，当VC关闭时，cache也要清除</li>
+<li>CollectionVC支持多种布局，采用默认的FlowLayout,要想调整尺寸，需要实现sizeForItemAtIndexPath</li>
+<li>可以用捏来实现collectionView的size缩放<h2 id="心得-3">心得</h2>❓</li>
+</ol>
+<h1 id="作业5">作业5</h1><h2 id="要求-4">要求</h2><ol>
+<li>搜索历史界面添加详情按键，列出所有提及的tag和用户</li>
+<li>上述结果按最流行到最不流行排列</li>
+<li>流行度相同，按字母序</li>
+<li>每行不光显示提及，还有在搜索结果中出现的次数</li>
+<li>不要显示只提及一次的内容，但是如果获取的内容中又提及到了，需要及时刷新结果把它显示出来</li>
+<li>不要重复计算同一条提及</li>
+<li>所有数据都要存储在CoreData并且持久化</li>
+<li>新的MVC的内容用<code>NSFetchedResultsController</code>来处理</li>
+<li>不要改变之前任务的所有功能</li>
+<li>不要打断主线程，可以认为CoreData的操作不会花太多时间，不会打断主线程</li>
+<li>程序必须在iPhone的portrait和landscape下都能正常</li>
+<li>要在真机上通过<h2 id="额外要求-4">额外要求</h2></li>
+<li>使用<code>UIManagedDocument</code>处理数据，注意异步处理要正确</li>
+<li>把流行度表分成两个Section:tag和用户</li>
+<li>使用一个查询来检查一堆数据是否存在，然后仅仅创建不存在的，来提高程序的效率，注意使用预测操作符<code>IN</code></li>
+<li>清掉数据库中不再感兴趣的对象，自己决定清除时机<h2 id="提示-4">提示</h2></li>
+<li>通过两次搜索同一项，看看流行度会不会翻倍来确定是否实现了要求6</li>
+<li>不需要获取整个内容，要设计方案获取自己需要的</li>
+<li>动脑构造好的设计，而不是构建复杂的查询语句</li>
+<li>不要把实体及其属性局限在框架的属性上</li>
+<li><code>NSManagedObject</code>能够获取自己所属的<code>NSManagedObjectContext</code>，注意利用它</li>
+<li>1对多返回的NSSet无法修改，要想修改，使用<code>mutableSetValueForKey</code>返回一个<code>NSMutableSet</code></li>
+<li>Core Data自动更新反向关系，修改了NSMutableSet后,它会自动更新反向的关系</li>
+<li>使用id区分不同的信息</li>
+<li>使用AppDelegate时注意显式实现save()</li>
+<li>操作managed object context时始终使用<code>performBlock</code>或者<code>performBlockAndWait</code><h2 id="心得-4">心得</h2>❓<h1 id="作业6">作业6</h1><h2 id="要求-5">要求</h2></li>
+<li>使用Dynamic Animator创建一个breakout游戏</li>
+<li>砖块被击中时要有动画效果。</li>
+<li>使用平移操作板子，使用点击让球有一定随机性的弹出❓</li>
+<li>所有砖块消失，或者游戏结束，显示告警并重置下一局的砖块</li>
+<li>至少支持4种变量来控制游戏(砖块数量，球回弹力，球数量，重力，特殊砖块等)</li>
+<li>使用tabbar,第二个标签实现静态表来实现参数调整。调整完后游戏立即开始并使用新的参数</li>
+<li>至少使用三种控件各一个:<code>UISwitch</code> <code>UISegmentedControl</code> <code>UIStepper</code>或<code>UISlider</code></li>
+<li>在iPhone和iPad上都能工作</li>
+<li>必须在真机上运行<h2 id="额外要求-5">额外要求</h2></li>
+<li>配置持久化</li>
+<li>保存得分，能够区分技巧分</li>
+<li>界面要酷</li>
+<li>使用Dynamic Animation</li>
+<li>当导航到别处时暂停游戏,参考<code>UIDynamicItem</code>的API</li>
+<li>集成设备的加速传感器到游戏中</li>
+</ol>
+<h2 id="提示-5">提示</h2><ol>
+<li>开始尽量简单，可以用小方块表示所有元素</li>
+<li>强烈建议使用boundaries来处理碰撞，而不要使用实际的View参与碰撞❓</li>
+<li>球最好参与碰撞</li>
+<li>板子也用boundary来处理碰撞</li>
+<li>创建UIDynamicBehavior的子类BreakoutBehavior能让代码保持简单，使用addChildBehavior添加行为</li>
+<li>BreakouBehavior处理所有行为导向的内容</li>
+<li>处理一些与boundary同步的UIView❓</li>
+<li>不要把动画视图做为顶层视图</li>
+<li>元素都通过代码添加，而不是通过故事板</li>
+<li>使用collisionDelegate处理球和砖的碰撞</li>
+<li>代理返回的是NSCopying，需要类型转换到String或者NSNumber</li>
+<li>点击产生一个瞬时的UIPushBehavior，可以根据球的大小设置值</li>
+<li>最好在完成push后，在它自己的action里面删除push行为，节省空间</li>
+<li>可以使用<code>UIDynamicItemBehavior</code>添加回弹，摩擦，阻力，旋转等效果。但是注意不要多种效果发生冲突</li>
+<li>通过检查球与dynamicAnimator的referenceView的bound的碰撞，判断球是否越界。一旦越界，就删掉球的行为，以及球的View</li>
+<li>必须决定球的开始状态，以及出界后恢复状态。通常放在板子正前方</li>
+<li>自动旋转后，使用<code>viewDidLayoutSubviews</code>重新计算位置</li>
+<li>限制用户调整参数的范围，避免出现过于疯狂的状态</li>
+<li>可以把板子的bound设成椭圆，这样球的回弹更有趣</li>
+<li>不要给不在referenceView结构中的view添加行为控制</li>
+<li>如果要手动移动动画器负责的UIView，要调用<code>updateItemUsingCurrentState</code>让动画器获取View的新状态(位置，速度等)<h2 id="心得-5">心得</h2>❓</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/06/29/IOS学习笔记——作业/" data-id="ciq0hhohi002gpt33f6rb1hol" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
+    <article id="post_catalog-English Notes" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/27/English Notes/" class="article-date">
+  <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/外语/">外语</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/27/English Notes/">English Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>英语笔记</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/27/English Notes/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/06/27/English Notes/" data-id="ciq0hhohs002ppt33qpe3a5s4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
+    <article id="post-IOS学习笔记——坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/23/IOS学习笔记——坑/" class="article-date">
+  <time datetime="2016-06-23T06:14:29.000Z" itemprop="datePublished">2016-06-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/23/IOS学习笔记——坑/">IOS学习笔记——坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <ul>
+<li>Xcode文档的链接点了以后跳转到<code>galley proof.sd.apple.com</code>但是打不开？<br>直接在文档上方输入链接内容的文字搜索，不要直接点开</li>
+<li>不要给一个操作指定多个Action，宁可把多个Action合到一个里面，用子函数区分。这样改变Action时不会遗漏</li>
+<li>运行报崩溃时，说找不到Key，有可能是UI到代码的连接有误。应当先从Connection Inspector中删掉连接，再重建连接，再修改代码</li>
+<li>做UI测试时，录制的第一个操作没有反应。在第一个操作前加上一个sleep(1)，等app完全初始化好之后，就OK了。</li>
+<li>做UI测试时，如果不在Accessibility中指定identifer，就无法用identifier查询到对应的组件</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/06/23/IOS学习笔记——坑/" data-id="ciq0hhohg002fpt333s2bffny" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
+    <article id="post_catalog-IOS学习笔记——测试" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/23/IOS学习笔记——测试/" class="article-date">
+  <time datetime="2016-06-22T16:00:00.000Z" itemprop="datePublished">2016-06-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/23/IOS学习笔记——测试/">IOS学习笔记——测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>IOS学习笔记，介绍Xcode下如何进行调试和测试</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/23/IOS学习笔记——测试/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/06/23/IOS学习笔记——测试/" data-id="ciq0hhoh70021pt33xhr9hr0k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI-Test/">UI Test</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Test/">Unit Test</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
     <article id="post_catalog-Swift语言学习" class="article article-type-post_catalog" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/06/21/Swift语言学习/" class="article-date">
@@ -98,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/06/21/Swift语言学习/" data-id="cipr2o3ke001qjxjh56awl7ax" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/21/Swift语言学习/" data-id="ciq0hhogx001qpt333r2odoq9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li></ul>
@@ -145,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/06/15/IOS学习笔记——斯坦福公开课笔记/" data-id="cipr2o3kl0021jxjh8n2l3ndn" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/15/IOS学习笔记——斯坦福公开课笔记/" data-id="ciq0hhohd002bpt33rn6yjjzv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li></ul>
@@ -192,7 +548,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/06/14/Git笔记/" data-id="cipr2o3kr002bjxjhff0dg0ub" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/14/Git笔记/" data-id="ciq0hhohp002lpt33fs2fg31y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -239,7 +595,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/06/14/Hexo使用笔记/" data-id="cipr2o3ko0027jxjhb14sm1dm" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/14/Hexo使用笔记/" data-id="ciq0hhohl002hpt33ufvf19sj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -286,7 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/04/19/python3语法笔记/" data-id="cipr2o3jg000jjxjhjvuz59uz" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/04/19/python3语法笔记/" data-id="ciq0hhoft000jpt33bk2e7ibp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -333,223 +689,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/04/19/c语言复习笔记/" data-id="cipr2o3kb001mjxjh542c6q6u" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/04/19/c语言复习笔记/" data-id="ciq0hhogu001mpt33th2ff8sr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-  
-    <article id="post-swing-paint" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/10/swing-paint/" class="article-date">
-  <time datetime="2016-01-10T14:09:08.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/swing-paint/">Swing的刷新方法一览</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <h1 id="Swing的刷新方法">Swing的刷新方法</h1><ul>
-<li><p>Paint()<br>  可以用<code>paintComponent()</code>代替<code>paint()</code>。<code>paint()</code>会依次调用<code>paintBorder()</code>, <code>paintComponent()</code>和<code>paintChildren()</code>。一般不要直接调用该方法，应当调用<code>repaint()</code></p>
-</li>
-<li><p>repaint()<br>  不能被覆盖。控制着<code>update()</code> -&gt; <code>paint()</code>的消息循环。当你变更了组件的外观(除了更改大小)，就应当调用该方法</p>
-</li>
-<li><p>validate()<br>  告诉组件刷新自己。如果你更改了组件大小，或者变更了它的子组件(添加、删除、改变大小)，应当调用该方法。也许调用<code>revalidate()</code>更好</p>
-</li>
-<li><p>update()<br>  负责清除组件并调用paint()。一般不要直接调用它，应当调用<code>repaint()</code>。如果在做动画时需要快速刷新，可以覆盖该方法让它直接调用<code>paint()</code></p>
-</li>
-<li><p>updateUI()<br>  如果你在组件显示后，又更改了UI的风格，应当调用该方法</p>
-</li>
-<li><p>invalidate()<br>  标记组件是失效的，意味着组件必需被刷新。但是这只是个标记，可能会多个组件在之后适当的时间一起刷新</p>
-</li>
-<li><p>validate()<br>  重新布局。意味着布局管理器会重新设置失效的组件及其子组件的大小 </p>
-</li>
-<li><p>revalidate()<br>  相当于<code>invalidate()</code>+<code>validate()</code>。标记组件失效并处理</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/01/10/swing-paint/" data-id="cipr2o3ja0006jxjh8lfutj3w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swing-刷新/">swing 刷新</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-  
-    <article id="post-java7-new-feature" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/10/java7-new-feature/" class="article-date">
-  <time datetime="2016-01-10T13:44:20.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/java7-new-feature/">Java7特性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>介绍了java7的新特性<br>
-        
-          <p class="article-more-link">
-            <a href="/2016/01/10/java7-new-feature/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/01/10/java7-new-feature/" data-id="cipr2o3k10014jxjhamdgc47t" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-  
-    <article id="post-java8-new-feature" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/10/java8-new-feature/" class="article-date">
-  <time datetime="2016-01-10T13:42:18.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/java8-new-feature/">java8特性解析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java8特性解析">Java8特性解析</h1><p>  对java8的新特性进行说明。包括lambda表达式，stream，javafx，并发等方面。参考了书籍<strong><em>《Java SE8 for the Really Impatient》</em></strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/01/10/java8-new-feature/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/01/10/java8-new-feature/" data-id="cipr2o3jw000wjxjhj5tuep7v" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java8/">java8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/">lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stream/">stream</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-  
-    <article id="post-hexo-github" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/27/hexo-github/" class="article-date">
-  <time datetime="2015-12-27T02:38:43.000Z" itemprop="datePublished">2015-12-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/27/hexo-github/">Hexo发布到Github</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <ol>
-<li>在Github上创建一个带readme的新repository</li>
-<li><p>修改hexo主目录的_config.yml，添加</p>
-<pre><code>deployer:
-    <span class="class"><span class="keyword">type</span>: <span class="title">git</span></span>
-    repository: &lt;github的repository路径&gt;
-    branch: master
-</code></pre></li>
-<li><p>如果报错说找不到deployer,就执行以下代码安装：</p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span>
-</code></pre></li>
-<li><p>安装完成后执行</p>
-<pre><code><span class="title">hexo</span> deploy
-</code></pre></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/27/hexo-github/" data-id="cipr2o3k7001djxjhgw3v2kwe" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HEXO/">HEXO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
 
       
     </footer>
@@ -571,7 +714,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">14</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -580,7 +723,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java8/">java8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stream/">stream</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swing-刷新/">swing 刷新</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI-Test/">UI Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java8/">java8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stream/">stream</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swing-刷新/">swing 刷新</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -589,7 +732,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 13.33px;">IDE</a> <a href="/tags/IOS/" style="font-size: 10px;">IOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/WEB/" style="font-size: 16.67px;">WEB</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java8/" style="font-size: 10px;">java8</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/swing-刷新/" style="font-size: 10px;">swing 刷新</a> <a href="/tags/小技巧/" style="font-size: 20px;">小技巧</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 13.33px;">IDE</a> <a href="/tags/IOS/" style="font-size: 13.33px;">IOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/UI-Test/" style="font-size: 10px;">UI Test</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/WEB/" style="font-size: 16.67px;">WEB</a> <a href="/tags/Xcode/" style="font-size: 13.33px;">Xcode</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java8/" style="font-size: 10px;">java8</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/swing-刷新/" style="font-size: 10px;">swing 刷新</a> <a href="/tags/小技巧/" style="font-size: 20px;">小技巧</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a>
     </div>
   </div>
 
@@ -598,7 +741,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -610,23 +753,23 @@
       <ul>
         
           <li>
+            <a href="/2016/06/29/IOS学习笔记——作业/">IOS学习笔记——作业</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/27/English Notes/">English Notes</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/23/IOS学习笔记——坑/">IOS学习笔记——坑</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/23/IOS学习笔记——测试/">IOS学习笔记——测试</a>
+          </li>
+        
+          <li>
             <a href="/2016/06/21/Swift语言学习/">Swift语言学习</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/15/IOS学习笔记——斯坦福公开课笔记/">IOS学习笔记——斯坦福公开课笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/14/Git笔记/">Git笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/14/Hexo使用笔记/">Hexo使用笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/19/python3语法笔记/">Python3语法笔记</a>
           </li>
         
       </ul>

@@ -63,6 +63,219 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-swing-paint" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/10/swing-paint/" class="article-date">
+  <time datetime="2016-01-10T14:09:08.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/swing-paint/">Swing的刷新方法一览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <h1 id="Swing的刷新方法">Swing的刷新方法</h1><ul>
+<li><p>Paint()<br>  可以用<code>paintComponent()</code>代替<code>paint()</code>。<code>paint()</code>会依次调用<code>paintBorder()</code>, <code>paintComponent()</code>和<code>paintChildren()</code>。一般不要直接调用该方法，应当调用<code>repaint()</code></p>
+</li>
+<li><p>repaint()<br>  不能被覆盖。控制着<code>update()</code> -&gt; <code>paint()</code>的消息循环。当你变更了组件的外观(除了更改大小)，就应当调用该方法</p>
+</li>
+<li><p>validate()<br>  告诉组件刷新自己。如果你更改了组件大小，或者变更了它的子组件(添加、删除、改变大小)，应当调用该方法。也许调用<code>revalidate()</code>更好</p>
+</li>
+<li><p>update()<br>  负责清除组件并调用paint()。一般不要直接调用它，应当调用<code>repaint()</code>。如果在做动画时需要快速刷新，可以覆盖该方法让它直接调用<code>paint()</code></p>
+</li>
+<li><p>updateUI()<br>  如果你在组件显示后，又更改了UI的风格，应当调用该方法</p>
+</li>
+<li><p>invalidate()<br>  标记组件是失效的，意味着组件必需被刷新。但是这只是个标记，可能会多个组件在之后适当的时间一起刷新</p>
+</li>
+<li><p>validate()<br>  重新布局。意味着布局管理器会重新设置失效的组件及其子组件的大小 </p>
+</li>
+<li><p>revalidate()<br>  相当于<code>invalidate()</code>+<code>validate()</code>。标记组件失效并处理</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/01/10/swing-paint/" data-id="ciq0hhofi0006pt33lhfzb3av" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swing-刷新/">swing 刷新</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
+    <article id="post-java7-new-feature" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/10/java7-new-feature/" class="article-date">
+  <time datetime="2016-01-10T13:44:20.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/java7-new-feature/">Java7特性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>介绍了java7的新特性<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/01/10/java7-new-feature/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/01/10/java7-new-feature/" data-id="ciq0hhogc0014pt33c1vekjv6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
+    <article id="post-java8-new-feature" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/10/java8-new-feature/" class="article-date">
+  <time datetime="2016-01-10T13:42:18.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/java8-new-feature/">java8特性解析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java8特性解析">Java8特性解析</h1><p>  对java8的新特性进行说明。包括lambda表达式，stream，javafx，并发等方面。参考了书籍<strong><em>《Java SE8 for the Really Impatient》</em></strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/01/10/java8-new-feature/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/01/10/java8-new-feature/" data-id="ciq0hhog4000wpt33rdzxym8r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java8/">java8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/">lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stream/">stream</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
+    <article id="post-hexo-github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/27/hexo-github/" class="article-date">
+  <time datetime="2015-12-27T02:38:43.000Z" itemprop="datePublished">2015-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/27/hexo-github/">Hexo发布到Github</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <ol>
+<li>在Github上创建一个带readme的新repository</li>
+<li><p>修改hexo主目录的_config.yml，添加</p>
+<pre><code>deployer:
+    <span class="class"><span class="keyword">type</span>: <span class="title">git</span></span>
+    repository: &lt;github的repository路径&gt;
+    branch: master
+</code></pre></li>
+<li><p>如果报错说找不到deployer,就执行以下代码安装：</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span>
+</code></pre></li>
+<li><p>安装完成后执行</p>
+<pre><code><span class="title">hexo</span> deploy
+</code></pre></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2015/12/27/hexo-github/" data-id="ciq0hhogk001dpt33kb5ktadh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HEXO/">HEXO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
     <article id="post-ssh-config" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/24/ssh-config/" class="article-date">
@@ -109,7 +322,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/ssh-config/" data-id="cipr2o3jd000bjxjh7kv39bem" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/24/ssh-config/" data-id="ciq0hhofn000bpt339rhszcsj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
@@ -156,7 +369,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/macbook-operation-memo/" data-id="cipr2o3jp000sjxjh2w8ipq89" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/24/macbook-operation-memo/" data-id="ciq0hhog0000spt33exzd77h5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
@@ -203,7 +416,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/idea-useguide/" data-id="cipr2o3k50018jxjhtquagehb" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/24/idea-useguide/" data-id="ciq0hhogg0018pt33bxvm4g8t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE/">IDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
@@ -250,7 +463,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/22/Plantuml/" data-id="cipr2o3ki001ujxjhmqem8l92" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/22/Plantuml/" data-id="ciq0hhoh2001upt330rbr5ajx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE/">IDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UML/">UML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插件/">插件</a></li></ul>
@@ -297,7 +510,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/07/25/markdown/" data-id="cipr2o3jj000njxjhgltczxqw" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/07/25/markdown/" data-id="ciq0hhofw000npt3379zxxyow" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li></ul>
@@ -341,7 +554,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/07/23/first-article/" data-id="cipr2o3k9001jjxjhav895thz" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/07/23/first-article/" data-id="ciq0hhogr001jpt33rwip8oex" class="article-share-link">Share</a>
       
       
       
@@ -364,7 +577,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">14</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -373,7 +586,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java8/">java8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stream/">stream</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swing-刷新/">swing 刷新</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI-Test/">UI Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java8/">java8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stream/">stream</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swing-刷新/">swing 刷新</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -382,7 +595,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 13.33px;">IDE</a> <a href="/tags/IOS/" style="font-size: 10px;">IOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/WEB/" style="font-size: 16.67px;">WEB</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java8/" style="font-size: 10px;">java8</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/swing-刷新/" style="font-size: 10px;">swing 刷新</a> <a href="/tags/小技巧/" style="font-size: 20px;">小技巧</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 13.33px;">IDE</a> <a href="/tags/IOS/" style="font-size: 13.33px;">IOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/UI-Test/" style="font-size: 10px;">UI Test</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/WEB/" style="font-size: 16.67px;">WEB</a> <a href="/tags/Xcode/" style="font-size: 13.33px;">Xcode</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java8/" style="font-size: 10px;">java8</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/swing-刷新/" style="font-size: 10px;">swing 刷新</a> <a href="/tags/小技巧/" style="font-size: 20px;">小技巧</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a>
     </div>
   </div>
 
@@ -391,7 +604,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -403,23 +616,23 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       <ul>
         
           <li>
+            <a href="/2016/06/29/IOS学习笔记——作业/">IOS学习笔记——作业</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/27/English Notes/">English Notes</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/23/IOS学习笔记——坑/">IOS学习笔记——坑</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/23/IOS学习笔记——测试/">IOS学习笔记——测试</a>
+          </li>
+        
+          <li>
             <a href="/2016/06/21/Swift语言学习/">Swift语言学习</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/15/IOS学习笔记——斯坦福公开课笔记/">IOS学习笔记——斯坦福公开课笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/14/Git笔记/">Git笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/14/Hexo使用笔记/">Hexo使用笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/19/python3语法笔记/">Python3语法笔记</a>
           </li>
         
       </ul>
