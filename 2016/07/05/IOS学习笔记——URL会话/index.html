@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>IOS学习笔记——URL会话 | null</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍IOS下URL会话的相关知识。参考 URL Session Programming Guide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS学习笔记——URL会话">
+<meta property="og:url" content="http://www.loongeek.com/2016/07/05/IOS学习笔记——URL会话/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="介绍IOS下URL会话的相关知识。参考 URL Session Programming Guide">
+<meta property="og:image" content="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/URLLoadingSystem/Art/nsobject_hierarchy_2x.png">
+<meta property="og:updated_time" content="2016-07-08T14:31:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IOS学习笔记——URL会话">
+<meta name="twitter:description" content="介绍IOS下URL会话的相关知识。参考 URL Session Programming Guide">
+  
+    <link rel="alternative" href="atom.xml" title="null" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">null</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Loongeek’s Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.loongeek.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post_catalog-IOS学习笔记——URL会话" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/05/IOS学习笔记——URL会话/" class="article-date">
+  <time datetime="2016-07-04T16:00:00.000Z" itemprop="datePublished">2016-07-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      IOS学习笔记——URL会话
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+    <ol class="toc" ><li class="toc-item toc-level-1"><a class="toc-link" href="#NSURLSession"><span class="toc-text">NSURLSession</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期"><span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和配置会话"><span class="toc-text">创建和配置会话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用系统代理获取资源"><span class="toc-text">使用系统代理获取资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用自定义代理获取资源"><span class="toc-text">使用自定义代理获取资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载文件(略)"><span class="toc-text">下载文件(略)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传"><span class="toc-text">上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鉴权和TLS（略）"><span class="toc-text">鉴权和TLS（略）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IOS后台（略）"><span class="toc-text">IOS后台（略）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关联内容"><span class="toc-text">关联内容</span></a></li></ol>
+
+        <p>介绍IOS下URL会话的相关知识。参考 <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i" target="_blank" rel="external">URL Session Programming Guide</a></p>
+<a id="more"></a>
+<h1 id="NSURLSession">NSURLSession</h1><p><img src="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/URLLoadingSystem/Art/nsobject_hierarchy_2x.png" alt="类结构图"></p>
+<h2 id="生命周期">生命周期</h2><ul>
+<li>系统代理：<ol>
+<li>创建配置</li>
+<li>创建会话 代理是nil</li>
+<li>在会话中创建任务</li>
+<li>(下载任务可以在中途暂停和恢复)</li>
+<li>任务结束，调用结束句柄</li>
+<li>会话结束，invalidate会话</li>
+</ol>
+</li>
+<li>自定义代理：<ol>
+<li>创建会话，代理自定义</li>
+<li>鉴权代理，重定向代理，下载、数据、上传数据流处理代理，进度，Cache管理</li>
+</ol>
+</li>
+</ul>
+<h2 id="概念">概念</h2><ul>
+<li>会话<ul>
+<li>默认会话：cache在硬盘上，在用户钥匙链中保存证书</li>
+<li>暂时会话：不在硬盘上存数据，所有数据都在内存中，与会话生命周期相同</li>
+<li>后台会话：类似默认会话，在后台进行</li>
+</ul>
+</li>
+<li>任务<ul>
+<li>数据任务：收发<code>NSData</code>,可以分块发，也可以一起发</li>
+<li>下载任务：下载文件，支持后台下载</li>
+<li>上传任务：上传文件，支持后台上传</li>
+</ul>
+</li>
+<li>后台<ul>
+<li>必须提供事件分发的代理</li>
+<li>只支持HTTP和HTTPS协议</li>
+<li>经常会进行重定向</li>
+<li>上传只支持文件形式，不支持数据对象或流</li>
+<li>应用在后台时触发传输，<code>discretionary</code>当做true，这样OS可以优化它的优先级</li>
+<li>IOS后台任务如果完成或者需要证书，会自动重启app。app重启后要立该创建相同ID的后台配置并创建会话，新的会话会自动关联到正在执行的任务上。</li>
+</ul>
+</li>
+<li>会话和任务是<code>NSCopying</code>，复制时会得到同一个对象；配置复制时会得到一个新的拷贝，可以独立进行修改<h2 id="创建和配置会话">创建和配置会话</h2>可配置内容</li>
+<li>caches, cookies, 证书和协议的本地存储配置</li>
+<li>基于会话和基于任务的鉴权</li>
+<li>URL</li>
+<li>主机最大连接</li>
+<li>超时处理</li>
+<li>TLS版本</li>
+<li>Custom proxy dictionaries</li>
+<li>cookie策略</li>
+<li>HTTP pipelining<br>创建会话后就无法更改配置</li>
+</ul>
+<h2 id="使用系统代理获取资源">使用系统代理获取资源</h2><p><code>dataTaskWithURL:url:completionHandler.resume</code></p>
+<h2 id="使用自定义代理获取资源">使用自定义代理获取资源</h2><p>至少要实现<code>dataTask:didReceiveData</code>和<code>task:didCompleteWithError</code></p>
+<h2 id="下载文件(略)">下载文件(略)</h2><h2 id="上传">上传</h2><ul>
+<li><code>NSData</code>，内存中数据，<code>uploadTaskWithRequest:fromData[:CompletionHandler]</code></li>
+<li>文件，<code>uploadTaskWithRequest:fromFile[:CompletionHandler]</code></li>
+<li><code>URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend</code>用来获取上传状态</li>
+</ul>
+<h2 id="鉴权和TLS（略）">鉴权和TLS（略）</h2><h2 id="IOS后台（略）">IOS后台（略）</h2><h1 id="关联内容">关联内容</h1><ul>
+<li>URL编解码<br>参考<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/URLLoadingSystem/WorkingwithURLEncoding/WorkingwithURLEncoding.html#//apple_ref/doc/uid/10000165i-CH12-SW1" target="_blank" rel="external">Encoding URL Data</a></li>
+<li>重定向<br><code>URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler</code><br>三种策略：允许服务端重定向，创建新请求重定向，拒绝重定向返回nil</li>
+<li>鉴权<br><code>URLSession:didReceiveChallenge:completionHandler:</code>处理鉴权<ul>
+<li>提供证书：<ul>
+<li><code>NSURLAuthenticatinMethodHTTPBasic|Digest</code>, 用<code>credentialWithUser:password:persistence:</code>创建证书</li>
+<li><code>NSURLAuthenticationMethodClientCertificate</code>,用<code>credentialWithIdentity:certificates:persistence:.</code>创建客户端证书</li>
+<li><code>NSURLAuthenticationMethodServerTrust</code>,用<code>credentialForTrust:.</code>创建证书<br>用completionHandler返回证书对象给发送者</li>
+</ul>
+</li>
+<li>不提供证书：<ul>
+<li><code>NSURLSessionAuthChallengePerformDefaultHandling</code>不处理</li>
+<li><code>NSURLSessionAuthChallengeRejectProtectionSpace</code>拒绝</li>
+</ul>
+</li>
+<li>取消连接：<code>NSURLSessionAuthChallengeCancelAuthenticationChallenge</code></li>
+</ul>
+</li>
+<li>cache<br>四种策略：默认使用协议的Cache策略，不Cache, 优先返回Cache(不考虑Cache的日期和有效期)，只返回Cache(offline场景)<br><code>URLSession:dataTask:willCacheResponse:completionHandler:</code>用来控制是否cache,只在数据传输和上传时被调用</li>
+<li>Cookie<br><code>NSHTTPCookie</code></li>
+</ul>
+<!--less-->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/07/05/IOS学习笔记——URL会话/" data-id="ciqdugqjw0035xvjh51j6flu6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+
+      
+	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
+	  
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/05/IOS学习笔记——坑/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          IOS学习中的坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/04/IOS学习笔记——网络/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">IOS学习笔记——网络</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">26</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3d/">3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVO/">KVO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Notification/">Notification</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Threading/">Threading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tuning/">Tuning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI-Test/">UI Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blender/">blender</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java8/">java8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/">misc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stream/">stream</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swing-刷新/">swing 刷新</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 12.5px;">IDE</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Threading/" style="font-size: 10px;">Threading</a> <a href="/tags/Tuning/" style="font-size: 10px;">Tuning</a> <a href="/tags/UI-Test/" style="font-size: 10px;">UI Test</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/WEB/" style="font-size: 15px;">WEB</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/blender/" style="font-size: 10px;">blender</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java8/" style="font-size: 10px;">java8</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/swing-刷新/" style="font-size: 10px;">swing 刷新</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/小技巧/" style="font-size: 17.5px;">小技巧</a> <a href="/tags/并发/" style="font-size: 12.5px;">并发</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/08/IOS学习——KVO/">IOS学习——KVO</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/07/IOS性能调优笔记/">IOS性能调优笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/07/IOS学习——Notification/">IOS学习——Notification</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/06/Blender基本操作笔记/">Blender基本操作笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/06/IOS学习——并发编程-1/">IOS学习——并发编程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">About</h3>
+    <div class="widget">
+	mail: XXX
+	Weibo:xxx
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+<div class="outer">
+    <div id="footer-info" class="inner">
+	<p>&copy; 2016 Loongeek</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

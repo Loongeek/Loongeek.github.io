@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>IOS学习——并发编程 | null</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍IOS的并发编程。参考 Concurrency Programming Guide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS学习——并发编程">
+<meta property="og:url" content="http://www.loongeek.com/2016/07/06/IOS学习——并发编程-1/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="介绍IOS的并发编程。参考 Concurrency Programming Guide">
+<meta property="og:updated_time" content="2016-07-08T14:31:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IOS学习——并发编程">
+<meta name="twitter:description" content="介绍IOS的并发编程。参考 Concurrency Programming Guide">
+  
+    <link rel="alternative" href="atom.xml" title="null" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">null</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Loongeek’s Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.loongeek.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post_catalog-IOS学习——并发编程-1" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/06/IOS学习——并发编程-1/" class="article-date">
+  <time datetime="2016-07-05T16:00:00.000Z" itemprop="datePublished">2016-07-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      IOS学习——并发编程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+    <ol class="toc" ><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作队列"><span class="toc-text">操作队列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分发队列"><span class="toc-text">分发队列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分发源"><span class="toc-text">分发源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定时器"><span class="toc-text">定时器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程代码改成队列"><span class="toc-text">线程代码改成队列</span></a></li></ol>
+
+        <p>介绍IOS的并发编程。参考 <a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091" target="_blank" rel="external">Concurrency Programming Guide</a></p>
+<a id="more"></a>
+<h1 id="概念">概念</h1><ul>
+<li>IOS使用异步函数来处理同步问题，在异步函数中自动创建线程，让用户不用自己实现线程编程。</li>
+<li>GCD(Grand Centrl Dispatch)<ul>
+<li>在系统级实现线程管理代码。用户只需要定义任务并加入合适的分发队列，具体的线程由GCD负责。</li>
+<li>分发队列：按先进先出原则，顺序或者并发执行队列中的任务。任务可以是函数或者闭包</li>
+<li>分发源：异步处理特定系统事件。当特定系统事件发生时调用用户指定的事件。事件包括(定时器，信号句柄，描述符相关事件，进程相关事件，mach port, 自定义事件)</li>
+</ul>
+</li>
+<li>Operation queue，Cocoa中的分发队列，<code>NSOperationQueue</code><br>  操作队列有更多因素来决定任务顺序，可以配置任务的因果关联性。操作队列的任务必须是<code>NSOperation</code>对象。操作队列使用KVO提醒。</li>
+<li>设计时注意的点<ul>
+<li>明确应用的期望行为：在使用并发技术前，先设计不采用并发的，能够按期望行为运行的应用；这样可以检查设计的有效性，也方便评估引入并发的性能提升。<ol>
+<li>列出所有的任务以及任务相关的对象或数据结构。任务要有独立的行为，有清晰的入口和出口点。包括用户交互的任务以及非用户交互的任务</li>
+<li>将任务分解成步骤，检查对对象和数据结构的修改之前有没有关联性，如果没有关联性就可以并发处理。</li>
+</ol>
+</li>
+<li>分解可执行单元：将任务分解成一个个可执行单元，封装到block中执行。如果改变可执行单元影响输出，就顺序执行；否则并发执行。一开始不必考虑可执行单元的粒度？</li>
+<li>确定队列。根据情况加入顺序或者并发队列。如果使用operation objects，配置对象关联性比选择队列更重要。</li>
+<li>如果要节省内存，考虑直接计算值</li>
+<li>先按顺序任务做，再并发化</li>
+<li>避免使用锁</li>
+<li>尽可能依赖系统框架，因为大部分系统框架已经内在地实现了并发。</li>
+<li>要保证实时性的时候需要使用线程，不要使用GCD。</li>
+</ul>
+</li>
+</ul>
+<h1 id="操作队列">操作队列</h1><ul>
+<li>操作对象<ul>
+<li><code>NSInvocationOperation</code>，基于对象和已有函数(selector)</li>
+<li><code>NSBlockOperation</code>，执行一个或多个block,所有block执行完毕，对象才结束</li>
+<li><code>NSOpertaion</code>，基类，自定义操作对象继承这个类</li>
+</ul>
+</li>
+<li>操作对象支持的特性<ul>
+<li>操作对象提供了基于图的关联性，一个块只有在关联的所有对象完毕后才开始执行</li>
+<li>支持可选的完成块</li>
+<li>使用KVO监视执行状态</li>
+<li>可以调整操作的优先级</li>
+<li>可以取消操作对象</li>
+<li>通常把操作对象放入操作队列。在不放入队列又想异步执行时，需要手动控制操作对象的异步执行。<strong>操作对象本身是同步的，与用start启动它的线程相同，但是放入队列后，队列会自动创建异步线程启动它。</strong></li>
+</ul>
+</li>
+<li>创建BlockOperation时，使用<code>addExecutionBlock</code>添加多个Block</li>
+<li>自定义操作对象<ul>
+<li>必须实现自定义初始化方法，main方法</li>
+<li>可选实现多个main后续的调用方法，设置数据和获取结果的访问器，NSCoding协议的方法用来archive/unarchive操作对象</li>
+<li>cancel：在任务中周期性检查<code>isCancelled</code>，如果为true立即退出。<code>isCancelled</code>非常轻量，检查不影响性能。通常在以下点检查：做任何工作前，每次迭代至少一次，任何相对好退出的点</li>
+<li>手动配置操作对象的并发执行。必须覆盖start, isExecuting, isFinished， isConcurrent,可选覆盖main。在start中手动创建线程。需要手动处理isExecuting, isFinished的提醒，并保证它们的线程安全</li>
+</ul>
+</li>
+<li>自定义执行行为<ul>
+<li>在创建对象后，加入队列前配置</li>
+<li><code>addDependency</code> <code>removeDependency</code></li>
+<li>关联对象执行完毕后，队列会自动执行当前对象。手动控制时，使用KVO检查isReady然后手动调用start</li>
+<li><code>setQueuePriority</code>设置对象优先级，只能在相同队列中使用</li>
+<li><code>setThreadPriority</code>设置对象main的线程优先级，start和completion还是用<code>setQueuPriority</code>的优先级</li>
+<li><code>setCompetionBlock</code>设置完成函数。完成函数是()-&gt;Void型</li>
+</ul>
+</li>
+<li>设计时要注意：不要在队列线程中存储数据，线程属于队列，不属于操作对象；必要时，可以在创建操作对象时同时创建引用，以便获取结果；在操作对象中处理所有异常和错误</li>
+<li>执行对象：<code>NSOperationQueue.addOperation</code> <code>addOperations:WaitUntilFinished</code> <code>addOperationWithBlock</code><ul>
+<li><code>setMaxConcurrentOperationCount</code></li>
+<li>检查isReady，然后手动调start; 检查isConcurrent判断是否要新起线程</li>
+</ul>
+</li>
+<li>取消：对象.cancel，或者队列.cancelAllOperations。取消的对象也被认为是完成的</li>
+<li>对象.waitUntilFinished, 队列.waitUntilAllOperationsAreFinished</li>
+<li>队列.suspended，阻止新操作对象的执行</li>
+</ul>
+<h1 id="分发队列">分发队列</h1><ul>
+<li>三种队列：串行，并发，main</li>
+<li>同一队列的任务要共享数据，通过分发队列的上下文指针来存储??</li>
+<li>获取队列：<code>dispatch_get_global_queue</code> 并发<br>  <code>dispatch_queue_create</code>串行<br>  <code>dispatch_get_current_queue</code>获取当前队列<br>  <code>dispatch_get_main</code> main队列</li>
+<li><code>dispatch_set_context</code> <code>dispatch_get_context</code></li>
+<li><code>dispatch_set_finalizer_f</code> 引用计数为0时调用清理函数</li>
+<li><code>dispatch_async</code> <code>dispatch_async_f</code>加入异步队列。可以在其中嵌套使用<code>dispatch_async</code>来异步执行completion</li>
+<li>用<code>dispatch_apply(count,queue, i)</code>来代替<code>for(i = 0 ..&lt;count)</code>,queue应当是一个并发队列</li>
+<li><code>dispatch_suspend</code> <code>dispatch_resume</code></li>
+<li><code>dispatch_semaphore_create</code>指定资源数量，<code>dispatch_semaphore_wait</code> <code>dispatch_semaphore_signal</code></li>
+<li><code>dispatch_group_create</code>创建组 <code>dispatch_group_async</code>加入异步对象组，<code>dispatch_group_wait</code>等待组</li>
+<li>不要在对同一个队列的任务使用<code>dispatch_sync</code>;避免使用锁</li>
+</ul>
+<h1 id="分发源">分发源</h1><h2 id="说明">说明</h2><ul>
+<li>定时器，信号，描述符(数据可读，可写，文件删改重命名，文件元信息改变)，进程(进程存在，fork/exec,信号发给进程)，Mach port,自定义</li>
+<li>使用步骤<ol>
+<li><code>dispatch_source_create</code>创建,</li>
+<li><code>dispatch_source_set_event_handler/_f</code>配置事件处理句柄</li>
+<li>对于定时器设置定时信息<code>dispatch_source_set_timer</code>,</li>
+<li><code>dispatch_source-set_cancel_handler/_f</code>可选地指定取消句柄，</li>
+<li>调用<code>dispatch_resume</code>开始事件</li>
+</ol>
+</li>
+<li>事件句柄中通过<code>dispatch_source_get_data</code>获取源的信息</li>
+<li><code>dispatch_set_target_queue</code>改变事件队列，通常用来改变优先级。改变是个异步操作</li>
+<li><code>dispatch_set_context</code> <code>dispatch_get_context</code></li>
+<li><code>dispatch_source_cancel</code>禁止源   </li>
+<li><code>dispatch_suspend</code> <code>dispatch_resume</code></li>
+</ul>
+<h2 id="定时器">定时器</h2><ul>
+<li><code>dispatch_time</code>，正常的定时器,<code>leeway</code>用来指定定时器容差，但是即使为0，也不一定能精确定时</li>
+<li><code>dispatch_walltime</code>，按系统时钟开始定时，通常用于间隔较长的情况</li>
+<li><code>dispatch_after/_f</code>，类似dispatch_async，不过在一段时间后开始执行任务</li>
+</ul>
+<h1 id="线程代码改成队列">线程代码改成队列</h1><ul>
+<li>单任务线程：封装到block,加入一个并发队列</li>
+<li>工人线程：根据工人线程之间的交互，加入并发或者顺序线程</li>
+<li>线程池：封装到各个blocks,加入一个并发队列</li>
+<li>线程要合并完成的，使用dispatch group</li>
+<li>文件读写线程，使用dispatch_source</li>
+<li>消除Lock</li>
+<li>受保护资源放入串行异步队列处理</li>
+<li>当前代码要等待任务完成，使用dispatch_sync</li>
+<li>生产者-消费者，直接使用dispatch_async队列</li>
+<li>runLoop，在串行队列中加入任务</li>
+</ul>
+<!--less-->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/07/06/IOS学习——并发编程-1/" data-id="ciqdugqk7003kxvjh89vas37j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+
+      
+	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
+	  
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/06/Blender基本操作笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Blender基本操作笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/06/IOS学习——并发编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">IOS学习——并发编程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">26</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3d/">3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVO/">KVO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Notification/">Notification</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Threading/">Threading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tuning/">Tuning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI-Test/">UI Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blender/">blender</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java8/">java8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/">misc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stream/">stream</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swing-刷新/">swing 刷新</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 12.5px;">IDE</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Threading/" style="font-size: 10px;">Threading</a> <a href="/tags/Tuning/" style="font-size: 10px;">Tuning</a> <a href="/tags/UI-Test/" style="font-size: 10px;">UI Test</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/WEB/" style="font-size: 15px;">WEB</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/blender/" style="font-size: 10px;">blender</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java8/" style="font-size: 10px;">java8</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/swing-刷新/" style="font-size: 10px;">swing 刷新</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/小技巧/" style="font-size: 17.5px;">小技巧</a> <a href="/tags/并发/" style="font-size: 12.5px;">并发</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/08/IOS学习——KVO/">IOS学习——KVO</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/07/IOS性能调优笔记/">IOS性能调优笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/07/IOS学习——Notification/">IOS学习——Notification</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/06/Blender基本操作笔记/">Blender基本操作笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/06/IOS学习——并发编程-1/">IOS学习——并发编程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">About</h3>
+    <div class="widget">
+	mail: XXX
+	Weibo:xxx
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+<div class="outer">
+    <div id="footer-info" class="inner">
+	<p>&copy; 2016 Loongeek</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
