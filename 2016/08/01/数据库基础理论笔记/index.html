@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据库基础理论笔记 | null</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据库基础理论学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库基础理论笔记">
+<meta property="og:url" content="http://www.loongeek.com/2016/08/01/数据库基础理论笔记/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="数据库基础理论学习笔记">
+<meta property="og:updated_time" content="2016-08-18T13:56:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库基础理论笔记">
+<meta name="twitter:description" content="数据库基础理论学习笔记">
+  
+    <link rel="alternative" href="atom.xml" title="null" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">null</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Loongeek’s Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.loongeek.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post_catalog-数据库基础理论笔记" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/01/数据库基础理论笔记/" class="article-date">
+  <time datetime="2016-07-31T16:00:00.000Z" itemprop="datePublished">2016-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/理论/">理论</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据库基础理论笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+    <ol class="toc" ><li class="toc-item toc-level-1"><a class="toc-link" href="#基本功能"><span class="toc-text">基本功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模型"><span class="toc-text">模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模型与SQL"><span class="toc-text">模型与SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代数查询语言"><span class="toc-text">代数查询语言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设计理论"><span class="toc-text">设计理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式设计"><span class="toc-text">模式设计</span></a></li></ol>
+
+        <p>数据库基础理论学习笔记<br><a id="more"></a></p>
+<h1 id="基本功能">基本功能</h1><ul>
+<li>DDL,模式</li>
+<li>DML</li>
+<li>超大数据量</li>
+<li>数据库基本特性(ACID)<br>  Atomicity 原子性：<br>  Consistency 一致性：<br>  Isolation 独立性：<br>  Durability 持久性：</li>
+<li>DBMS：</li>
+</ul>
+<h1 id="模型">模型</h1><ul>
+<li>结构 + 操作 + 约束</li>
+<li>列是属性，行是元组</li>
+<li>模式 = 表的属性<strong>集合</strong>(属性不能有重复项)</li>
+<li>关系 = 某模式下元组的<strong>集合</strong>(元组不能有重复项)</li>
+<li>键 = 具有唯一性的属性组合（对所有可能实例）</li>
+</ul>
+<h1 id="模型与SQL">模型与SQL</h1><ul>
+<li>关系 = SQL table</li>
+<li>某种子模式下的关系 = SQL view</li>
+<li>SQL数据类型：<br>  <code>CHAR</code> <code>VARCHAR</code> <code>BIT</code> <code>BIT VARING</code> <code>BOOLEAN</code>(<code>UNKNOWN</code>) <code>INT</code> <code>INTEGER</code> <code>FLOAT</code> <code>REAL</code> <code>DOUBLE</code> <code>PRECISION</code> <code>DATE</code> <code>TIME</code></li>
+<li>SQL操作：<ul>
+<li>CREATE TABLE name(prop1 type(xxx), prop2 type(xxx), …);</li>
+<li>DROP TABLE name;</li>
+<li>ALTER TABLE name ADD prop type(xxx);</li>
+<li>ALTER TABLE name DROP propname;</li>
+<li>建议用NULL代替真实值</li>
+<li>propname CHAR(1) DEFAULT ‘?’</li>
+<li>CREATE TABLE name(…, propX type(xxx) PRIMARY KEY, propY type(xxx) UNIQUE, … );  //主键不能有NULL, UNIQUE键可以有NULL</li>
+<li>CREATE TABLE name(…, PRIMARY KEY(xxx,xxx,xxx), …); //复合主键</li>
+</ul>
+</li>
+</ul>
+<h1 id="代数查询语言">代数查询语言</h1><ul>
+<li>R∪S R∩S R-S, 并交差集（前提：关系的属性和域匹配，排过序）</li>
+<li>𝜋(R) 部分列。该操作会合并重复元组</li>
+<li>σ𝑐(R) 满足条件c的元组集合</li>
+<li>R×S 叉集</li>
+<li>R⋈S 悬浮元组 𝜋L(σ𝑐(R×S))??</li>
+<li>R⋈𝑐S = σ𝑐(R×S)</li>
+<li>𝜌𝑠(….)(R)</li>
+<li>𝜋A(R)- 𝜋B(S)= 𝜙 引用完整性</li>
+<li>σ<a1.key =="A2.key" and="" a1.x="" ≠="" a2.x="" a1.y="" a2.y="">(A1×A2) = 𝜙 键约束</a1.key></li>
+</ul>
+<h1 id="设计理论">设计理论</h1><ul>
+<li>FD函数依赖： A1,A2,…. -&gt; B1,B2,…. (对所有可能实例成立)</li>
+<li>键：能决定其它所有属性的最小集合</li>
+<li>超键：含键的属性集</li>
+<li>分解/组合规则</li>
+<li>平凡FD: Ax -&gt; Bx, 若Bx⊆Ax。平凡依赖规则</li>
+<li>闭包：{A1,A2,….An}⁺, 其中A1,A2,…An是属性集</li>
+<li>闭包算法：逐步添加法</li>
+<li>传递规则：可消去平凡FD（自反律，增广律）</li>
+<li>超键的闭包是所有属性</li>
+<li>基本集，最小化基本集<ul>
+<li>右边是单一属性</li>
+<li>删掉任一FD,就不是基本集了</li>
+<li>任一FD,左边删掉任一属性，就不是基本集了</li>
+</ul>
+</li>
+<li>FD投影计算：</li>
+</ul>
+<h1 id="模式设计">模式设计</h1><ul>
+<li>异常的3种形式：分解</li>
+<li>BCNF：R 非平凡FD左边是超键<br>  二元关系都属于BCNF<br>  简单理解为：如果键的部分属性集合能决定其它某些属性，就单独拿出来做一张新表(新关系)</li>
+<li>分解法则：<ol>
+<li>不违例，返回</li>
+<li>违例,X-&gt;Y; R1={X+} R2={!X+ ∪ X}</li>
+<li>递归</li>
+</ol>
+</li>
+<li>chase检验：测无损</li>
+<li>下标替换法则</li>
+<li>反向证明</li>
+<li>3NF<ul>
+<li>增加了 “Bs都是某键成员”</li>
+<li>非平凡FD，要么左边是超键，要么右边是主属性</li>
+</ul>
+</li>
+<li>3NF分解算法：<ol>
+<li>找出F最小基本集G</li>
+<li>G中每个X-&gt;A, {XA}分解出来</li>
+<li>若不含超键，增加关系模式为R的任一键</li>
+</ol>
+</li>
+<li>最小基本集测试原则：3个</li>
+<li>无损连接：必有超键或键（后者是3NF的关键）</li>
+<li>依赖保持：按依赖分解<!--less-->
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/08/01/数据库基础理论笔记/" data-id="cis0exgma0014pjjf0oo6ruun" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Theory/">Theory</a></li></ul>
+
+      
+	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
+	  
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/01/零碎知识点/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          零碎知识点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/01/Servelet/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Servelet和JSP学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/Blender/">Blender</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CG/理论/">理论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/文学/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">38</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/App/">App</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/GUI/">GUI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/后端/">后端</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/游戏开发/">游戏开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/理论/">理论</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/语言/">语言</a><span class="category-list-count">9</span></li></ul></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/App/" style="font-size: 20px; color: #fa6">App</a> <a href="/tags/Backend/" style="font-size: 10px; color: #636">Backend</a> <a href="/tags/Blender/" style="font-size: 14px; color: #a36366">Blender</a> <a href="/tags/C/" style="font-size: 10px; color: #636">C</a> <a href="/tags/CG/" style="font-size: 10px; color: #636">CG</a> <a href="/tags/Database/" style="font-size: 10px; color: #636">Database</a> <a href="/tags/English/" style="font-size: 10px; color: #636">English</a> <a href="/tags/Frontend/" style="font-size: 10px; color: #636">Frontend</a> <a href="/tags/Game/" style="font-size: 10px; color: #636">Game</a> <a href="/tags/Git/" style="font-size: 10px; color: #636">Git</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #854b66">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px; color: #636">IDE</a> <a href="/tags/IOS/" style="font-size: 20px; color: #fa6">IOS</a> <a href="/tags/Java/" style="font-size: 16px; color: #c27a66">Java</a> <a href="/tags/Lua/" style="font-size: 10px; color: #636">Lua</a> <a href="/tags/Macbook/" style="font-size: 10px; color: #636">Macbook</a> <a href="/tags/Markdown/" style="font-size: 10px; color: #636">Markdown</a> <a href="/tags/Notes/" style="font-size: 14px; color: #a36366">Notes</a> <a href="/tags/Plugin/" style="font-size: 10px; color: #636">Plugin</a> <a href="/tags/Programming-Language/" style="font-size: 18px; color: #e09266">Programming Language</a> <a href="/tags/Python/" style="font-size: 10px; color: #636">Python</a> <a href="/tags/Ruby/" style="font-size: 14px; color: #a36366">Ruby</a> <a href="/tags/SSH/" style="font-size: 10px; color: #636">SSH</a> <a href="/tags/Swift/" style="font-size: 10px; color: #636">Swift</a> <a href="/tags/Swing/" style="font-size: 10px; color: #636">Swing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/17/RSpec学习/">RSpec学习</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/Gem-Gemfile-Bundle/">Gem,Gemfile,Bundle</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/11/Rack学习笔记/">Rack学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/零碎知识点/">零碎知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/数据库基础理论笔记/">数据库基础理论笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">About</h3>
+    <div class="widget">
+	mail: wizardof21cn@163.com
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+<div class="outer">
+    <div id="footer-info" class="inner">
+	<p>&copy; 2016 Loongeek</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

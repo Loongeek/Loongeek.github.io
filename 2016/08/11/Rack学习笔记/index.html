@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Rack学习笔记 | null</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍Rack。参考rack.github.io">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rack学习笔记">
+<meta property="og:url" content="http://www.loongeek.com/2016/08/11/Rack学习笔记/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="介绍Rack。参考rack.github.io">
+<meta property="og:updated_time" content="2016-08-18T14:07:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rack学习笔记">
+<meta name="twitter:description" content="介绍Rack。参考rack.github.io">
+  
+    <link rel="alternative" href="atom.xml" title="null" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">null</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Loongeek’s Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.loongeek.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post_catalog-Rack学习笔记" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/11/Rack学习笔记/" class="article-date">
+  <time datetime="2016-08-10T16:00:00.000Z" itemprop="datePublished">2016-08-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/后端/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Rack学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+    
+
+        <p>介绍Rack。参考<a href="http://rack.github.io" target="_blank" rel="external">rack.github.io</a><br><a id="more"></a></p>
+<ul>
+<li>最简单的基于ruby和ruby框架的webserver接口</li>
+<li>使用<code>rackup config.ru</code>，在<code>config.ru</code>中定义响应方法</li>
+<li><p>使用中间件。相当于<code>Middleware1.new(Middleware2.new(Middleware3.new(MyApp)))</code><br>也就是HTTP Requese-&gt;MyApp-&gt;Middleware3-&gt;Middleware2-&gt;Middleware1的处理流</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use <span class="constant">Middleware1</span></span><br><span class="line">use <span class="constant">Middleware2</span></span><br><span class="line">use <span class="constant">Middleware3</span></span><br><span class="line">run <span class="constant">MyApp</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Rack:Response</code>和<code>Rack:Request</code>分别用来表示响应和请求</p>
+</li>
+<li>Rack中间件<ul>
+<li>JSON-P</li>
+<li>Rack::Cache is suitable as a quick drop-in component to enable HTTP caching.</li>
+<li>Rack::ESI is a small (but still very useful!) subset of ESI (Edge Side Includes).</li>
+<li>CloudKit includes OpenIDFilter, OAuthFilter, and RESTful JSON storage</li>
+<li>Rack::Config – Shared configuration for cooperative middleware.</li>
+<li>Rack::OpenID provides a more HTTPish API around the ruby-openid library.</li>
+<li>Rack::Debug</li>
+<li>Rack::AbstractFormat</li>
+<li>Rack::RespondTo allows triggering different actions based on requested media type.</li>
+<li>Rack::SupportedMediaTypes specify an app’s supported media types.</li>
+<li>Rack::AcceptMediaTypes determine the request’s prefered media type.</li>
+<li>Rack::MultipartRelated parses multipart/related requests and rebuild a simple/merged parameters hash.</li>
+<li>Rack::Heartbeat Add a configurable heartbeat/health-check/ping url to your app</li>
+<li>Rack::Honeypot acts as a spam trap.</li>
+<li>Rack::GoogleAnalytics embeds Google Analytics tracking code.</li>
+<li>Rack::Embed embeds small images via the data-url (base64) if the browser supports it. This reduces http traffic.</li>
+<li>Warden General Rack Authentication Framework</li>
+<li>Rack::StaticFallback bounces or redirects requests to missing static files.</li>
+<li>Rack::Throttle provides logic for rate-limiting incoming HTTP requests to Rack applications.</li>
+<li>Rack::LinkedData implements Linked Data content negotiation.</li>
+<li>SimpleRouter</li>
+<li>Cylon Disallows application indexation by search engines except in production. Rack Middleware and Rails Engine.</li>
+<li>Slogger::Rack::RequestLogger if you want to log on Syslog.</li>
+<li>Rack::Batik::SVG transcodes SVG pictures to JPEG</li>
+<li>Rack::Referrals extracts referring search engine info</li>
+<li>Muster parses some or all of the query string in varying formats into hashes. Helps adding human friendly (not rack/rails nested) query string options to APIs and such.</li>
+<li>Moneta adds Rack::MonetaStore (places key/value store in env, support for per-request caching), Rack::MonetaCookies (allow Moneta to be used to store cookies) and Rack::MonetaRest (expose a key/value store via HTTP/REST)</li>
+<li>RouteDowncaser makes all routing in Rails case-insensitive.</li>
+<li>Rack::CanIUse checks if user agents support the HTML/CSS technologies used by your website using the CanIUse database.</li>
+<li>Rack::Attack A DSL for blocking &amp; throttling abusive clients</li>
+<li>ChromeLogger A Ruby library that implements the Chrome Logger spec as Rack middleware</li>
+<li>Rack::DetectTor Detect Tor exit users</li>
+<li>Rack::RackTorBlock Block access to a rack application from any client accessing from the Tor network</li>
+<li>Rack::Turnout Easily put your Rack apps into maintenance mode</li>
+<li>Rack::CAS Simple CAS client authentication</li>
+<li>Rack::AcornCache Configurable HTTP proxy caching solution</li>
+</ul>
+</li>
+<li>Rack::Cors<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'sinatra'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'rack/cors'</span></span><br><span class="line"></span><br><span class="line">use <span class="constant">Rack::Cors</span> <span class="keyword">do</span> |config|</span><br><span class="line">  config.allow <span class="keyword">do</span> |allow|</span><br><span class="line">    allow.origins <span class="string">'*'</span></span><br><span class="line">    allow.resource <span class="string">'/file/list_all/'</span>, <span class="symbol">:headers</span> =&amp;gt; <span class="symbol">:any</span></span><br><span class="line">    allow.resource <span class="string">'/file/at/*'</span>,</span><br><span class="line">        <span class="symbol">:methods</span> =&amp;gt; [<span class="symbol">:get</span>, <span class="symbol">:post</span>, <span class="symbol">:put</span>, <span class="symbol">:delete</span>],</span><br><span class="line">        <span class="symbol">:headers</span> =&amp;gt; <span class="symbol">:any</span>,</span><br><span class="line">        <span class="symbol">:max_age</span> =&amp;gt; <span class="number">0</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">'/file/list_all/'</span> <span class="keyword">do</span></span><br><span class="line">  <span class="comment">#...</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">'/file/at/*'</span> <span class="keyword">do</span></span><br><span class="line">  <span class="comment">#...</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<!--less-->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/08/11/Rack学习笔记/" data-id="cis0exgo0003tpjjfisdhe1pl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backend/">Backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/">Ruby</a></li></ul>
+
+      
+	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
+	  
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/12/Gem-Gemfile-Bundle/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Gem,Gemfile,Bundle
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/01/零碎知识点/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">零碎知识点</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/Blender/">Blender</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CG/理论/">理论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/文学/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">38</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/App/">App</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/GUI/">GUI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/后端/">后端</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/游戏开发/">游戏开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/理论/">理论</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/语言/">语言</a><span class="category-list-count">9</span></li></ul></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/App/" style="font-size: 20px; color: #fa6">App</a> <a href="/tags/Backend/" style="font-size: 10px; color: #636">Backend</a> <a href="/tags/Blender/" style="font-size: 14px; color: #a36366">Blender</a> <a href="/tags/C/" style="font-size: 10px; color: #636">C</a> <a href="/tags/CG/" style="font-size: 10px; color: #636">CG</a> <a href="/tags/Database/" style="font-size: 10px; color: #636">Database</a> <a href="/tags/English/" style="font-size: 10px; color: #636">English</a> <a href="/tags/Frontend/" style="font-size: 10px; color: #636">Frontend</a> <a href="/tags/Game/" style="font-size: 10px; color: #636">Game</a> <a href="/tags/Git/" style="font-size: 10px; color: #636">Git</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #854b66">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px; color: #636">IDE</a> <a href="/tags/IOS/" style="font-size: 20px; color: #fa6">IOS</a> <a href="/tags/Java/" style="font-size: 16px; color: #c27a66">Java</a> <a href="/tags/Lua/" style="font-size: 10px; color: #636">Lua</a> <a href="/tags/Macbook/" style="font-size: 10px; color: #636">Macbook</a> <a href="/tags/Markdown/" style="font-size: 10px; color: #636">Markdown</a> <a href="/tags/Notes/" style="font-size: 14px; color: #a36366">Notes</a> <a href="/tags/Plugin/" style="font-size: 10px; color: #636">Plugin</a> <a href="/tags/Programming-Language/" style="font-size: 18px; color: #e09266">Programming Language</a> <a href="/tags/Python/" style="font-size: 10px; color: #636">Python</a> <a href="/tags/Ruby/" style="font-size: 14px; color: #a36366">Ruby</a> <a href="/tags/SSH/" style="font-size: 10px; color: #636">SSH</a> <a href="/tags/Swift/" style="font-size: 10px; color: #636">Swift</a> <a href="/tags/Swing/" style="font-size: 10px; color: #636">Swing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/17/RSpec学习/">RSpec学习</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/Gem-Gemfile-Bundle/">Gem,Gemfile,Bundle</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/11/Rack学习笔记/">Rack学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/零碎知识点/">零碎知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/数据库基础理论笔记/">数据库基础理论笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">About</h3>
+    <div class="widget">
+	mail: wizardof21cn@163.com
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+<div class="outer">
+    <div id="footer-info" class="inner">
+	<p>&copy; 2016 Loongeek</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

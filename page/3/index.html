@@ -67,14 +67,15 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-python3语法笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <article id="post_catalog-Blender基本操作笔记" class="article article-type-post_catalog" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/04/19/python3语法笔记/" class="article-date">
-  <time datetime="2016-04-18T16:00:00.000Z" itemprop="datePublished">2016-04-19</time>
+    <a href="/2016/07/06/Blender基本操作笔记/" class="article-date">
+  <time datetime="2016-07-05T16:00:00.000Z" itemprop="datePublished">2016-07-06</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
+    <a class="article-category-link" href="/categories/CG/">CG</a>►<a class="article-category-link" href="/categories/CG/Blender/">Blender</a>
   </div>
 
   </div>
@@ -85,7 +86,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/19/python3语法笔记/">Python3语法笔记</a>
+      <a class="article-title" href="/2016/07/06/Blender基本操作笔记/">Blender基本操作笔记</a>
     </h1>
   
 
@@ -93,19 +94,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>记录了python语法和python koans中的要点</p>
+        <p>记录Blender基本操作</p>
         
           <p class="article-more-link">
-            <a href="/2016/04/19/python3语法笔记/#more">阅读全文</a>
+            <a href="/2016/07/06/Blender基本操作笔记/#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/04/19/python3语法笔记/" data-id="ciqdugqih000sxvjhwlp4kgf2" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/07/06/Blender基本操作笔记/" data-id="cis0exgpo0078pjjfa5okznv1" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blender/">blender</a></li></ul>
 
       
     </footer>
@@ -114,14 +115,14 @@
 </article>
 
   
-    <article id="post-swing-paint" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post_catalog-IOS学习笔记——坑" class="article article-type-post_catalog" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/01/10/swing-paint/" class="article-date">
-  <time datetime="2016-01-10T14:09:08.000Z" itemprop="datePublished">2016-01-10</time>
+    <a href="/2016/07/05/IOS学习笔记——坑/" class="article-date">
+  <time datetime="2016-07-04T16:00:00.000Z" itemprop="datePublished">2016-07-05</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/App/">App</a>
   </div>
 
   </div>
@@ -132,7 +133,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/swing-paint/">Swing的刷新方法一览</a>
+      <a class="article-title" href="/2016/07/05/IOS学习笔记——坑/">IOS学习中的坑</a>
     </h1>
   
 
@@ -140,80 +141,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <h1 id="Swing的刷新方法">Swing的刷新方法</h1><ul>
-<li><p>Paint()<br>  可以用<code>paintComponent()</code>代替<code>paint()</code>。<code>paint()</code>会依次调用<code>paintBorder()</code>, <code>paintComponent()</code>和<code>paintChildren()</code>。一般不要直接调用该方法，应当调用<code>repaint()</code></p>
-</li>
-<li><p>repaint()<br>  不能被覆盖。控制着<code>update()</code> -&gt; <code>paint()</code>的消息循环。当你变更了组件的外观(除了更改大小)，就应当调用该方法</p>
-</li>
-<li><p>validate()<br>  告诉组件刷新自己。如果你更改了组件大小，或者变更了它的子组件(添加、删除、改变大小)，应当调用该方法。也许调用<code>revalidate()</code>更好</p>
-</li>
-<li><p>update()<br>  负责清除组件并调用paint()。一般不要直接调用它，应当调用<code>repaint()</code>。如果在做动画时需要快速刷新，可以覆盖该方法让它直接调用<code>paint()</code></p>
-</li>
-<li><p>updateUI()<br>  如果你在组件显示后，又更改了UI的风格，应当调用该方法</p>
-</li>
-<li><p>invalidate()<br>  标记组件是失效的，意味着组件必需被刷新。但是这只是个标记，可能会多个组件在之后适当的时间一起刷新</p>
-</li>
-<li><p>validate()<br>  重新布局。意味着布局管理器会重新设置失效的组件及其子组件的大小 </p>
-</li>
-<li><p>revalidate()<br>  相当于<code>invalidate()</code>+<code>validate()</code>。标记组件失效并处理</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/01/10/swing-paint/" data-id="ciqdugqib000gxvjh2utbqd8s" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swing-刷新/">swing 刷新</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-  
-    <article id="post-java7-new-feature" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/10/java7-new-feature/" class="article-date">
-  <time datetime="2016-01-10T13:44:20.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/java7-new-feature/">Java7特性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>介绍了java7的新特性<br>
+        <p>记录IOS开发中的技巧，知识点和难点</p>
         
           <p class="article-more-link">
-            <a href="/2016/01/10/java7-new-feature/#more">阅读全文</a>
+            <a href="/2016/07/05/IOS学习笔记——坑/#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/01/10/java7-new-feature/" data-id="ciqdugqis001dxvjhdjwtc1u8" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/07/05/IOS学习笔记——坑/" data-id="cis0exgoo0056pjjflxihwqgc" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/App/">App</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
 
       
     </footer>
@@ -222,14 +162,14 @@
 </article>
 
   
-    <article id="post-java8-new-feature" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post_catalog-IOS学习笔记——URL会话" class="article article-type-post_catalog" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/01/10/java8-new-feature/" class="article-date">
-  <time datetime="2016-01-10T13:42:18.000Z" itemprop="datePublished">2016-01-10</time>
+    <a href="/2016/07/05/IOS学习笔记——URL会话/" class="article-date">
+  <time datetime="2016-07-04T16:00:00.000Z" itemprop="datePublished">2016-07-05</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/App/">App</a>
   </div>
 
   </div>
@@ -240,7 +180,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/java8-new-feature/">java8特性解析</a>
+      <a class="article-title" href="/2016/07/05/IOS学习笔记——URL会话/">IOS学习笔记——URL会话</a>
     </h1>
   
 
@@ -248,19 +188,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Java8特性解析">Java8特性解析</h1><p>  对java8的新特性进行说明。包括lambda表达式，stream，javafx，并发等方面。参考了书籍<strong><em>《Java SE8 for the Really Impatient》</em></strong></p>
+        <p>介绍IOS下URL会话的相关知识。参考 <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i">URL Session Programming Guide</a></p>
         
           <p class="article-more-link">
-            <a href="/2016/01/10/java8-new-feature/#more">阅读全文</a>
+            <a href="/2016/07/05/IOS学习笔记——URL会话/#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2016/01/10/java8-new-feature/" data-id="ciqdugqip0015xvjhg7kj0g2i" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/07/05/IOS学习笔记——URL会话/" data-id="cis0exgou005gpjjf5bh6qv4s" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java8/">java8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/">lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stream/">stream</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/App/">App</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
 
       
     </footer>
@@ -269,14 +209,14 @@
 </article>
 
   
-    <article id="post-hexo-github" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post_catalog-IOS学习笔记——网络" class="article article-type-post_catalog" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/27/hexo-github/" class="article-date">
-  <time datetime="2015-12-27T02:38:43.000Z" itemprop="datePublished">2015-12-27</time>
+    <a href="/2016/07/04/IOS学习笔记——网络/" class="article-date">
+  <time datetime="2016-07-03T16:00:00.000Z" itemprop="datePublished">2016-07-04</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/App/">App</a>
   </div>
 
   </div>
@@ -287,7 +227,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/27/hexo-github/">Hexo发布到Github</a>
+      <a class="article-title" href="/2016/07/04/IOS学习笔记——网络/">IOS学习笔记——网络</a>
     </h1>
   
 
@@ -295,135 +235,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <ol>
-<li>在Github上创建一个带readme的新repository</li>
-<li><p>修改hexo主目录的_config.yml，添加</p>
-<pre><code>deployer:
-    <span class="class"><span class="keyword">type</span>: <span class="title">git</span></span>
-    repository: &lt;github的repository路径&gt;
-    branch: master
-</code></pre></li>
-<li><p>如果报错说找不到deployer,就执行以下代码安装：</p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span>
-</code></pre></li>
-<li><p>安装完成后执行</p>
-<pre><code><span class="title">hexo</span> deploy
-</code></pre></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/27/hexo-github/" data-id="ciqdugqj0001mxvjh80z372y4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HEXO/">HEXO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-  
-    <article id="post-ssh-config" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/24/ssh-config/" class="article-date">
-  <time datetime="2015-12-24T03:34:19.000Z" itemprop="datePublished">2015-12-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/24/ssh-config/">ssh配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <h1 id="ssh与scp">ssh与scp</h1><p>基本用法:</p>
-<pre><code>ssh <span class="keyword">user</span>@<span class="built_in">hostname</span> <span class="literal">command</span>
-scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">user</span>@host2:file2
-</code></pre><h1 id="ssh免密配置">ssh免密配置</h1><ol>
-<li><p>本机运行</p>
-<pre><code>ssh-keygen -t rsa
-</code></pre><p> 在~/.ssh/下生成了私钥id_rsa和公钥id_rsa.pub</p>
-</li>
-<li>利用scp将id_rsa.pub传送到远程服务器的用户目录~/.ssh/下，<br> 改名为authorized_keys，如果已有这个文件，就append到该文件</li>
-<li>修改权限：<ul>
-<li>本地的.ssh权限改为644, id_rsa权限改为600,known_hots权限改为644</li>
-<li>远程的.ssh权限改为644，authorized_keys权限改为644</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/ssh-config/" data-id="ciqdugqie000kxvjh72e2sgj7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-  
-    <article id="post-macbook-operation-memo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/24/macbook-operation-memo/" class="article-date">
-  <time datetime="2015-12-24T01:51:05.000Z" itemprop="datePublished">2015-12-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/其它/">其它</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/24/macbook-operation-memo/">Macbook操作备忘</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>介绍了Macbook(博主使用的是Macbook Pro Retina 2013款，OS X10.9.5)<br>
+        <p>介绍IOS网络编程的内容。参考IOS开发者库的 <a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/NetworkingConcepts/Introduction/Introduction.html#//apple_ref/doc/uid/TP40012487">Network Concept</a>, <a href="https://developer.apple.com/library/ios/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010220">Network Overview</a></p>
         
           <p class="article-more-link">
-            <a href="/2015/12/24/macbook-operation-memo/#more">阅读全文</a>
+            <a href="/2016/07/04/IOS学习笔记——网络/#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/macbook-operation-memo/" data-id="ciqdugqim0011xvjhxehnooos" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/07/04/IOS学习笔记——网络/" data-id="cis0exgog004qpjjfydh4qa9q" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/App/">App</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
 
       
     </footer>
@@ -432,14 +256,14 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
 </article>
 
   
-    <article id="post-idea-useguide" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post_catalog-零碎技巧" class="article article-type-post_catalog" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/24/idea-useguide/" class="article-date">
-  <time datetime="2015-12-24T01:49:49.000Z" itemprop="datePublished">2015-12-24</time>
+    <a href="/2016/06/30/零碎技巧/" class="article-date">
+  <time datetime="2016-06-29T16:00:00.000Z" itemprop="datePublished">2016-06-30</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/理论/">理论</a>
   </div>
 
   </div>
@@ -450,7 +274,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/24/idea-useguide/">IDEA用户手册摘要</a>
+      <a class="article-title" href="/2016/06/30/零碎技巧/">零碎技巧</a>
     </h1>
   
 
@@ -458,19 +282,19 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Intellij IDEA的用户手册摘要。更多详细内容请参考<a href="https://www.jetbrains.com/idea/help/meet-intellij-idea.html">IDEA的主页</a></p>
+        <p>记录零碎技巧，主要是各种安装，配置，操作中的小技巧等等</p>
         
           <p class="article-more-link">
-            <a href="/2015/12/24/idea-useguide/#more">阅读全文</a>
+            <a href="/2016/06/30/零碎技巧/#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/idea-useguide/" data-id="ciqdugqiw001hxvjhrl1jolil" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/30/零碎技巧/" data-id="cis0exglu000hpjjfjagsioob" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE/">IDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Notes/">Notes</a></li></ul>
 
       
     </footer>
@@ -479,14 +303,14 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
 </article>
 
   
-    <article id="post-Plantuml" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post_catalog-ruby语言学习" class="article article-type-post_catalog" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/22/Plantuml/" class="article-date">
-  <time datetime="2015-12-22T11:04:36.000Z" itemprop="datePublished">2015-12-22</time>
+    <a href="/2016/06/30/ruby语言学习/" class="article-date">
+  <time datetime="2016-06-29T16:00:00.000Z" itemprop="datePublished">2016-06-30</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/语言/">语言</a>
   </div>
 
   </div>
@@ -497,7 +321,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/22/Plantuml/">Plantuml使用笔记</a>
+      <a class="article-title" href="/2016/06/30/ruby语言学习/">Ruby语言学习</a>
     </h1>
   
 
@@ -505,19 +329,19 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Plantuml</strong>是一个可以广泛应用的UML画图插件，可以用在<em>Emacs</em>, <em>Eclipse</em>和<em>IDEA</em>中，本文介绍了它的使用方法<br>
+        <p>Ruby语言学习<br>
         
           <p class="article-more-link">
-            <a href="/2015/12/22/Plantuml/#more">阅读全文</a>
+            <a href="/2016/06/30/ruby语言学习/#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/22/Plantuml/" data-id="ciqdugqjb0023xvjhrkv1udcz" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/30/ruby语言学习/" data-id="cis0exgmr001ppjjfsni6zj3s" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE/">IDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UML/">UML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插件/">插件</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/">Programming Language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/">Ruby</a></li></ul>
 
       
     </footer>
@@ -526,14 +350,14 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
 </article>
 
   
-    <article id="post-markdown" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post_catalog-IOS学习笔记——作业" class="article article-type-post_catalog" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/07/25/markdown/" class="article-date">
-  <time datetime="2015-07-25T03:11:17.000Z" itemprop="datePublished">2015-07-25</time>
+    <a href="/2016/06/29/IOS学习笔记——作业/" class="article-date">
+  <time datetime="2016-06-28T16:00:00.000Z" itemprop="datePublished">2016-06-29</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/软件/">软件</a>
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/App/">App</a>
   </div>
 
   </div>
@@ -544,7 +368,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/25/markdown/">Markdown基本语法笔记</a>
+      <a class="article-title" href="/2016/06/29/IOS学习笔记——作业/">IOS学习笔记——作业</a>
     </h1>
   
 
@@ -552,19 +376,160 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简单介绍了Markdown基本语法，并给出了示例<br>
+        <p>IOS学习笔记，基于斯坦福公开课<strong>基于swift的IOS 9 App开发</strong>，记录作业要求和心得。<br>
         
           <p class="article-more-link">
-            <a href="/2015/07/25/markdown/#more">阅读全文</a>
+            <a href="/2016/06/29/IOS学习笔记——作业/#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/07/25/markdown/" data-id="ciqdugqij000wxvjhla5aba8g" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2016/06/29/IOS学习笔记——作业/" data-id="cis0exgoq005bpjjffsef4sh1" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/App/">App</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
+    <article id="post_catalog-English Notes" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/27/English Notes/" class="article-date">
+  <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/外语/">外语</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/27/English Notes/">English Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>英语笔记</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/27/English Notes/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/06/27/English Notes/" data-id="cis0exgpc006ipjjfx0bq0xkm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Notes/">Notes</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
+    <article id="post_catalog-IOS学习笔记——测试" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/23/IOS学习笔记——测试/" class="article-date">
+  <time datetime="2016-06-22T16:00:00.000Z" itemprop="datePublished">2016-06-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/App/">App</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/23/IOS学习笔记——测试/">IOS学习笔记——测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>IOS学习笔记，介绍Xcode下如何进行调试和测试</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/23/IOS学习笔记——测试/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/06/23/IOS学习笔记——测试/" data-id="cis0exgoj004vpjjf473uqav2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/App/">App</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Test/">Test</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
+    <article id="post_catalog-Swift语言学习" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/21/Swift语言学习/" class="article-date">
+  <time datetime="2016-06-20T16:00:00.000Z" itemprop="datePublished">2016-06-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/语言/">语言</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/21/Swift语言学习/">Swift语言学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>IOS总结Swift学习中的重点，参考<a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#">苹果官网Swift Programming Language(2.2)</a><br>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/21/Swift语言学习/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/06/21/Swift语言学习/" data-id="cis0exgnr003gpjjf4sk63vjs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/">Programming Language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li></ul>
 
       
     </footer>
@@ -575,7 +540,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -586,16 +551,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">26</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3d/">3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVO/">KVO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Notification/">Notification</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Threading/">Threading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tuning/">Tuning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI-Test/">UI Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blender/">blender</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java8/">java8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/">misc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stream/">stream</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swing-刷新/">swing 刷新</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/Blender/">Blender</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CG/理论/">理论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/文学/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">38</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/App/">App</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/GUI/">GUI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/后端/">后端</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/游戏开发/">游戏开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/理论/">理论</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/语言/">语言</a><span class="category-list-count">9</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -604,7 +560,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/English/" style="font-size: 10px;">English</a> <a href="/tags/HEXO/" style="font-size: 10px;">HEXO</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 12.5px;">IDE</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Threading/" style="font-size: 10px;">Threading</a> <a href="/tags/Tuning/" style="font-size: 10px;">Tuning</a> <a href="/tags/UI-Test/" style="font-size: 10px;">UI Test</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/WEB/" style="font-size: 15px;">WEB</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/blender/" style="font-size: 10px;">blender</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java8/" style="font-size: 10px;">java8</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/swing-刷新/" style="font-size: 10px;">swing 刷新</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/小技巧/" style="font-size: 17.5px;">小技巧</a> <a href="/tags/并发/" style="font-size: 12.5px;">并发</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
+      <a href="/tags/App/" style="font-size: 20px; color: #fa6">App</a> <a href="/tags/Backend/" style="font-size: 10px; color: #636">Backend</a> <a href="/tags/Blender/" style="font-size: 14px; color: #a36366">Blender</a> <a href="/tags/C/" style="font-size: 10px; color: #636">C</a> <a href="/tags/CG/" style="font-size: 10px; color: #636">CG</a> <a href="/tags/Database/" style="font-size: 10px; color: #636">Database</a> <a href="/tags/English/" style="font-size: 10px; color: #636">English</a> <a href="/tags/Frontend/" style="font-size: 10px; color: #636">Frontend</a> <a href="/tags/Game/" style="font-size: 10px; color: #636">Game</a> <a href="/tags/Git/" style="font-size: 10px; color: #636">Git</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #854b66">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px; color: #636">IDE</a> <a href="/tags/IOS/" style="font-size: 20px; color: #fa6">IOS</a> <a href="/tags/Java/" style="font-size: 16px; color: #c27a66">Java</a> <a href="/tags/Lua/" style="font-size: 10px; color: #636">Lua</a> <a href="/tags/Macbook/" style="font-size: 10px; color: #636">Macbook</a> <a href="/tags/Markdown/" style="font-size: 10px; color: #636">Markdown</a> <a href="/tags/Notes/" style="font-size: 14px; color: #a36366">Notes</a> <a href="/tags/Plugin/" style="font-size: 10px; color: #636">Plugin</a> <a href="/tags/Programming-Language/" style="font-size: 18px; color: #e09266">Programming Language</a> <a href="/tags/Python/" style="font-size: 10px; color: #636">Python</a> <a href="/tags/Ruby/" style="font-size: 14px; color: #a36366">Ruby</a> <a href="/tags/SSH/" style="font-size: 10px; color: #636">SSH</a> <a href="/tags/Swift/" style="font-size: 10px; color: #636">Swift</a> <a href="/tags/Swing/" style="font-size: 10px; color: #636">Swing</a>
     </div>
   </div>
 
@@ -613,7 +569,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -625,23 +581,23 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
       <ul>
         
           <li>
-            <a href="/2016/07/08/IOS学习——KVO/">IOS学习——KVO</a>
+            <a href="/2016/08/17/RSpec学习/">RSpec学习</a>
           </li>
         
           <li>
-            <a href="/2016/07/07/IOS性能调优笔记/">IOS性能调优笔记</a>
+            <a href="/2016/08/12/Gem-Gemfile-Bundle/">Gem,Gemfile,Bundle</a>
           </li>
         
           <li>
-            <a href="/2016/07/07/IOS学习——Notification/">IOS学习——Notification</a>
+            <a href="/2016/08/11/Rack学习笔记/">Rack学习笔记</a>
           </li>
         
           <li>
-            <a href="/2016/07/06/Blender基本操作笔记/">Blender基本操作笔记</a>
+            <a href="/2016/08/01/零碎知识点/">零碎知识点</a>
           </li>
         
           <li>
-            <a href="/2016/07/06/IOS学习——并发编程-1/">IOS学习——并发编程</a>
+            <a href="/2016/08/01/数据库基础理论笔记/">数据库基础理论笔记</a>
           </li>
         
       </ul>
@@ -653,8 +609,7 @@ scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">u
   <div class="widget-wrap">
     <h3 class="widget-title">About</h3>
     <div class="widget">
-	mail: XXX
-	Weibo:xxx
+	mail: wizardof21cn@163.com
     </div>
   </div>
 

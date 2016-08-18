@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Gem,Gemfile,Bundle | null</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Gem,Gemfile,Bundle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gem,Gemfile,Bundle">
+<meta property="og:url" content="http://www.loongeek.com/2016/08/12/Gem-Gemfile-Bundle/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Gem,Gemfile,Bundle">
+<meta property="og:updated_time" content="2016-08-18T14:04:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gem,Gemfile,Bundle">
+<meta name="twitter:description" content="Gem,Gemfile,Bundle">
+  
+    <link rel="alternative" href="atom.xml" title="null" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">null</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Loongeek’s Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.loongeek.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post_catalog-Gem-Gemfile-Bundle" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/12/Gem-Gemfile-Bundle/" class="article-date">
+  <time datetime="2016-08-11T16:00:00.000Z" itemprop="datePublished">2016-08-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/后端/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Gem,Gemfile,Bundle
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+    <ol class="toc" ><li class="toc-item toc-level-1"><a class="toc-link" href="#Gem命令"><span class="toc-text">Gem命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Gemfile"><span class="toc-text">Gemfile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bundle"><span class="toc-text">Bundle</span></a></li></ol>
+
+        <p>Gem,Gemfile,Bundle<br><a id="more"></a></p>
+<h1 id="Gem命令">Gem命令</h1><ul>
+<li>gem search (regex) [-d] 按名字查找gem,支持正则表达式，加-d显示详细信息</li>
+<li>gem install xxx [—no-doc] 安装gem,可以选择是否支持文档</li>
+<li>gem list, gem uninstall</li>
+<li>ri xxx 查看已安装的gem文档</li>
+<li>gem query —remote 查看远程机上有哪些gem</li>
+<li>gem fetch 获取gem但不安装</li>
+<li>gem unpack 解包</li>
+</ul>
+<h1 id="Gemfile">Gemfile</h1><ul>
+<li>第一行指定源 <code>source &quot;https://gems.ruby-china.org&quot;</code> (链接是国内镜像源)</li>
+<li>源的优先级：显式定义的源，路径或者git -&gt; Gemfile源按先后顺序</li>
+<li>有些源要验证身份：</li>
+<li><code>bundle config my_gem_source.com my_username:my_password</code> 在bundle中设置，不会提交到版本管理中</li>
+<li><code>source &quot;https://username:password@my_gem_source.com&quot;</code> 在Gemfile中设置，会提交到版本管理中</li>
+<li>指定gem版本：<code>gem &quot;gem_name&quot;,&quot;operand 1.2&quot;</code><br>operand: <code>=</code> <code>!=</code> <code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code> <code>~&gt;</code>（主版本范围内的任意版本，例如<code>&quot;~&gt; 2.5.0&quot;</code>相当于<code>&quot;&gt;= 2.5.0&quot;,&quot;&lt; 2.6.0&quot;</code>）</li>
+<li><code>gem &quot;gem_name&quot;, require: false</code> 指定gem是否由bundle来require<br><code>gem &quot;gem_name&quot;, require: [dir1,dir2,...]</code>  自动require哪些目录<br><code>gem &quot;gem_name&quot;, :require =&gt; &quot;filename&quot;</code> 指定require的主文件名。<br>如果没有使用自动require，要在代码中手动require</li>
+<li><code>gem &quot;my_gem&quot;, group: :development</code> 指定gem所在组，不指定的话，默认在<code>:default</code>组<br>或者用block指定多个组，多个gem：<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group <span class="symbol">:development</span>, <span class="symbol">:test</span>[, <span class="symbol">optional:</span> <span class="keyword">true</span>]<span class="keyword">do</span></span><br><span class="line">  gem <span class="string">"my_gem"</span></span><br><span class="line">  gem <span class="string">"my_other_gem"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>非optional的gem不想安装：<code>bundle install --without development ...</code><br>optional的gem想安装：<code>bundle install --with development ...</code></p>
+<ul>
+<li><code>gem &quot;my_gem&quot;, platform: [xxx,xxx]</code> 指定平台，类似group，但是由bundle自己判断</li>
+<li>Gemfile.lock记录了本机安装的gem版本，这样在其它环境下执行bundle install会安装同样的版本，而不会更新gem版本。最好将Gemfile.lock放入版本控制中</li>
+</ul>
+<h1 id="Bundle">Bundle</h1><ul>
+<li>显示所有的依赖包 <code>bundle show</code></li>
+<li>显示指定gem包的安装位置 <code>bundle show [gemname]</code></li>
+<li>检查系统中缺少那些项目依赖的gem包 <code>bundle check</code></li>
+<li>安装项目依赖的所有gem包 <em>此命令会尝试更新系统中已存在的gem包</em> <code>bundle install</code></li>
+<li>安装指定的gem包 <code>bundle install [gemname]</code></li>
+<li>更新系统中存在的项目依赖包，并<strong>同时更新项目Gemfile.lock文件</strong> <code>bundle update</code></li>
+<li>更新系统中指定的gem包信息，并<strong>同时更新项目Gemfile.lock中指定的包信息</strong> <code>bundle update [gemname]</code></li>
+<li>使用bundle lock来锁定当前环境，这样便不能通过bundle update来更新依赖包的版本，保证了统一的环境 <code>bundle lock</code></li>
+<li>解除锁定 <code>bundle unlock</code></li>
+<li>bundle package会把当前所有信赖的包都放到 ./vendor/cache/ 目录下，发布时可用来保证包版本的一致性 <code>bundle package</code></li>
+</ul>
+<!--less-->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/08/12/Gem-Gemfile-Bundle/" data-id="cis0exgpa006epjjfxap5xexs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/">Ruby</a></li></ul>
+
+      
+	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
+	  
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/17/RSpec学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          RSpec学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/11/Rack学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Rack学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/Blender/">Blender</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CG/理论/">理论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/文学/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">38</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/App/">App</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/GUI/">GUI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/后端/">后端</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/游戏开发/">游戏开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/理论/">理论</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/语言/">语言</a><span class="category-list-count">9</span></li></ul></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/App/" style="font-size: 20px; color: #fa6">App</a> <a href="/tags/Backend/" style="font-size: 10px; color: #636">Backend</a> <a href="/tags/Blender/" style="font-size: 14px; color: #a36366">Blender</a> <a href="/tags/C/" style="font-size: 10px; color: #636">C</a> <a href="/tags/CG/" style="font-size: 10px; color: #636">CG</a> <a href="/tags/Database/" style="font-size: 10px; color: #636">Database</a> <a href="/tags/English/" style="font-size: 10px; color: #636">English</a> <a href="/tags/Frontend/" style="font-size: 10px; color: #636">Frontend</a> <a href="/tags/Game/" style="font-size: 10px; color: #636">Game</a> <a href="/tags/Git/" style="font-size: 10px; color: #636">Git</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #854b66">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px; color: #636">IDE</a> <a href="/tags/IOS/" style="font-size: 20px; color: #fa6">IOS</a> <a href="/tags/Java/" style="font-size: 16px; color: #c27a66">Java</a> <a href="/tags/Lua/" style="font-size: 10px; color: #636">Lua</a> <a href="/tags/Macbook/" style="font-size: 10px; color: #636">Macbook</a> <a href="/tags/Markdown/" style="font-size: 10px; color: #636">Markdown</a> <a href="/tags/Notes/" style="font-size: 14px; color: #a36366">Notes</a> <a href="/tags/Plugin/" style="font-size: 10px; color: #636">Plugin</a> <a href="/tags/Programming-Language/" style="font-size: 18px; color: #e09266">Programming Language</a> <a href="/tags/Python/" style="font-size: 10px; color: #636">Python</a> <a href="/tags/Ruby/" style="font-size: 14px; color: #a36366">Ruby</a> <a href="/tags/SSH/" style="font-size: 10px; color: #636">SSH</a> <a href="/tags/Swift/" style="font-size: 10px; color: #636">Swift</a> <a href="/tags/Swing/" style="font-size: 10px; color: #636">Swing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/17/RSpec学习/">RSpec学习</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/Gem-Gemfile-Bundle/">Gem,Gemfile,Bundle</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/11/Rack学习笔记/">Rack学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/零碎知识点/">零碎知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/数据库基础理论笔记/">数据库基础理论笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">About</h3>
+    <div class="widget">
+	mail: wizardof21cn@163.com
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+<div class="outer">
+    <div id="footer-info" class="inner">
+	<p>&copy; 2016 Loongeek</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
