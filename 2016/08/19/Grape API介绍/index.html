@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Grape API介绍 | null</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Grape API介绍。参考 Grape API文档Grape是REST-like的ruby的API框架。可以在Rack上运行，也可以做为DSL来补充已有的框架(Rails,Sinatra)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Grape API介绍">
+<meta property="og:url" content="http://www.loongeek.com/2016/08/19/Grape API介绍/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Grape API介绍。参考 Grape API文档Grape是REST-like的ruby的API框架。可以在Rack上运行，也可以做为DSL来补充已有的框架(Rails,Sinatra)">
+<meta property="og:updated_time" content="2016-08-23T10:33:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Grape API介绍">
+<meta name="twitter:description" content="Grape API介绍。参考 Grape API文档Grape是REST-like的ruby的API框架。可以在Rack上运行，也可以做为DSL来补充已有的框架(Rails,Sinatra)">
+  
+    <link rel="alternative" href="atom.xml" title="null" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">null</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Loongeek’s Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.loongeek.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post_catalog-Grape API介绍" class="article article-type-post_catalog" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/19/Grape API介绍/" class="article-date">
+  <time datetime="2016-08-18T16:00:00.000Z" itemprop="datePublished">2016-08-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/后端/">后端</a>
+    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Grape API介绍
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+    <ol class="toc" ><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#挂载"><span class="toc-text">挂载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版本"><span class="toc-text">版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#描述"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参数"><span class="toc-text">参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参数验证"><span class="toc-text">参数验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Header"><span class="toc-text">Header</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#路由??"><span class="toc-text">路由??</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#辅助函数"><span class="toc-text">辅助函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cookie"><span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#状态码"><span class="toc-text">状态码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重定向"><span class="toc-text">重定向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recognizing_Path_？？"><span class="toc-text">Recognizing Path ？？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#允许方法_？？"><span class="toc-text">允许方法 ？？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异常"><span class="toc-text">异常</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异常处理"><span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#日志"><span class="toc-text">日志</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#API格式"><span class="toc-text">API格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#跨域"><span class="toc-text">跨域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#API数据格式（略）"><span class="toc-text">API数据格式（略）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RESTful_Model_Representations？？？"><span class="toc-text">RESTful Model Representations？？？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鉴权"><span class="toc-text">鉴权</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Current_Route_and_Endpoint"><span class="toc-text">Current Route and Endpoint</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#钩子"><span class="toc-text">钩子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Anchoring"><span class="toc-text">Anchoring</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用自定义中间件（略）"><span class="toc-text">使用自定义中间件（略）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#刷新"><span class="toc-text">刷新</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能"><span class="toc-text">性能</span></a></li></ol>
+
+        <p>Grape API介绍。参考 <a href="http://www.rubydoc.info/gems/grape/0.17.0" target="_blank" rel="external">Grape API文档</a><br>Grape是REST-like的ruby的API框架。可以在Rack上运行，也可以做为DSL来补充已有的框架(Rails,Sinatra)<br><a id="more"></a></p>
+<h1 id="简介">简介</h1><pre><code><span class="bullet">+ </span>声明为<span class="code">`Grape::API`</span>的子类，指定version, format, prefix等
+<span class="bullet">+ </span>定义helpers
+<span class="bullet">+ </span>定义resource,在resource中定义不同的响应
+</code></pre><h1 id="挂载">挂载</h1><ul>
+<li>Rack: 在config.ru中写<code>run Modulename::Classname</code></li>
+<li>Sinatra: 在config.ru中写<br><code>use Rack::Session::Cookie</code><br><code>run Rack::Cascade.new [API, Web]</code> //Cascade依次尝试处理并返回第一个不是404的结果</li>
+<li>Rails:<br>把API类文件放到app/api中，<code>app/api/Modulename/Classname.rb</code><br>修改application.rb:<br><code>config.paths.add File.join(&#39;app&#39;, &#39;api&#39;), glob: File.join(&#39;**&#39;, &#39;*.rb&#39;)</code><br><code>config.autoload_paths += Dir[Rails.root.join(&#39;app&#39;, &#39;api&#39;, &#39;*&#39;)]</code><br>修改config/routes:<br><code>mount Modulename::Classname =&gt; &#39;/&#39;</code><br>注意：如果使用4.0+的Rails并使用默认的ActiveRecord模型层,可能需要使用<code>hashie-forbidden_attributes</code>gem,它会禁止模型层的strong_params安全特性，这样就允许你使用Grape自己的参数验证来代替。</li>
+</ul>
+<h1 id="版本">版本</h1><ul>
+<li><code>version &#39;v1&#39;, using: :path</code>，在URL中指定版本</li>
+<li><code>version &#39;v1&#39;, using: :header, vendor: &#39;twitter&#39;</code>, 在header中指定版本</li>
+<li><code>version &#39;v1&#39;, using: :accept_version_header</code>，用accept_version指定版本</li>
+<li><code>version &#39;v1&#39;, using: :param, parameter: &#39;v&#39;</code>，用参数指定版本</li>
+</ul>
+<h1 id="描述">描述</h1><h1 id="参数">参数</h1><ul>
+<li><code>declared</code>,只会访问声明了的参数</li>
+<li>声明参数：<code>params do requires :xxx, type :xxx do [requires :xxx,type,:xxx]end end</code></li>
+<li>declared默认包含nil参数，可以设置<code>include_missing: false</code>禁止包含</li>
+</ul>
+<h1 id="参数验证">参数验证</h1><ul>
+<li>使用<code>params</code>来做验证</li>
+<li>optional形式的参数可以指定默认值，但是默认值应当包含在取值范围内</li>
+<li>支持的参数类型:<br>Integer Float BigDecimal Numeric Date DateTime Time Boolean<br>String Symbol Rack::Multipart::UploadedFile (alias File) JSON</li>
+<li>自定义参数验证：在类中定义parse(String)返回参数，会自动验证；或者指定参数时用<code>coerce_with</code>指定验证方法</li>
+<li>参数依赖关系：<code>given :xxxx do end</code></li>
+<li>内建验证器：allow_blank, values, regexp<br>  mutually_exclusive，exactly_one_of, at_least_one_of, all_or_none_of(参数互斥，不同时出现)</li>
+<li>自定义验证器类(略)</li>
+</ul>
+<h1 id="Header">Header</h1><ul>
+<li>读取：headers[‘xxxxx’]</li>
+<li>写回：header ‘xxxx’,’xxxx’</li>
+</ul>
+<h1 id="路由??">路由??</h1><h1 id="辅助函数">辅助函数</h1><ul>
+<li>可以用helper定义可复用的params块</li>
+</ul>
+<h1 id="Cookie">Cookie</h1><p><code>cookies[:xxxx]</code> <code>cookies.delete :xxx</code>，可以以hash方式指定cookie</p>
+<h1 id="状态码">状态码</h1><p><code>status xxx</code> <code>status == xxx</code> <code>status :no_content</code>(<a href="http://www.rubydoc.info/github/rack/rack/Rack/Utils#HTTP_STATUS_CODES-constant" target="_blank" rel="external">Rack::Util状态码</a>)</p>
+<h1 id="重定向">重定向</h1><p><code>redirect &#39;/xxxx&#39;</code> (302,临时重定向)  <code>redircet &#39;/xxx&#39;, permanent:true</code> (301,永久重定向)</p>
+<h1 id="Recognizing_Path_？？">Recognizing Path ？？</h1><h1 id="允许方法_？？">允许方法 ？？</h1><p><code>do_not_route_head!</code> <code>do_not_route_options!</code></p>
+<h1 id="异常">异常</h1><ul>
+<li><code>error! xxx, 404</code>, xxx可以是任何支持to_s的对象，或者JSON</li>
+<li>You can present documented errors with a Grape entity using the the grape-entity gem??</li>
+<li>By default Grape returns a 500 status code from error!. You can change this with default_error_status.??</li>
+<li>使用下述语言处理所有的404。注意一定要放在最后面处理<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">route :any, <span class="string">'*path'</span> <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">error</span>! # <span class="keyword">or</span> something <span class="keyword">else</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="异常处理">异常处理</h1><ul>
+<li><code>rescue_from</code> <code>error_formatter</code>???</li>
+</ul>
+<h1 id="日志">日志</h1><ul>
+<li>Grape API提供了默认的logger <code>API.logger</code></li>
+<li>打印：<code>logger.info</code></li>
+<li>可以自定义logger</li>
+<li>For similar to Rails request logging try the grape_logging or grape-middleware-logger gems.??</li>
+</ul>
+<h1 id="API格式">API格式</h1><ul>
+<li>Your API can declare which content-types to support by using content_type. If you do not specify any, Grape will support XML, JSON, BINARY, and TXT content-types. The default format is :txt; you can change this with default_format. Essentially, the two APIs below are equivalent.</li>
+<li><code>content_type</code> <code>format</code> <code>default_format</code></li>
+</ul>
+<h1 id="跨域">跨域</h1><ul>
+<li><p>JSONP</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'rack/contrib'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">API</span> <span class="inheritance">&lt; <span class="parent">Grape::API</span></span></span></span><br><span class="line">  use <span class="constant">Rack::JSONP</span></span><br><span class="line">  format <span class="symbol">:json</span></span><br><span class="line">  get <span class="string">'/'</span> <span class="keyword">do</span></span><br><span class="line">    <span class="string">'Hello World'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CORS</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">require <span class="string">'rack/cors'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="constant">Rack:</span><span class="symbol">:Cors</span> <span class="keyword">do</span></span><br><span class="line">  allow <span class="keyword">do</span></span><br><span class="line">    origins <span class="string">'*'</span></span><br><span class="line">    resource <span class="string">'*'</span>, <span class="symbol">headers:</span> <span class="symbol">:any</span>, <span class="symbol">methods:</span> <span class="symbol">:get</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">run <span class="constant">Twitter:</span><span class="symbol">:API</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="API数据格式（略）">API数据格式（略）</h1><h1 id="RESTful_Model_Representations？？？">RESTful Model Representations？？？</h1><h1 id="鉴权">鉴权</h1><ul>
+<li><p>基本鉴权</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http_basic <span class="keyword">do</span> |username, password|</span><br><span class="line">  <span class="comment"># verify user's password here</span></span><br><span class="line">  &#123; <span class="string">'test'</span> =&gt; <span class="string">'password1'</span> &#125;[username] == password</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Digest鉴权</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http_digest(&#123; <span class="symbol">realm:</span> <span class="string">'Test Api'</span>, <span class="symbol">opaque:</span> <span class="string">'app secret'</span> &#125;) <span class="keyword">do</span> |username|</span><br><span class="line">  <span class="comment"># lookup the user's password here</span></span><br><span class="line">  &#123; <span class="string">'user1'</span> =&gt; <span class="string">'password1'</span> &#125;[username]</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注册中间件鉴权</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Grape::Middleware::Auth::Strategies</span>.add(<span class="symbol">:my_auth</span>, <span class="constant">AuthMiddleware</span>, -&gt;(options) &#123; [options[<span class="symbol">:realm</span>]] &#125; )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">auth <span class="symbol">:my_auth</span>, &#123; <span class="symbol">realm:</span> <span class="string">'Test Api'</span>&#125; <span class="keyword">do</span> |credentials|</span><br><span class="line">  <span class="comment"># lookup the user's password here</span></span><br><span class="line">  &#123; <span class="string">'user1'</span> =&gt; <span class="string">'password1'</span> &#125;[username]</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用warden-oauth2 or rack-oauth2 for OAuth2 support.</p>
+</li>
+</ul>
+<h1 id="Current_Route_and_Endpoint">Current Route and Endpoint</h1><ul>
+<li>当前API中用<code>route</code>获取当前路径</li>
+<li>当前API中用<code>self</code>获取当前端点，API之外用<code>env[&#39;api.endpoint&#39;]</code>获取端点</li>
+</ul>
+<h1 id="钩子">钩子</h1><ul>
+<li>生命周期：<ol>
+<li>before</li>
+<li>before_validation</li>
+<li>validations</li>
+<li>after_validation</li>
+<li>the API call</li>
+<li>after</li>
+</ol>
+</li>
+</ul>
+<h1 id="Anchoring">Anchoring</h1><ul>
+<li>Grape默认支持anchoring,也就是说会比对开始和结束时的请求URL,如果不一致会报404。可以用anchor: false来关闭？？？</li>
+</ul>
+<h1 id="使用自定义中间件（略）">使用自定义中间件（略）</h1><h1 id="测试">测试</h1><ul>
+<li>rack:使用rack-test，把API当成app测试。在RSpec中构建HTTP请求并检查响应</li>
+<li>rails:RSpec （略）</li>
+</ul>
+<h1 id="刷新">刷新</h1><ul>
+<li>rack:使用<code>grape-reload</code></li>
+<li>rails: 使用reload代码(略)</li>
+</ul>
+<h1 id="性能">性能</h1><!--less-->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2016/08/19/Grape API介绍/" data-id="cis7c3a7j00698v33v7hz27a3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backend/">Backend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Framework/">Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Grape-API/">Grape API</a></li></ul>
+
+      
+	  	<a id="back-to-top" href="javascript:scroll(0,0);"><i class="icon" id="icon-angle-up"></i></a>
+	  
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/17/RSpec学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">RSpec学习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/Blender/">Blender</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CG/理论/">理论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/文学/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">39</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/App/">App</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/GUI/">GUI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/后端/">后端</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/游戏开发/">游戏开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/理论/">理论</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/语言/">语言</a><span class="category-list-count">9</span></li></ul></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/App/" style="font-size: 20px; color: #fa6">App</a> <a href="/tags/Backend/" style="font-size: 11.67px; color: #804766">Backend</a> <a href="/tags/Blender/" style="font-size: 15px; color: #b36f66">Blender</a> <a href="/tags/C/" style="font-size: 10px; color: #636">C</a> <a href="/tags/CG/" style="font-size: 10px; color: #636">CG</a> <a href="/tags/Database/" style="font-size: 10px; color: #636">Database</a> <a href="/tags/English/" style="font-size: 10px; color: #636">English</a> <a href="/tags/Framework/" style="font-size: 10px; color: #636">Framework</a> <a href="/tags/Frontend/" style="font-size: 10px; color: #636">Frontend</a> <a href="/tags/Game/" style="font-size: 10px; color: #636">Game</a> <a href="/tags/Git/" style="font-size: 10px; color: #636">Git</a> <a href="/tags/Grape-API/" style="font-size: 10px; color: #636">Grape API</a> <a href="/tags/Hexo/" style="font-size: 13.33px; color: #995b66">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px; color: #636">IDE</a> <a href="/tags/IOS/" style="font-size: 20px; color: #fa6">IOS</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #cc8266">Java</a> <a href="/tags/Lua/" style="font-size: 10px; color: #636">Lua</a> <a href="/tags/Macbook/" style="font-size: 10px; color: #636">Macbook</a> <a href="/tags/Markdown/" style="font-size: 10px; color: #636">Markdown</a> <a href="/tags/Notes/" style="font-size: 15px; color: #b36f66">Notes</a> <a href="/tags/Plugin/" style="font-size: 10px; color: #636">Plugin</a> <a href="/tags/Programming-Language/" style="font-size: 18.33px; color: #e69666">Programming Language</a> <a href="/tags/Python/" style="font-size: 10px; color: #636">Python</a> <a href="/tags/Ruby/" style="font-size: 15px; color: #b36f66">Ruby</a> <a href="/tags/SSH/" style="font-size: 10px; color: #636">SSH</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/19/Grape API介绍/">Grape API介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/17/RSpec学习/">RSpec学习</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/Gem-Gemfile-Bundle/">Gem,Gemfile,Bundle</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/11/Rack学习笔记/">Rack学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/Design-Pattern-Notes/">Design Pattern Notes</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">About</h3>
+    <div class="widget">
+	mail: wizardof21cn@163.com
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+<div class="outer">
+    <div id="footer-info" class="inner">
+	<p>&copy; 2016 Loongeek</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

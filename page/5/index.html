@@ -68,6 +68,64 @@
         <section id="main">
   
   
+    <article id="post-ssh-config" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/24/ssh-config/" class="article-date">
+  <time datetime="2015-12-24T03:34:19.000Z" itemprop="datePublished">2015-12-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/工具/">工具</a>
+    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/24/ssh-config/">ssh配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <h1 id="ssh与scp">ssh与scp</h1><p>基本用法:</p>
+<pre><code>ssh <span class="keyword">user</span>@<span class="built_in">hostname</span> <span class="literal">command</span>
+scp [-r] [<span class="keyword">user</span>@host1:]file1 <span class="keyword">user</span>@host2:file2
+</code></pre><h1 id="ssh免密配置">ssh免密配置</h1><ol>
+<li><p>本机运行</p>
+<pre><code>ssh-keygen -t rsa
+</code></pre><p> 在~/.ssh/下生成了私钥id_rsa和公钥id_rsa.pub</p>
+</li>
+<li>利用scp将id_rsa.pub传送到远程服务器的用户目录~/.ssh/下，<br> 改名为authorized_keys，如果已有这个文件，就append到该文件</li>
+<li>修改权限：<ul>
+<li>本地的.ssh权限改为644, id_rsa权限改为600,known_hots权限改为644</li>
+<li>远程的.ssh权限改为644，authorized_keys权限改为644</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.loongeek.com/2015/12/24/ssh-config/" data-id="cis7c3a4x001i8v33odxrgbah" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trick/">Trick</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+  
     <article id="post-macbook-operation-memo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/24/macbook-operation-memo/" class="article-date">
@@ -76,7 +134,7 @@
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/工具/">工具</a>
-  </div>
+    </div>
 
   </div>
   <div class="article-inner">
@@ -103,7 +161,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/macbook-operation-memo/" data-id="cis0exgn30029pjjfhl3159qo" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/24/macbook-operation-memo/" data-id="cis7c3a5b00298v33gm03hbbh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Macbook/">Macbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trick/">Trick</a></li></ul>
@@ -123,7 +181,7 @@
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/工具/">工具</a>
-  </div>
+    </div>
 
   </div>
   <div class="article-inner">
@@ -150,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/24/idea-useguide/" data-id="cis0exgni002zpjjfdtuzlhuq" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/24/idea-useguide/" data-id="cis7c3a5o002z8v33zy0pxqnv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE/">IDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trick/">Trick</a></li></ul>
@@ -170,7 +228,7 @@
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/工具/">工具</a>
-  </div>
+    </div>
 
   </div>
   <div class="article-inner">
@@ -197,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/12/22/Plantuml/" data-id="cis0exgo70045pjjfse39qjg8" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/12/22/Plantuml/" data-id="cis7c3a6j00458v33gipq9zbx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Plugin/">Plugin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UML/">UML</a></li></ul>
@@ -217,7 +275,7 @@
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/工具/">工具</a>
-  </div>
+    </div>
 
   </div>
   <div class="article-inner">
@@ -374,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/09/26/intro-to-hexo/" data-id="cis0exgnf002upjjf55xqo8qw" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/09/26/intro-to-hexo/" data-id="cis7c3a5m002u8v330m4z4deb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -394,7 +452,7 @@
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/语言/">语言</a>
-  </div>
+    </div>
 
   </div>
   <div class="article-inner">
@@ -423,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/08/13/Lua-study/" data-id="cis0exgo9004cpjjf94puspxk" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/08/13/Lua-study/" data-id="cis7c3a6l004c8v33axjnlyot" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lua/">Lua</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/">Programming Language</a></li></ul>
@@ -443,7 +501,7 @@
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/软件/">软件</a>►<a class="article-category-link" href="/categories/软件/语言/">语言</a>
-  </div>
+    </div>
 
   </div>
   <div class="article-inner">
@@ -470,7 +528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.loongeek.com/2015/07/25/markdown/" data-id="cis0exgmz0023pjjfyx28uh9e" class="article-share-link">Share</a>
+      <a data-url="http://www.loongeek.com/2015/07/25/markdown/" data-id="cis7c3a5800238v333b1jcgle" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/">Programming Language</a></li></ul>
@@ -495,7 +553,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/Blender/">Blender</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CG/理论/">理论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/文学/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">38</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/App/">App</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/GUI/">GUI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/后端/">后端</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/游戏开发/">游戏开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/理论/">理论</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/语言/">语言</a><span class="category-list-count">9</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/">CG</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CG/Blender/">Blender</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CG/理论/">理论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/外语/">外语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/文学/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">39</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/App/">App</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/GUI/">GUI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/后端/">后端</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/游戏开发/">游戏开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/理论/">理论</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/语言/">语言</a><span class="category-list-count">9</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -504,7 +562,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/App/" style="font-size: 20px; color: #fa6">App</a> <a href="/tags/Backend/" style="font-size: 10px; color: #636">Backend</a> <a href="/tags/Blender/" style="font-size: 14px; color: #a36366">Blender</a> <a href="/tags/C/" style="font-size: 10px; color: #636">C</a> <a href="/tags/CG/" style="font-size: 10px; color: #636">CG</a> <a href="/tags/Database/" style="font-size: 10px; color: #636">Database</a> <a href="/tags/English/" style="font-size: 10px; color: #636">English</a> <a href="/tags/Frontend/" style="font-size: 10px; color: #636">Frontend</a> <a href="/tags/Game/" style="font-size: 10px; color: #636">Game</a> <a href="/tags/Git/" style="font-size: 10px; color: #636">Git</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #854b66">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px; color: #636">IDE</a> <a href="/tags/IOS/" style="font-size: 20px; color: #fa6">IOS</a> <a href="/tags/Java/" style="font-size: 16px; color: #c27a66">Java</a> <a href="/tags/Lua/" style="font-size: 10px; color: #636">Lua</a> <a href="/tags/Macbook/" style="font-size: 10px; color: #636">Macbook</a> <a href="/tags/Markdown/" style="font-size: 10px; color: #636">Markdown</a> <a href="/tags/Notes/" style="font-size: 14px; color: #a36366">Notes</a> <a href="/tags/Plugin/" style="font-size: 10px; color: #636">Plugin</a> <a href="/tags/Programming-Language/" style="font-size: 18px; color: #e09266">Programming Language</a> <a href="/tags/Python/" style="font-size: 10px; color: #636">Python</a> <a href="/tags/Ruby/" style="font-size: 14px; color: #a36366">Ruby</a> <a href="/tags/SSH/" style="font-size: 10px; color: #636">SSH</a> <a href="/tags/Swift/" style="font-size: 10px; color: #636">Swift</a> <a href="/tags/Swing/" style="font-size: 10px; color: #636">Swing</a>
+      <a href="/tags/App/" style="font-size: 20px; color: #fa6">App</a> <a href="/tags/Backend/" style="font-size: 11.67px; color: #804766">Backend</a> <a href="/tags/Blender/" style="font-size: 15px; color: #b36f66">Blender</a> <a href="/tags/C/" style="font-size: 10px; color: #636">C</a> <a href="/tags/CG/" style="font-size: 10px; color: #636">CG</a> <a href="/tags/Database/" style="font-size: 10px; color: #636">Database</a> <a href="/tags/English/" style="font-size: 10px; color: #636">English</a> <a href="/tags/Framework/" style="font-size: 10px; color: #636">Framework</a> <a href="/tags/Frontend/" style="font-size: 10px; color: #636">Frontend</a> <a href="/tags/Game/" style="font-size: 10px; color: #636">Game</a> <a href="/tags/Git/" style="font-size: 10px; color: #636">Git</a> <a href="/tags/Grape-API/" style="font-size: 10px; color: #636">Grape API</a> <a href="/tags/Hexo/" style="font-size: 13.33px; color: #995b66">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px; color: #636">IDE</a> <a href="/tags/IOS/" style="font-size: 20px; color: #fa6">IOS</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #cc8266">Java</a> <a href="/tags/Lua/" style="font-size: 10px; color: #636">Lua</a> <a href="/tags/Macbook/" style="font-size: 10px; color: #636">Macbook</a> <a href="/tags/Markdown/" style="font-size: 10px; color: #636">Markdown</a> <a href="/tags/Notes/" style="font-size: 15px; color: #b36f66">Notes</a> <a href="/tags/Plugin/" style="font-size: 10px; color: #636">Plugin</a> <a href="/tags/Programming-Language/" style="font-size: 18.33px; color: #e69666">Programming Language</a> <a href="/tags/Python/" style="font-size: 10px; color: #636">Python</a> <a href="/tags/Ruby/" style="font-size: 15px; color: #b36f66">Ruby</a> <a href="/tags/SSH/" style="font-size: 10px; color: #636">SSH</a>
     </div>
   </div>
 
@@ -513,7 +571,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -523,6 +581,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/08/19/Grape API介绍/">Grape API介绍</a>
+          </li>
         
           <li>
             <a href="/2016/08/17/RSpec学习/">RSpec学习</a>
@@ -537,11 +599,7 @@
           </li>
         
           <li>
-            <a href="/2016/08/01/零碎知识点/">零碎知识点</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/01/数据库基础理论笔记/">数据库基础理论笔记</a>
+            <a href="/2016/08/01/Design-Pattern-Notes/">Design Pattern Notes</a>
           </li>
         
       </ul>
